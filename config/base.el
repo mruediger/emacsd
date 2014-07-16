@@ -23,6 +23,10 @@
 (setq-default indent-tabs-mode 'nil)
 
 
+; WINDOW SETTINGS
+(setq mouse-autoselect-window t)
+
+
 ; BACKUP SETTINGS
 (setq backup-inhibited t)
 (setq auto-save-default nil)
