@@ -10,3 +10,4 @@
 (load-file "~/.emacs.d/config/golang.el")
 (load-file "~/.emacs.d/config/markdown.el")
 (load-file "~/.emacs.d/config/python-settings.el")
+(load-file "~/.emacs.d/config/node-settings.el")
