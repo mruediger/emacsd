@@ -11,3 +11,4 @@
 (load-file "~/.emacs.d/config/markdown.el")
 (load-file "~/.emacs.d/config/python-settings.el")
 (load-file "~/.emacs.d/config/node-settings.el")
+(load-file "~/.emacs.d/config/yaml.el")
