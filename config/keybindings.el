@@ -1,3 +1,9 @@
+;; KEYBOARD QUIT
+(define-key global-map (kbd "C-g") 'nil)
+(define-key global-map (kbd "C-q") 'keyboard-quit)
+(define-key minibuffer-local-map (kbd "C-q") 'abort-recursive-edit)
+
+
 (define-key global-map (kbd "RET") 'newline-and-indent)
 (define-key global-map (kbd "C-z") 'undo)
 
@@ -28,6 +34,5 @@
 (define-key global-map (kbd "C-c C-c") 'comment-or-uncomment-region)
 
 
-;;; GIT
-(global-unset-key (kbd "C-g"))
-(global-set-key (kbd "C-g s") 'magit-status)
+;; GIT
+(define-key global-map (kbd "C-g s") 'magit-status)
