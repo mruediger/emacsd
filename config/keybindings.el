@@ -26,3 +26,8 @@
 (define-key global-map (kbd "S-DEL") 'kill-whole-line)
 
 (define-key global-map (kbd "C-c C-c") 'comment-or-uncomment-region)
+
+
+;;; GIT
+(global-unset-key (kbd "C-g"))
+(global-set-key (kbd "C-g s") 'magit-status)
