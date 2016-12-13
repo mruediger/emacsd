@@ -3,3 +3,5 @@
 ;;(setq solarized-high-contrast-mode-line t)
 ;;(setq solarized-distinct-fringe-background t)
 (add-to-list 'default-frame-alist '(font . "PragmataPro-10"))
+
+(powerline-default-theme)
