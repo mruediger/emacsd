@@ -2,15 +2,20 @@
 (setq echo-keystrokes 0.02)
 
 (define-key global-map (kbd "RET") 'newline-and-indent)
+
 (define-key global-map (kbd "C-z") 'undo)
+(define-key global-map (kbd "C-x C-z") 'nil)
 
 (define-key global-map (kbd "<insert>") 'nil)
 
-(define-key global-map (kbd "M-q") 'save-buffers-kill-terminal)
+
 (define-key global-map (kbd "M-x") 'execute-extended-command)
 
+(define-key global-map (kbd "M-q") 'save-buffers-kill-terminal)
+;;(define-key global-map (kbd "C-x C-c") 'nil)
+
 ;; KEYBOARD ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key global-map (kbd "C-g") 'nil)
+
 (define-key global-map (kbd "C-q") 'keyboard-quit)
 
 (define-key global-map (kbd "<escape>") 'keyboard-quit)
@@ -33,13 +38,7 @@
 (define-key global-map (kbd "C-M-s") 'isearch-backward)
 (define-key global-map (kbd "C-r") 'query-replace)
 
-
-
-
 (define-key global-map (kbd "C-o") 'other-window)
-
-
-
 
 (define-key global-map (kbd "S-DEL") 'kill-whole-line)
 
@@ -58,4 +57,7 @@
 (define-key global-map (kbd "C-b C-s") (lambda() (interactive) (switch-to-buffer "*scratch*")))
 
 ;; GIT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(define-key global-map (kbd "C-g s") 'magit-status)
+;;(define-key global-map (kbd "C-g") 'nil)
+(define-key global-map (kbd "C-x g s") 'magit-status)
+(define-key global-map (kbd "C-x g l") 'magit-log-all)
+(define-key global-map (kbd "C-x g p") 'magit-push-current)
