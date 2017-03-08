@@ -1,5 +1,5 @@
-(require 'go-mode)
-(require 'golint)
+(use-package go-mode :ensure t)
+(use-package golint :ensure t)
 
 (setq gofmt-command "goimports")
 

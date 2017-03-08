@@ -61,3 +61,22 @@
 (define-key global-map (kbd "C-x g s") 'magit-status)
 (define-key global-map (kbd "C-x g l") 'magit-log-all)
 (define-key global-map (kbd "C-x g p") 'magit-push-current)
+
+;; WINDOWS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key global-map (kbd "C-f") nil)
+(define-key global-map (kbd "C-f s")   'ace-swap-window)
+(define-key global-map (kbd "C-f C-s") 'ace-swap-window)
+(define-key global-map (kbd "C-f v")   'split-window-vertically)
+(define-key global-map (kbd "C-f C-v") 'split-window-vertically)
+(define-key global-map (kbd "C-f h")   'split-window-horizontally)
+(define-key global-map (kbd "C-f C-h") 'split-window-horizontally)
+(define-key global-map (kbd "C-f d")   'delete-window)
+(define-key global-map (kbd "C-f C-d") 'delete-window)
+
+;; PROJECTILE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(define-key global-map (kbd "C-p") nil)
+(define-key global-map (kbd "C-p f") 'projectile-find-file)
+
+;; MARK MULTIPLE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(global-set-key (kbd "C-<") 'mark-previous-like-this)
+(global-set-key (kbd "C->") 'mark-next-like-this)
