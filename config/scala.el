@@ -1,11 +1,14 @@
-(use-package ensime
-  :ensure t
-  :pin melpa-stable)
-
 (use-package scala-mode
-  :interpreter
-  ("scala" . scala-mode))
+  :defer t
+  :ensure t
+  :pin melpa)
+  
+(use-package ensime
+  :defer t  
+  :ensure t
+  :pin melpa)
 
-(defun scalatest()
-  (interactive)
-  (compilation-start "sbt test"))
+(use-package sbt-mode
+  :defer tt
+  :ensure t
+  :pin melpa)
