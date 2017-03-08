@@ -1,38 +1,44 @@
-; WINDOW SETTINGS
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(setq inhibit-startup-message t)
+(setq
+ inhibit-startup-screen t
+ initial-scratch-message nil
+ enable-local-variables t
+ create-lockfiles nil
+ make-backup-files nil
+ load-prefer-newer t
+ custom-file (expand-file-name "custom.el" user-emacs-directory)
+ column-number-mode t
+ line-number-mode t
+ scroll-error-top-bottom t
+ scroll-margin 15
+ gc-cons-threshold 20000000
+ large-file-warning-threshold 100000000
+ ring-bell-function 'ignore
+ user-full-name "Mathias Rüdiger")
 
-; TURN OFF BELL
-(setq ring-bell-function 'ignore)
-
-; BASIC MODES
-(column-number-mode t)
-(line-number-mode t)
-
-;; (electric-pair-mode t)
-(global-linum-mode -1)
-
-; BASIC HOOKS
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-
-; BASIC EDITING
-(setq-default tab-width 2)
-(setq-default indent-tabs-mode 'nil)
+(setq-default
+ tab-width 2
+ indent-tabs-mode 'nil)
 
 
-; WINDOW SETTINGS
-(setq mouse-autoselect-window t)
+(setq
+ help-window-select t
+ show-paren-delay 0.5
+ dabbrev-case-fold-search nil
+ tags-case-fold-search nil
+ tags-revert-without-query t
+ tags-add-tables nil
+ compilation-scroll-output 'first-error
+ org-confirm-babel-evaluate nil
+ sentence-end-double-space nil
+ browse-url-browser-function 'browse-url-generic
+ ediff-window-setup-function 'ediff-setup-windows-plain)
 
+(when window-system
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (menu-bar-mode -1)
+  (setq mouse-autoselect-window t)
+  (setq select-enable-clipboard t)
 
-; BACKUP SETTINGS
-(setq backup-inhibited t)
-(setq auto-save-default nil)
 
 (setq mouse-yank-at-point t)
-
-(require 'server)
-(unless (server-running-p)
-    (server-start))
