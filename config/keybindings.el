@@ -36,6 +36,8 @@
 ;; SEARCH AND REPLACE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-key global-map (kbd "C-s") 'isearch-forward)
 (define-key global-map (kbd "C-M-s") 'isearch-backward)
+(define-key global-map (kbd "C-S-s") 'isearch-backward)
+
 (define-key global-map (kbd "C-r") 'query-replace)
 
 (define-key global-map (kbd "C-o") 'other-window)
