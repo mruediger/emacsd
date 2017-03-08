@@ -1,4 +1,5 @@
-(require 'go-mode-load)
+(require 'go-mode)
+(require 'golint)
 
 (setq gofmt-command "goimports")
 
@@ -9,5 +10,4 @@
 (add-hook 'go-mode-hook
           (lambda() (local-set-key (kbd "<f6>") 'gotest)))
 
-(add-hook 'go-mode-hook
-          (lambda() (local-set-key (kbd "C-c C-f") 'gofmt)))
+(add-hook 'before-save-hook 'gofmt-before-save)
