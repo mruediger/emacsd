@@ -15,9 +15,22 @@
 ;; LANGUAGES
 (load-file "~/.emacs.d/config/golang.el")
 (load-file "~/.emacs.d/config/rust.el")
-(load-file "~/.emacs.d/config/markdown.el")
 (load-file "~/.emacs.d/config/python-settings.el")
 (load-file "~/.emacs.d/config/node-settings.el")
-(load-file "~/.emacs.d/config/yaml.el")
-(load-file "~/.emacs.d/config/hcl.el")
 (load-file "~/.emacs.d/config/scala.el")
+(load-file "~/.emacs.d/languages.el")
+
+;;
+;; IDO settings
+;;
+(use-package flx-ido
+  :ensure t
+  :demand
+  :init
+  (setq
+   ido-enable-flex-matching t
+   ido-everywhere t)
+  :config
+  (ido-mode t)
+  (ido-everywhere t)
+  (flx-ido-mode t))
