@@ -30,7 +30,7 @@
  compilation-scroll-output 'first-error
  org-confirm-babel-evaluate nil
  sentence-end-double-space nil
- browse-url-browser-function 'browse-url-generic
+ browse-url-browser-function 'browse-url-chrome
  ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (when window-system
@@ -38,7 +38,9 @@
   (scroll-bar-mode -1)
   (menu-bar-mode -1)
   (setq mouse-autoselect-window t)
-  (setq select-enable-clipboard t)
+  (setq select-enable-clipboard t))
 
 
 (setq mouse-yank-at-point t)
+
+(setq-default ediff-forward-word-function 'forward-char)

@@ -61,7 +61,8 @@
 ;; GIT ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;(define-key global-map (kbd "C-g") 'nil)
 (define-key global-map (kbd "C-x g s") 'magit-status)
-(define-key global-map (kbd "C-x g l") 'magit-log-all)
+(define-key global-map (kbd "C-x g l") 'magit-log-buffer-file)
+(define-key global-map (kbd "C-x g L") 'magit-log-all)
 (define-key global-map (kbd "C-x g p") 'magit-push-current)
 
 ;; WINDOWS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -78,7 +79,3 @@
 ;; PROJECTILE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (define-key global-map (kbd "C-p") nil)
 (define-key global-map (kbd "C-p f") 'projectile-find-file)
-
-;; MARK MULTIPLE ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(global-set-key (kbd "C-<") 'mark-previous-like-this)
-(global-set-key (kbd "C->") 'mark-next-like-this)
