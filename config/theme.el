@@ -1,4 +1,4 @@
-;(use-package powerline :ensure t)
+(use-package powerline :ensure t)
 ;(use-package darcula-theme :ensure t)
 ;(use-package soft-morning-theme :ensure t)
 ;(use-package darktooth-theme :ensure t)
