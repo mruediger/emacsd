@@ -30,7 +30,7 @@
  compilation-scroll-output 'first-error
  org-confirm-babel-evaluate nil
  sentence-end-double-space nil
- browse-url-browser-function 'browse-url-chrome
+ browse-url-browser-function 'browse-url-firefox
  ediff-window-setup-function 'ediff-setup-windows-plain)
 
 (when window-system
