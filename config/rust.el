@@ -20,8 +20,9 @@
   :mode "\\.rs\\'"
   :init
   (add-hook 'rust-mode-hook #'racer-mode)
-  :bind (("<f6>" . cargo-test)
-         ("<f7>" . cargo-run)))
+  :bind (:map rust-mode-map
+              ("<f6>" . cargo-test)
+              ("<f7>" . cargo-run)))
   
 
 ;; todo
