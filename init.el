@@ -29,7 +29,8 @@
   :init
   (setq
    ido-enable-flex-matching t
-   ido-everywhere t)
+   ido-everywhere t
+   ido-default-buffer-method 'selected-window)
   :config
   (ido-mode t)
   (ido-everywhere t)
