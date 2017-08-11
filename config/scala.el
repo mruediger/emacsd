@@ -9,6 +9,8 @@
   :pin melpa)
 
 (use-package sbt-mode
-  :defer tt
+  :defer t
   :ensure t
-  :pin melpa)
+  :pin melpa
+  :init
+  (setq sbt:program-name "sbt -mem 2048"))
