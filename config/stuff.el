@@ -6,8 +6,9 @@
   :bind (("M->" . mc/mark-next-like-this)
          ("M-<" . mc/mark-previous-like-this)))
   
+(use-package bongo :ensure t)
+
 (use-package popup-imenu
   :ensure t
   :commands popup-imenu
   :bind ("M-i" . popup-imenu))
-
