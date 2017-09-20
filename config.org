@@ -1,0 +1,249 @@
+* Basics
+** setup =usepackage=
+#+BEGIN_SRC emacs-lisp
+  (setq
+   package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+		      ("org" . "http://orgmode.org/elpa/")
+		      ("melpa" . "http://melpa.org/packages/")
+		      ("melpa-stable" . "http://stable.melpa.org/packages/"))
+   package-archive-priorities '(("melpa-stable" . 1)))
+
+(unless (package-installed-p 'use-package)
+	(package-refresh-contents)
+	(package-install 'use-package))
+
+(require 'use-package)
+
+(setq use-package-verbose t)
+(setq use-package-always-ensure t)
+#+END_SRC
+** startup
+#+BEGIN_SRC emacs-lisp
+(setq
+ inhibit-startup-screen t
+ initial-scratch-message nil)
+#+END_SRC
+** focus follows mouse
+#+BEGIN_SRC emacs-lisp
+(when window-system
+  (setq mouse-autoselect-window t))
+#+END_SRC
+
+** disable backup files
+#+BEGIN_SRC emacs-lisp
+(setq
+  create-lockfiles nil
+  make-backup-files nil)
+#+END_SRC
+
+** delete trailing whitespace
+#+BEGIN_SRC emacs-lisp
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+END_SRC
+
+** misc
+Don't assume that sentences should have two spaces after periods
+#+BEGIN_SRC emacs-lisp
+(setq sentence-end-double-space nil)
+#+END_SRC
+
+** paste at cursor positon
+Paste content with the middle mouse button at the current cursor position
+and not at the mouse position.
+#+BEGIN_SRC emacs-lisp
+(setq mouse-yank-at-point t)
+#+END_SRC
+
+* UI Setup
+** reclaim window space
+Remove toolbar, menubar and scrollbar. I don't use them and they take up space
+
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(when window-system
+  (scroll-bar-mode 0))
+#+END_SRC
+
+** setup a frame title
+
+No idea if it is useful. Time will tell
+
+#+BEGIN_SRC emacs-lisp
+  (setq frame-title-format '((:eval (projectile-project-name))))
+#+END_SRC
+
+** enable line and column numbers
+#+BEGIN_SRC emacs-lisp
+(setq line-number-mode t)
+(setq column-number-mode t)
+#+END_SRC
+
+** font settings
+
+I used PragmataPro for a long time, but currently I give SpaceMono a try
+
+#+BEGIN_SRC emacs-lisp
+(let ((font-code "SpaceMono-10"))
+  (add-to-list 'default-frame-alist (cons 'font font-code))
+  (set-frame-font font-code))
+#+END_SRC
+
+** theme settings
+
+#+BEGIN_SRC emacs-lisp
+(use-package darcula-theme :defer t)
+(use-package soft-morning-theme :defer t)
+(use-package darktooth-theme :defer t)
+(use-package zenburn-theme :defer t)
+(load-theme 'zenburn 't)
+
+(use-package powerline)
+(powerline-default-theme)
+#+END_SRC
+
+* Keybindings
+** set undo
+#+BEGIN_SRC emacs-lisp
+(define-key global-map (kbd "C-z") 'undo)
+(define-key global-map (kbd "C-x C-z") 'nil)
+#+END_SRC
+
+** disable insert key
+#+BEGIN_SRC emacs-lisp
+(define-key global-map (kbd "<insert>") 'nil)
+#+END_SRC
+
+** buffer controll
+#+BEGIN_SRC emacs-lisp
+(define-key global-map (kbd "C-b") nil)
+(define-key global-map (kbd "C-x C-b") nil)
+(define-key global-map (kbd "C-x b") nil)
+
+(define-key global-map (kbd "C-b C-p") 'switch-to-prev-buffer)
+(define-key global-map (kbd "C-b b") 'switch-to-buffer)
+(define-key global-map (kbd "C-b C-b") 'ibuffer)
+(define-key global-map (kbd "C-b C-k") 'kill-buffer)
+(define-key global-map (kbd "C-b C-s") (lambda() (interactive) (switch-to-buffer "*scratch*")))
+#+END_SRC
+
+** search and replace
+#+BEGIN_SRC emacs-lisp
+  (define-key global-map (kbd "C-s") 'isearch-forward)
+  (define-key global-map (kbd "C-M-s") 'isearch-backward)
+  (define-key global-map (kbd "C-S-s") 'isearch-backward)
+
+  (define-key global-map (kbd "C-r") 'query-replace)
+
+  (define-key global-map (kbd "C-o") 'other-window)
+
+  (define-key global-map (kbd "S-DEL") 'kill-whole-line)
+
+  (define-key global-map (kbd "C-c C-c") 'comment-or-uncomment-region)
+#+END_SRC
+
+* Helper functions
+** reload config
+#+BEGIN_SRC emacs-lisp
+(defun mr/reload-config ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+#+END_SRC
+
+
+* Setup =magit=
+#+BEGIN_SRC emacs-lisp
+(setq vc-handled-backends nil)
+
+(use-package magit
+  :bind (("C-x g s" . magit-status)
+         ("C-x g l" . magit-log-buffer-file)
+	 ("C-x g L" . magit-log-all)
+	 ("C-x g p" . magit-push-current)))
+#+END_SRC
+
+* Setup =prog-mode=
+
+Treat CamelCaseSubWords as separate words in every programming mode
+#+BEGIN_SRC emacs-lisp
+(add-hook 'prog-mode-hook 'subword-mode)
+#+END_SRC
+
+Make files that start with `#!` executable on save
+#+BEGIN_SRC emacs-lisp
+(add-hook 'after-save-hook
+            'executable-make-buffer-file-executable-if-script-p)
+#+END_SRC
+
+* Setup =ido=
+#+BEGIN_SRC emacs-lisp
+  (use-package flx-ido
+    :init
+    (setq
+     ido-enable-flex-matching t
+     ido-everywhere t
+     ido-default-buffer-method 'selected-window)
+    :config
+    (ido-mode t)
+    (ido-everywhere t)
+    (flx-ido-mode t))
+#+END_SRC
+* Setup =scala=
+#+BEGIN_SRC emacs-lisp
+(use-package scala-mode
+  :defer t
+  :pin melpa-stable)
+
+(use-package ensime
+  :defer t
+  :pin melpa-stable)
+
+(use-package sbt-mode
+  :defer t
+  :pin melpa-stable)
+#+END_SRC
+* Setup =org-mode=
+** display settings
+
+   use pretty bullets instead of a list of asterisks
+   #+BEGIN_SRC emacs-lisp
+   (use-package org-bullets
+     :config
+     (add-hook 'org-mode-hook (lambda () (org-bullets-mode t))))
+   #+END_SRC
+
+   use a little downward-pointing arrow instead of the usual ellipsis (...)
+   that org displays when there’s stuff under a header.
+   #+BEGIN_SRC emacs-lisp
+   (setq org-ellipsis "⤵")
+   #+END_SRC
+
+   use syntax highlighting in code blocks
+   #+BEGIN_SRC emacs-lisp
+   (setq org-src-fontify-natively t)
+   #+END_SRC
+
+   make TAB act as if it were uset in a buffer of the languages major mode
+   #+BEGIN_SRC emacs-lisp
+   (setq org-src-fontify-natively t)
+   #+END_SRC
+
+** org templates
+
+   template for elisp code block
+   #+BEGIN_SRC emacs-lisp
+   (add-to-list 'org-structure-template-alist
+   '("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"))
+   #+END_SRC
+
+** exporting
+
+   export markdown
+   #+BEGIN_SRC emacs-lisp
+   (require 'ox-md)
+   #+END_SRC
+
+   export beamer
+   #+BEGIN_SRC emacs-lisp
+   (require 'ox-beamer)
+   #+END_SRC
