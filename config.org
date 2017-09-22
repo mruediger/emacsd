@@ -53,55 +53,6 @@ and not at the mouse position.
 #+BEGIN_SRC emacs-lisp
 (setq mouse-yank-at-point t)
 #+END_SRC
-
-* UI Setup
-** reclaim window space
-Remove toolbar, menubar and scrollbar. I don't use them and they take up space
-
-#+BEGIN_SRC emacs-lisp
-(tool-bar-mode 0)
-(menu-bar-mode 0)
-(when window-system
-  (scroll-bar-mode 0))
-#+END_SRC
-
-** setup a frame title
-
-No idea if it is useful. Time will tell
-
-#+BEGIN_SRC emacs-lisp
-  (setq frame-title-format '((:eval (projectile-project-name))))
-#+END_SRC
-
-** enable line and column numbers
-#+BEGIN_SRC emacs-lisp
-(setq line-number-mode t)
-(setq column-number-mode t)
-#+END_SRC
-
-** font settings
-
-I used PragmataPro for a long time, but currently I give SpaceMono a try
-
-#+BEGIN_SRC emacs-lisp
-(let ((font-code "SpaceMono-10"))
-  (add-to-list 'default-frame-alist (cons 'font font-code))
-  (set-frame-font font-code))
-#+END_SRC
-
-** theme settings
-
-#+BEGIN_SRC emacs-lisp
-(use-package darcula-theme :defer t)
-(use-package soft-morning-theme :defer t)
-(use-package darktooth-theme :defer t)
-(use-package zenburn-theme :defer t)
-(load-theme 'zenburn 't)
-
-(use-package powerline)
-(powerline-default-theme)
-#+END_SRC
-
 * Keybindings
 ** set undo
 #+BEGIN_SRC emacs-lisp
@@ -142,6 +93,60 @@ I used PragmataPro for a long time, but currently I give SpaceMono a try
   (define-key global-map (kbd "C-c C-c") 'comment-or-uncomment-region)
 #+END_SRC
 
+* UI Setup
+** font settings
+
+I used PragmataPro for a long time, but currently I give SpaceMono a try
+
+#+BEGIN_SRC emacs-lisp
+(let ((font-code "SpaceMono-10"))
+  (add-to-list 'default-frame-alist (cons 'font font-code))
+  (set-frame-font font-code))
+#+END_SRC
+
+** theme settings
+
+#+BEGIN_SRC emacs-lisp
+(use-package darcula-theme :defer t)
+(use-package soft-morning-theme :defer t)
+(use-package darktooth-theme :defer t)
+(use-package zenburn-theme :defer t)
+(use-package solarized-theme :defer t)
+
+(load-theme 'zenburn 't)
+
+(use-package powerline)
+(powerline-default-theme)
+#+END_SRC
+** reclaim window space
+Remove toolbar, menubar and scrollbar. I don't use them and they take up space
+
+#+BEGIN_SRC emacs-lisp
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(when window-system
+  (scroll-bar-mode 0))
+#+END_SRC
+
+** setup a frame title
+
+No idea if it is useful. Time will tell
+
+#+BEGIN_SRC emacs-lisp
+  (setq frame-title-format '((:eval (projectile-project-name))))
+#+END_SRC
+
+** enable line and column numbers
+#+BEGIN_SRC emacs-lisp
+(setq line-number-mode t)
+(setq column-number-mode t)
+#+END_SRC
+
+** show time in modeline
+#+BEGIN_SRC emacs-lisp
+(display-time)
+#+END_SRC
+
 * Helper functions
 ** reload config
 #+BEGIN_SRC emacs-lisp
@@ -149,7 +154,6 @@ I used PragmataPro for a long time, but currently I give SpaceMono a try
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 #+END_SRC
-
 
 * Setup =magit=
 #+BEGIN_SRC emacs-lisp
@@ -192,7 +196,12 @@ Make files that start with `#!` executable on save
 #+BEGIN_SRC emacs-lisp
 (use-package scala-mode
   :defer t
-  :pin melpa-stable)
+  :pin melpa-stable
+  :init
+  ;; disable ugly implicit underlining
+  (setq ensime-sem-high-faces
+        '((implicitConversion nil)
+          (implicitParams nil))))
 
 (use-package ensime
   :defer t
@@ -246,4 +255,14 @@ Make files that start with `#!` executable on save
    export beamer
    #+BEGIN_SRC emacs-lisp
    (require 'ox-beamer)
+   #+END_SRC
+* Setup =slack=
+** install
+   #+BEGIN_SRC emacs-lisp
+   (use-package slack)
+   #+END_SRC
+* Setup file formats
+** yaml mode
+   #+BEGIN_SRC emacs-lisp
+   (use-package yaml-mode)
    #+END_SRC
