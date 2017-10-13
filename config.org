@@ -128,14 +128,6 @@ Remove toolbar, menubar and scrollbar. I don't use them and they take up space
   (scroll-bar-mode 0))
 #+END_SRC
 
-** setup a frame title
-
-No idea if it is useful. Time will tell
-
-#+BEGIN_SRC emacs-lisp
-  (setq frame-title-format '((:eval (projectile-project-name))))
-#+END_SRC
-
 ** enable line and column numbers
 #+BEGIN_SRC emacs-lisp
 (setq line-number-mode t)
