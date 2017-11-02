@@ -1,3 +1,4 @@
+
 * Basics
 ** setup =usepackage=
 #+BEGIN_SRC emacs-lisp
@@ -113,7 +114,7 @@ I used PragmataPro for a long time, but currently I give SpaceMono a try
 (use-package zenburn-theme :defer t)
 (use-package solarized-theme :defer t)
 
-(load-theme 'zenburn 't)
+(load-theme 'solarized-light 't)
 
 (use-package powerline)
 (powerline-default-theme)
@@ -138,24 +139,16 @@ Remove toolbar, menubar and scrollbar. I don't use them and they take up space
 #+BEGIN_SRC emacs-lisp
 (display-time)
 #+END_SRC
-
-* Helper functions
-** reload config
-#+BEGIN_SRC emacs-lisp
-(defun mr/reload-config ()
-  (interactive)
-  (load-file "~/.emacs.d/init.el"))
-#+END_SRC
-
 * Setup =magit=
 #+BEGIN_SRC emacs-lisp
 (setq vc-handled-backends nil)
 
 (use-package magit
   :bind (("C-x g s" . magit-status)
-         ("C-x g l" . magit-log-buffer-file)
-	 ("C-x g L" . magit-log-all)
-	 ("C-x g p" . magit-push-current)))
+         ("C-x g l b" . magit-log-buffer-file)
+         ("C-x g l c" . magit-log-current)
+	 ("C-x g l a" . magit-log-all)
+	 ("C-x g p" . magit-push-current-to-pushremote)))
 #+END_SRC
 
 * Setup =prog-mode=
@@ -258,3 +251,26 @@ Make files that start with `#!` executable on save
    #+BEGIN_SRC emacs-lisp
    (use-package yaml-mode)
    #+END_SRC
+
+* Helper functions
+** reload config
+#+BEGIN_SRC emacs-lisp
+(defun mr/reload-config ()
+  (interactive)
+  (load-file "~/.emacs.d/init.el"))
+#+END_SRC
+** postgres server list
+#+BEGIN_SRC emacs-lisp
+(setq sql-connection-alist
+      '((standby (sql-product 'postgres)
+                 (sql-port 5432)
+                 (sql-server "localhost")
+                 (sql-user "columbus")
+                 (sql-database "columbus_production"))))
+
+
+(defun mr/postgres-standby ()
+  (interactive)
+  (setq sql-product 'postgres)
+  (sql-connect 'standby))
+#+END_SRC
