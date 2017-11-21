@@ -1,4 +1,3 @@
-
 * Basics
 ** setup =usepackage=
 #+BEGIN_SRC emacs-lisp
@@ -209,7 +208,7 @@ Make files that start with `#!` executable on save
    use a little downward-pointing arrow instead of the usual ellipsis (...)
    that org displays when there’s stuff under a header.
    #+BEGIN_SRC emacs-lisp
-   (setq org-ellipsis "⤵")
+   (setq org-ellipsis " >")
    #+END_SRC
 
    use syntax highlighting in code blocks
@@ -246,6 +245,18 @@ Make files that start with `#!` executable on save
    #+BEGIN_SRC emacs-lisp
    (use-package slack)
    #+END_SRC
+* Setup =nov=
+** install
+   #+BEGIN_SRC emacs-lisp
+   (use-package nov)
+   #+END_SRC
+
+** config
+   #+BEGIN_SRC emacs-lisp
+   (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
+   #+END_SRC
+
+
 * Setup file formats
 ** yaml mode
    #+BEGIN_SRC emacs-lisp
