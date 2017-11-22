@@ -256,6 +256,28 @@ Make files that start with `#!` executable on save
    (add-to-list 'auto-mode-alist '("\\.epub\\'" . nov-mode))
    #+END_SRC
 
+* Setup =rust=
+** helper functions
+#+BEGIN_SRC emacs-lisp
+(defun cargo-test ()
+  (interactive)
+  (compile "cargo test"))
+
+(defun cargo-run ()
+  (interactive)
+  (compile "cargo run"))
+#+END_SRC
+
+** install
+#+BEGIN_SRC emacs-lisp
+(use-package rust-mode
+  :ensure t
+  :mode "\\.rs\\'"
+  :init
+  (add-hook 'rust-mode-hook #'racer-mode)
+  :bind (("<f6>" . cargo-test)
+         ("<f7>" . cargo-run)))
+#+END_SRC
 
 * Setup file formats
 ** yaml mode
