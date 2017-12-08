@@ -1,112 +1,39 @@
-* Basics
-** setup =usepackage=
+* Package Management
+
 #+BEGIN_SRC emacs-lisp
-  (setq
+(setq
    package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
-		      ("org" . "http://orgmode.org/elpa/")
-		      ("melpa" . "http://melpa.org/packages/")
-		      ("melpa-stable" . "http://stable.melpa.org/packages/"))
+                      ("org" . "http://orgmode.org/elpa/")
+                      ("melpa" . "http://melpa.org/packages/")
+                      ("melpa-stable" . "http://stable.melpa.org/packages/"))
    package-archive-priorities '(("melpa-stable" . 1)))
 
 (unless (package-installed-p 'use-package)
-	(package-refresh-contents)
-	(package-install 'use-package))
+        (package-refresh-contents)
+        (package-install 'use-package))
+
+
+(org-babel-load-file "~/.emacs.d/config.org")
+
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
 
 (require 'use-package)
 
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 #+END_SRC
-** startup
+
+* Look and Feel
 #+BEGIN_SRC emacs-lisp
 (setq
  inhibit-startup-screen t
  initial-scratch-message nil)
-#+END_SRC
-** focus follows mouse
-#+BEGIN_SRC emacs-lisp
-(when window-system
-  (setq mouse-autoselect-window t))
-#+END_SRC
 
-** disable backup files
-#+BEGIN_SRC emacs-lisp
-(setq
-  create-lockfiles nil
-  make-backup-files nil)
-#+END_SRC
-
-** delete trailing whitespace
-#+BEGIN_SRC emacs-lisp
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-#+END_SRC
-
-** misc
-Don't assume that sentences should have two spaces after periods
-#+BEGIN_SRC emacs-lisp
-(setq sentence-end-double-space nil)
-#+END_SRC
-
-** paste at cursor positon
-Paste content with the middle mouse button at the current cursor position
-and not at the mouse position.
-#+BEGIN_SRC emacs-lisp
-(setq mouse-yank-at-point t)
-#+END_SRC
-* Keybindings
-** set undo
-#+BEGIN_SRC emacs-lisp
-(define-key global-map (kbd "C-z") 'undo)
-(define-key global-map (kbd "C-x C-z") 'nil)
-#+END_SRC
-
-** disable insert key
-#+BEGIN_SRC emacs-lisp
-(define-key global-map (kbd "<insert>") 'nil)
-#+END_SRC
-
-** buffer controll
-#+BEGIN_SRC emacs-lisp
-(define-key global-map (kbd "C-b") nil)
-(define-key global-map (kbd "C-x C-b") nil)
-(define-key global-map (kbd "C-x b") nil)
-
-(define-key global-map (kbd "C-b C-p") 'switch-to-prev-buffer)
-(define-key global-map (kbd "C-b b") 'switch-to-buffer)
-(define-key global-map (kbd "C-b C-b") 'ibuffer)
-(define-key global-map (kbd "C-b C-k") 'kill-buffer)
-(define-key global-map (kbd "C-b C-s") (lambda() (interactive) (switch-to-buffer "*scratch*")))
-#+END_SRC
-
-** search and replace
-#+BEGIN_SRC emacs-lisp
-  (define-key global-map (kbd "C-s") 'isearch-forward)
-  (define-key global-map (kbd "C-M-s") 'isearch-backward)
-  (define-key global-map (kbd "C-S-s") 'isearch-backward)
-
-  (define-key global-map (kbd "C-r") 'query-replace)
-
-  (define-key global-map (kbd "C-o") 'other-window)
-
-  (define-key global-map (kbd "S-DEL") 'kill-whole-line)
-
-  (define-key global-map (kbd "C-c C-c") 'comment-or-uncomment-region)
-#+END_SRC
-
-* UI Setup
-** font settings
-
-I used PragmataPro for a long time, but currently I give SpaceMono a try
-
-#+BEGIN_SRC emacs-lisp
 (let ((font-code "SpaceMono-10"))
   (add-to-list 'default-frame-alist (cons 'font font-code))
   (set-frame-font font-code))
-#+END_SRC
 
-** theme settings
-
-#+BEGIN_SRC emacs-lisp
 (use-package darcula-theme :defer t)
 (use-package soft-morning-theme :defer t)
 (use-package darktooth-theme :defer t)
@@ -117,27 +44,51 @@ I used PragmataPro for a long time, but currently I give SpaceMono a try
 
 (use-package powerline)
 (powerline-default-theme)
-#+END_SRC
-** reclaim window space
-Remove toolbar, menubar and scrollbar. I don't use them and they take up space
 
-#+BEGIN_SRC emacs-lisp
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (when window-system
   (scroll-bar-mode 0))
-#+END_SRC
 
-** enable line and column numbers
-#+BEGIN_SRC emacs-lisp
 (setq line-number-mode t)
 (setq column-number-mode t)
+
+(display-time)
+
+(setq frame-title-format '((:eval (projectile-project-name))))
 #+END_SRC
 
-** show time in modeline
+* Input
+** Mouse
 #+BEGIN_SRC emacs-lisp
-(display-time)
+(when window-system
+  (setq mouse-autoselect-window t))
+
+(setq mouse-yank-at-point t)
 #+END_SRC
+
+** Keyboard
+#+BEGIN_SRC emacs-lisp
+(define-key global-map (kbd "C-z") 'undo)
+(define-key global-map (kbd "C-x C-z") 'nil)
+(define-key global-map (kbd "<insert>") 'nil)
+(define-key global-map (kbd "C-b") nil)
+(define-key global-map (kbd "C-x C-b") nil)
+(define-key global-map (kbd "C-x b") nil)
+(define-key global-map (kbd "C-b C-p") 'switch-to-prev-buffer)
+(define-key global-map (kbd "C-b b") 'switch-to-buffer)
+(define-key global-map (kbd "C-b C-b") 'ibuffer)
+(define-key global-map (kbd "C-b C-k") 'kill-buffer)
+(define-key global-map (kbd "C-b C-s") (lambda() (interactive) (switch-to-buffer "*scratch*")))
+(define-key global-map (kbd "C-s") 'isearch-forward)
+(define-key global-map (kbd "C-M-s") 'isearch-backward)
+(define-key global-map (kbd "C-S-s") 'isearch-backward)
+(define-key global-map (kbd "C-r") 'query-replace)
+(define-key global-map (kbd "C-o") 'other-window)
+(define-key global-map (kbd "S-DEL") 'kill-whole-line)
+(define-key global-map (kbd "C-c C-c") 'comment-or-uncomment-region)
+#+END_SRC
+
 * Setup =magit=
 #+BEGIN_SRC emacs-lisp
 (setq vc-handled-backends nil)
@@ -240,11 +191,6 @@ Make files that start with `#!` executable on save
    #+BEGIN_SRC emacs-lisp
    (require 'ox-beamer)
    #+END_SRC
-* Setup =slack=
-** install
-   #+BEGIN_SRC emacs-lisp
-   (use-package slack)
-   #+END_SRC
 * Setup =nov=
 ** install
    #+BEGIN_SRC emacs-lisp
@@ -275,10 +221,20 @@ Make files that start with `#!` executable on save
   :mode "\\.rs\\'"
   :init
   (add-hook 'rust-mode-hook #'racer-mode)
-  :bind (("<f6>" . cargo-test)
-         ("<f7>" . cargo-run)))
+  :bind (:map rust-mode-map
+              ("<f6>" . cargo-test)
+              ("<f7>" . cargo-run)))
 #+END_SRC
 
+* Setup =python=
+** config
+#+BEGIN_SRC emacs-lisp
+(define-key python-mode-map (kbd "<f6>")
+  '(lambda() (interactive) (compile (concat "python " (buffer-file-name)))))
+
+(define-key python-mode-map (kbd "<f7>")
+  '(lambda() (interactive) (compile (concat "python -m unittest " (buffer-file-name)))))
+#+END_SRC
 * Setup file formats
 ** yaml mode
    #+BEGIN_SRC emacs-lisp
@@ -291,19 +247,4 @@ Make files that start with `#!` executable on save
 (defun mr/reload-config ()
   (interactive)
   (load-file "~/.emacs.d/init.el"))
-#+END_SRC
-** postgres server list
-#+BEGIN_SRC emacs-lisp
-(setq sql-connection-alist
-      '((standby (sql-product 'postgres)
-                 (sql-port 5432)
-                 (sql-server "localhost")
-                 (sql-user "columbus")
-                 (sql-database "columbus_production"))))
-
-
-(defun mr/postgres-standby ()
-  (interactive)
-  (setq sql-product 'postgres)
-  (sql-connect 'standby))
 #+END_SRC
