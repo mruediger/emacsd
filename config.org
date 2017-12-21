@@ -12,12 +12,6 @@
         (package-refresh-contents)
         (package-install 'use-package))
 
-
-(org-babel-load-file "~/.emacs.d/config.org")
-
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file 'noerror)
-
 (require 'use-package)
 
 (setq use-package-verbose t)
@@ -151,9 +145,9 @@ Make files that start with `#!` executable on save
 
    use pretty bullets instead of a list of asterisks
    #+BEGIN_SRC emacs-lisp
-   (use-package org-bullets
-     :config
-     (add-hook 'org-mode-hook (lambda () (org-bullets-mode t))))
+   ;;(use-package org-bullets
+   ;;  :config
+   ;;  (add-hook 'org-mode-hook (lambda () (org-bullets-mode t))))
    #+END_SRC
 
    use a little downward-pointing arrow instead of the usual ellipsis (...)
@@ -163,11 +157,6 @@ Make files that start with `#!` executable on save
    #+END_SRC
 
    use syntax highlighting in code blocks
-   #+BEGIN_SRC emacs-lisp
-   (setq org-src-fontify-natively t)
-   #+END_SRC
-
-   make TAB act as if it were uset in a buffer of the languages major mode
    #+BEGIN_SRC emacs-lisp
    (setq org-src-fontify-natively t)
    #+END_SRC
@@ -229,11 +218,13 @@ Make files that start with `#!` executable on save
 * Setup =python=
 ** config
 #+BEGIN_SRC emacs-lisp
-(define-key python-mode-map (kbd "<f6>")
-  '(lambda() (interactive) (compile (concat "python " (buffer-file-name)))))
+ (use-package python-mode
+  :ensure t
+  :bind (:map python-mode-map
+                ("<f6>" . cargo-test)))
+;;              ("<f6>" . '(lambda() (interactive) (compile (concat "python " (buffer-file-name)))))
+;;              ("<f7>" . '(lambda() (interactive) (compile (concat "python -m unittest " (buffer-file-name)))))))
 
-(define-key python-mode-map (kbd "<f7>")
-  '(lambda() (interactive) (compile (concat "python -m unittest " (buffer-file-name)))))
 #+END_SRC
 * Setup file formats
 ** yaml mode
@@ -248,3 +239,4 @@ Make files that start with `#!` executable on save
   (interactive)
   (load-file "~/.emacs.d/init.el"))
 #+END_SRC
+   
