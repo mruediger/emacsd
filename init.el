@@ -143,6 +143,11 @@
               ("<f6>" . cargo-test)
               ("<f7>" . cargo-run)))
 
+;;LaTeX
+(add-hook 'latex-mode-hook 'flyspell-mode)
+(add-hook 'latex-mode-hook 'flymake-mode)
+(setq latex-run-command "pdflatex")
+
 ;;LUA
 (use-package lua-mode)
 ;; YAML
