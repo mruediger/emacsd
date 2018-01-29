@@ -132,6 +132,15 @@
 	      ("<f6>" . python-test)
 	      ("<f7>" . python-run)))
 
+;;GOLANG
+(defun go-test () (interactive) (compile "go test"))
+(use-package go-mode
+  :init
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  :bind (:map go-mode-map
+	      ("<f6>" . go-test)))
+
 ;;RUST
 (defun cargo-test () (interactive) (compile "cargo test"))
 (defun cargo-run () (interactive) (compile "cargo run"))
