@@ -69,6 +69,11 @@
 (electric-indent-mode 1)
 (savehist-mode 1)
 
+(use-package flymake
+  :config
+  (defun flymake-get-tex-args (file-name)
+    (list "latex" (list "-file-line-error-style" file-name))))
+
 (use-package flyspell
   :init (setq
 	 ispell-dictionary "english"))
