@@ -159,6 +159,7 @@
 
 ;;LUA
 (use-package lua-mode)
+
 ;; YAML
 (use-package yaml-mode)
 
@@ -208,6 +209,3 @@
 (define-key global-map (kbd "C-r") 'query-replace)
 (define-key global-map (kbd "C-o") 'other-window)
 (define-key global-map (kbd "S-DEL") 'kill-whole-line)
-(define-key global-map (kbd "C-c C-c") 'comment-or-uncomment-region)
-
-
