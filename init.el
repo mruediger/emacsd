@@ -56,6 +56,36 @@
 
 
 ;;
+;; INPUT SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+
+;; MOUSE
+(when window-system
+  (setq mouse-autoselect-window t))
+
+(setq mouse-yank-at-point t)
+
+;; KEYBINDINGS
+(define-key global-map (kbd "C-z") 'undo)
+(define-key global-map (kbd "C-x C-z") 'nil)
+(define-key global-map (kbd "<insert>") 'nil)
+(define-key global-map (kbd "C-b") nil)
+(define-key global-map (kbd "C-x C-b") nil)
+(define-key global-map (kbd "C-x b") nil)
+(define-key global-map (kbd "C-b C-p") 'switch-to-prev-buffer)
+(define-key global-map (kbd "C-b b") 'switch-to-buffer)
+(define-key global-map (kbd "C-b C-b") 'ibuffer)
+(define-key global-map (kbd "C-b C-k") 'kill-buffer)
+(define-key global-map (kbd "C-b C-s") (lambda() (interactive) (switch-to-buffer "*scratch*")))
+(define-key global-map (kbd "C-s") 'isearch-forward)
+(define-key global-map (kbd "C-M-s") 'isearch-backward)
+(define-key global-map (kbd "C-S-s") 'isearch-backward)
+(define-key global-map (kbd "C-r") 'query-replace)
+(define-key global-map (kbd "C-o") 'other-window)
+(define-key global-map (kbd "S-DEL") 'kill-whole-line)
+
+
+;;
 ;; BASIC SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; 
 (setq
@@ -179,33 +209,3 @@
     (delete-trailing-whitespace)
     (indent-region (point-min) (point-max) nil)
     (untabify (point-min) (point-max))))
-    
-
-;;
-;; INPUT SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-
-;; MOUSE
-(when window-system
-  (setq mouse-autoselect-window t))
-
-(setq mouse-yank-at-point t)
-
-;; KEYBINDINGS
-(define-key global-map (kbd "C-z") 'undo)
-(define-key global-map (kbd "C-x C-z") 'nil)
-(define-key global-map (kbd "<insert>") 'nil)
-(define-key global-map (kbd "C-b") nil)
-(define-key global-map (kbd "C-x C-b") nil)
-(define-key global-map (kbd "C-x b") nil)
-(define-key global-map (kbd "C-b C-p") 'switch-to-prev-buffer)
-(define-key global-map (kbd "C-b b") 'switch-to-buffer)
-(define-key global-map (kbd "C-b C-b") 'ibuffer)
-(define-key global-map (kbd "C-b C-k") 'kill-buffer)
-(define-key global-map (kbd "C-b C-s") (lambda() (interactive) (switch-to-buffer "*scratch*")))
-(define-key global-map (kbd "C-s") 'isearch-forward)
-(define-key global-map (kbd "C-M-s") 'isearch-backward)
-(define-key global-map (kbd "C-S-s") 'isearch-backward)
-(define-key global-map (kbd "C-r") 'query-replace)
-(define-key global-map (kbd "C-o") 'other-window)
-(define-key global-map (kbd "S-DEL") 'kill-whole-line)
