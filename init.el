@@ -127,7 +127,7 @@
 ;;PYTHON
 (defun python-test () (interactive) (compile (concat "python " (buffer-file-name))))
 (defun python-run () (interactive) (compile (concat "python -m unittest " (buffer-file-name))))
-(use-package python-mode
+(use-package python
   :bind (:map python-mode-map
 	      ("<f6>" . python-test)
 	      ("<f7>" . python-run)))
