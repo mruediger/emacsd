@@ -196,6 +196,9 @@
 ;;RAINBOW MODE (colorize strings that represent colors)
 (use-package rainbow-mode)
 
+;;SUDO-EDIT
+(use-package sudo-edit)
+
 ;;
 ;; HELPER FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
