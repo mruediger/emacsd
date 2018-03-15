@@ -108,6 +108,7 @@
 
 (use-package flyspell
   :init (setq
+	 ispell-program-name (executable-find "hunspell")
 	 ispell-dictionary "english"))
 
 
