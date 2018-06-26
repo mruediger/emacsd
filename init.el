@@ -87,10 +87,11 @@
 
 ;;
 ;; BASIC SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; 
+;;
 (setq
  custom-file (expand-file-name "custom.el" user-emacs-directory)
- make-backup-files nil)   
+ make-backup-files nil
+ exec-path (append exec-path '("~/bin")))
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -108,7 +109,7 @@
 (use-package flyspell
   :init (setq
 	 ispell-dictionary "english"))
-  
+
 
 ;;
 ;; SETUP EXTERNAL PACKAGES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -192,13 +193,19 @@
 (use-package lua-mode)
 
 ;; YAML
-(use-package yaml-mode)
+(use-package yaml-mode
+  :mode ("\\.sls\\'" . yaml-mode))
 
 ;;RAINBOW MODE (colorize strings that represent colors)
 (use-package rainbow-mode)
 
 ;;SUDO-EDIT
 (use-package sudo-edit)
+
+;;Terraform
+(use-package terraform-mode
+  :init
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 ;;
 ;; HELPER FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
