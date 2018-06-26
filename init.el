@@ -197,6 +197,9 @@
 (use-package yaml-mode
   :mode ("\\.sls\\'" . yaml-mode))
 
+;; R-Mode
+(use-package ess)
+
 ;;RAINBOW MODE (colorize strings that represent colors)
 (use-package rainbow-mode)
 
