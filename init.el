@@ -101,15 +101,31 @@
 (electric-indent-mode 1)
 (savehist-mode 1)
 
+;; (setq ispell-program-name "hunspell")
+;;   ispell-local-dictionary "en_US")
+;;    ispell-local-dictionary-alist
+;;         ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
+;;         ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
+;;         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
+
 (use-package flymake
   :config
   (defun flymake-get-tex-args (file-name)
     (list "latex" (list "-file-line-error-style" file-name))))
 
+(setq ispell-local-dictionary-alist
+      '(("en_US-large" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US-large") nil utf-8)
+	("de_DE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "de_DE") nil utf-8)))
+
+
 (use-package flyspell
-  :init (setq
-	 ispell-program-name (executable-find "hunspell")
-	 ispell-dictionary "english"))
+  :init
+  (setq ispell-local-dictionary-alist
+	'(("en_US-large" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US-large") nil utf-8)
+	  ("de_DE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "de_DE") nil utf-8))
+	ispell-program-name "hunspell"
+	ispell-dictionary   "de_DE"))
+
 
 
 ;;
