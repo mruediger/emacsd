@@ -44,8 +44,7 @@
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
-(when window-system
-  (scroll-bar-mode 0))
+(when window-system (scroll-bar-mode 0))
 
 (setq line-number-mode t)
 (setq column-number-mode t)
@@ -53,7 +52,6 @@
 (display-time)
 
 (setq frame-title-format "emacs: %b")
-
 
 ;;
 ;; INPUT SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -83,7 +81,6 @@
 (define-key global-map (kbd "C-r") 'query-replace)
 (define-key global-map (kbd "C-o") 'other-window)
 (define-key global-map (kbd "S-DEL") 'kill-whole-line)
-
 
 ;;
 ;; BASIC SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
