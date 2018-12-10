@@ -94,11 +94,12 @@
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+(electric-indent-mode 1)
+(savehist-mode 1)
+
 ;;
 ;; SETUP INTERNAL PACKAGES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
-(electric-indent-mode 1)
-(savehist-mode 1)
 
 ;; (setq ispell-program-name "hunspell")
 ;;   ispell-local-dictionary "en_US")
@@ -161,6 +162,7 @@
   (ido-everywhere t)
   (flx-ido-mode t))
 
+
 ;;MWIM
 (use-package mwim
   :defer t
@@ -171,7 +173,6 @@
 
 ;;MAGIT
 (setq vc-handled-backends nil)
-
 (use-package magit
   :bind (("C-x g s" . magit-status)
          ("C-x g l b" . magit-log-buffer-file)
