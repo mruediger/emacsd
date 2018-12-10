@@ -162,6 +162,14 @@
   (ido-everywhere t)
   (flx-ido-mode t))
 
+;;MWIM
+(use-package mwim
+  :defer t
+  :init
+  :bind (("C-a" . mwim-beginning-of-code-or-line)
+	 ("C-e" . mwim-end-of-code-or-line)))
+
+
 ;;MAGIT
 (setq vc-handled-backends nil)
 
