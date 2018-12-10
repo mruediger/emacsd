@@ -93,6 +93,8 @@
  make-backup-files nil
  exec-path (append exec-path '("~/bin")))
 
+(setq tab-width 4)
+
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;
