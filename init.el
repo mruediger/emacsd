@@ -238,6 +238,9 @@
   :init
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
+;;Ledger
+(use-package ledger-mode)
+
 ;;
 ;; HELPER FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
