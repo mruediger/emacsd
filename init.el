@@ -179,8 +179,10 @@
   (add-hook 'before-save-hook 'gofmt-before-save)
   :config
   (defun go-test () (interactive) (compile "go test"))
+  (defun go-run () (interactive) (compile (concat "go run " (buffer-file-name))))
   :bind (:map go-mode-map
-	      ("<f6>" . go-test)))
+	      ("<f6>" . go-test)
+	      ("<f7>" . go-run)))
 
 ;;RUST
 (use-package rust-mode
