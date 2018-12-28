@@ -133,16 +133,16 @@
   :pin melpa-stable)
 
 ;;IDO
-(use-package flx-ido
-  :init
-  (setq
-   ido-enable-flex-matching t
-   ido-everywhere t
-   ido-default-buffer-method 'selected-window)
-  :config
-  (ido-mode t)
-  (ido-everywhere t)
-  (flx-ido-mode t))
+;;(use-package flx-ido
+;;  :init
+;;  (setq
+;;   ido-enable-flex-matching t
+;;   ido-everywhere t
+;;   ido-default-buffer-method 'selected-window)
+;;  :config
+;;  (ido-mode t)
+;;  (ido-everywhere t)
+;;  (flx-ido-mode t))
 
 
 ;;MWIM
