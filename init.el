@@ -164,9 +164,10 @@
 	  ("C-x g p" . magit-push-current-to-pushremote)))
 
 ;;PYTHON
-(defun python-test () (interactive) (compile (concat "python " (buffer-file-name))))
-(defun python-run () (interactive) (compile (concat "python -m unittest " (buffer-file-name))))
 (use-package python
+  :config
+  (defun python-test () (interactive) (compile (concat "python " (buffer-file-name))))
+  (defun python-run () (interactive) (compile (concat "python -m unittest " (buffer-file-name))))
   :bind (:map python-mode-map
 	      ("<f6>" . python-test)
 	      ("<f7>" . python-run)))
