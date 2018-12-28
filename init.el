@@ -152,10 +152,6 @@
   :bind (("C-a" . mwim-beginning-of-code-or-line)
 	 ("C-e" . mwim-end-of-code-or-line)))
 
-;;COMPANY
-(use-package company
-  :config
-  (local-set-key (kbd "TAB") #'company-indent-or-complete-common))
 
 ;;MAGIT
 (setq vc-handled-backends nil)
