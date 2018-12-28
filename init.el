@@ -100,36 +100,19 @@
 ;; SETUP INTERNAL PACKAGES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 
-;; (setq ispell-program-name "hunspell")
-;;   ispell-local-dictionary "en_US")
-;;    ispell-local-dictionary-alist
-;;         ;; Please note the list `("-d" "en_US")` contains ACTUAL parameters passed to hunspell
-;;         ;; You could use `("-d" "en_US,en_US-med")` to check with multiple dictionaries
-;;         '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8))))
-
-(use-package flymake
-  :config
-  (defun flymake-get-tex-args (file-name)
-    (list "latex" (list "-file-line-error-style" file-name))))
-
-(setq ispell-local-dictionary-alist
-      '(("en_US-large" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US-large") nil utf-8)
-	("de_DE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "de_DE") nil utf-8)))
-
-
-(use-package flyspell
-  :init
-  (setq ispell-local-dictionary-alist
-	'(("en_US-large" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US-large") nil utf-8)
-	  ("de_DE" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "de_DE") nil utf-8))
-	ispell-program-name "hunspell"
-	ispell-dictionary   "de_DE"))
-
-
 
 ;;
 ;; SETUP EXTERNAL PACKAGES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
+
+;;FLYCHECK
+(use-package flycheck
+  :init (global-flycheck-mode))
+
+;;COMPANY
+(use-package company
+  :config
+  (local-set-key (kbd "TAB") #'company-indent-or-complete-common))
 
 ;;SCALA
 (use-package scala-mode
@@ -224,8 +207,6 @@
               ("<f7>" . cargo-run)))
 
 ;;LaTeX
-(add-hook 'latex-mode-hook 'flyspell-mode)
-(add-hook 'latex-mode-hook 'flymake-mode)
 (setq latex-run-command "pdflatex")
 
 ;;LUA
