@@ -18,7 +18,6 @@
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
-
 ;;
 ;; LOOK AND FEEL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -175,14 +174,11 @@
 (setq vc-handled-backends nil)
 (use-package magit
   :init
-  (setq
-   global-magit-file-mode -1)
-  :bind (("C-x g s" . magit-status)
-         ("C-x g l b" . magit-log-buffer-file)
-         ("C-x g l c" . magit-log-current)
-	 ("C-x g l a" . magit-log-all)
-	 ("C-x g p" . magit-push-current-to-pushremote)))
-
+  :bind* (("C-x g s" . magit-status)
+	  ("C-x g l b" . magit-log-buffer-file)
+	  ("C-x g l c" . magit-log-current)
+	  ("C-x g l a" . magit-log-all)
+	  ("C-x g p" . magit-push-current-to-pushremote)))
 
 ;;PYTHON
 (defun python-test () (interactive) (compile (concat "python " (buffer-file-name))))
@@ -193,11 +189,12 @@
 	      ("<f7>" . python-run)))
 
 ;;GOLANG
-(defun go-test () (interactive) (compile "go test"))
 (use-package go-mode
   :init
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
+  :config
+  (defun go-test () (interactive) (compile "go test"))
   :bind (:map go-mode-map
 	      ("<f6>" . go-test)))
 
