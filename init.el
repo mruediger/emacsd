@@ -169,6 +169,10 @@
   :bind (("C-a" . mwim-beginning-of-code-or-line)
 	 ("C-e" . mwim-end-of-code-or-line)))
 
+;;COMPANY
+(use-package company
+  :config
+  (local-set-key (kbd "TAB") #'company-indent-or-complete-common))
 
 ;;MAGIT
 (setq vc-handled-backends nil)
@@ -199,12 +203,22 @@
 	      ("<f6>" . go-test)))
 
 ;;RUST
-(defun cargo-test () (interactive) (compile "cargo test"))
-(defun cargo-run () (interactive) (compile "cargo run"))
 (use-package rust-mode
-  :mode "\\.rs\\'"
   :init
+  :config
+  (use-package company-racer)
+  (use-package flycheck-rust)
+  (use-package racer
+	:config
+    (add-hook 'racer-mode-hook #'eldoc-mode)
+    (add-hook 'racer-mode-hook #'company-mode)
+	(setq racer-rust-src-path (concat (getenv "HOME")
+		  "/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")))
+
+  (setq rust-format-on-save t)
   (add-hook 'rust-mode-hook #'racer-mode)
+  (defun cargo-test () (interactive) (compile "cargo test -- --nocapture"))
+  (defun cargo-run () (interactive) (compile "cargo run"))
   :bind (:map rust-mode-map
               ("<f6>" . cargo-test)
               ("<f7>" . cargo-run)))
