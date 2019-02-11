@@ -232,6 +232,9 @@
 ;;Ledger
 (use-package ledger-mode)
 
+;;NixOS
+(use-package nix-mode)
+
 ;;
 ;; HELPER FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
