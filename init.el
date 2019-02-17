@@ -26,9 +26,9 @@
  inhibit-startup-screen t
  initial-scratch-message nil)
 
-(let ((font-code "SpaceMono-10"))
-  (add-to-list 'default-frame-alist (cons 'font font-code))
-  (set-frame-font font-code))
+(add-to-list 'default-frame-alist '(font . "DroidSansMono:10"))
+
+
 
 (use-package darcula-theme :defer t)
 (use-package soft-morning-theme :defer t)
