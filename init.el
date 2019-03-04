@@ -178,7 +178,7 @@
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'gofmt-before-save)
   :config
-  (defun go-test () (interactive) (compile "go test"))
+  (defun go-test () (interactive) (compile "go test -v"))
   (defun go-run () (interactive) (compile (concat "go run " (buffer-file-name))))
   :bind (:map go-mode-map
 	      ("<f6>" . go-test)
