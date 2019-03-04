@@ -216,6 +216,15 @@
 ;;LaTeX
 (setq latex-run-command "pdflatex")
 
+(use-package markdown-mode
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :init (setq markdown-command "multimarkdown")
+  :config
+  (add-hook 'markdown-mode-hook #'visual-line-mode)
+  (add-hook 'markdown-mode-hook #'flyspell-mode))
+
 ;;LUA
 (use-package lua-mode)
 
