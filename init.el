@@ -34,7 +34,10 @@
 (use-package soft-morning-theme :defer t)
 (use-package darktooth-theme :defer t)
 (use-package zenburn-theme :defer t)
-(use-package solarized-theme :defer t)
+(use-package solarized-theme
+  :defer t
+  :init
+  (setq solarized-scale-org-headlines nil))
 
 (load-theme 'solarized-light 't)
 
@@ -152,6 +155,11 @@
   :bind (("C-a" . mwim-beginning-of-code-or-line)
 	 ("C-e" . mwim-end-of-code-or-line)))
 
+;;ORG
+(use-package org
+  :bind*
+  (("C-c o c" . org-capture)
+   ("C-c o a" . org-agenda)))
 
 ;;MAGIT
 (setq vc-handled-backends nil)
