@@ -189,14 +189,14 @@
   :init
   :config
   (use-package company-racer)
-  (use-package flycheck-rust)
+  (use-package flycheck-rust
+	:config
+	(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
   (use-package racer
 	:config
     (add-hook 'racer-mode-hook #'eldoc-mode)
     (add-hook 'racer-mode-hook #'company-mode)
-	(setq racer-rust-src-path (concat (getenv "HOME")
-		  "/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")))
-
+	(setq racer-rust-src-path "/run/current-system/sw/lib/rustlib/src/rust/src"))
   (setq rust-format-on-save t)
   (add-hook 'rust-mode-hook #'racer-mode)
   (defun cargo-test () (interactive) (compile "cargo test -- --nocapture"))
