@@ -206,7 +206,7 @@
               ("<f7>" . cargo-run)))
 
 ;;LaTeX
-(setq latex-run-command "pdflatex")
+(setq latex-run-command "latex")
 
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-mode)
