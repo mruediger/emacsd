@@ -253,8 +253,6 @@
 ;;NixOS
 (use-package nix-mode)
 
-;;Karteikarten
-(use-package pamparam)
 
 
 ;;
