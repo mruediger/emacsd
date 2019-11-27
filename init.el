@@ -255,7 +255,10 @@
 
 
 
+;; XKCD
+(use-package xkcd
   :config
+  (defun xkcd-emacs () (interactive) (xkcd-get 378)))
 
 ;;
 ;; HELPER FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
