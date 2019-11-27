@@ -28,7 +28,7 @@
 
 (add-to-list 'default-frame-alist '(font . "DroidSansMono:10"))
 
-
+(setq-default indent-tabs-mode nil)
 
 (use-package darcula-theme :defer t)
 (use-package soft-morning-theme :defer t)
