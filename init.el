@@ -251,8 +251,10 @@
 (use-package ledger-mode)
 
 ;;NixOS
-(use-package nix-mode)
-
+(use-package nix-mode
+  :config
+  (defun nix-update () (interactive) (let ((default-directory "/sudo::")) (compile "nixos-rebuild switch")))
+  :bind (("C-c C-c" . nix-update)))
 
 
 ;; XKCD
