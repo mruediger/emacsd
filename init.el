@@ -154,6 +154,7 @@
 							   '((shell      . t)
 								 (emacs-lisp . t)
 								 (python     . t)))
+  (add-hook 'org-mode-hook #'visual-line-mode)
   :init
   (setq org-src-fontify-natively t   ;; Pretty code blocks
         org-src-tab-acts-natively t
