@@ -18,6 +18,8 @@
 (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
+(load-file "~/.emacs.d/secrets.el")
+
 ;;
 ;; LOOK AND FEEL ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -150,18 +152,25 @@
 ;;ORG
 (use-package org
   :config
+  (use-package org-gcal
+    :config
+    (require 'secrets)
+    (setq org-gcal-file-alist '(("ruediger@blueboot.org" .  "~/org/gcal-blueboot.org"))))
+
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
 								 (emacs-lisp . t)
 								 (python     . t)))
   (add-hook 'org-mode-hook #'visual-line-mode)
+  (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync)))
   :init
   (setq org-src-fontify-natively t   ;; Pretty code blocks
         org-src-tab-acts-natively t
 		org-confirm-babel-evaluate nil
-        org-return-follows-link t))
-
-
+        org-return-follows-link t)
+  (setq org-agenda-files '("~/org"))
+  :bind*
+  (("C-x o a" . org-agenda)))
 
 ;;MAGIT
 (setq vc-handled-backends nil)
