@@ -167,11 +167,12 @@
 (setq vc-handled-backends nil)
 (use-package magit
   :init
-  :bind* (("C-x g s" . magit-status)
-	  ("C-x g l b" . magit-log-buffer-file)
-	  ("C-x g l c" . magit-log-current)
-	  ("C-x g l a" . magit-log-all)
-	  ("C-x g p" . magit-push-current-to-pushremote)))
+  :bind*
+  (("C-x g s" . magit-status)
+   ("C-x g l b" . magit-log-buffer-file)
+   ("C-x g l c" . magit-log-current)
+   ("C-x g l a" . magit-log-all)
+   ("C-x g p" . magit-push-current-to-pushremote)))
 
 ;;PYTHON
 (use-package python
