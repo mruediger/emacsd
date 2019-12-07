@@ -168,9 +168,11 @@
         org-src-tab-acts-natively t
 		org-confirm-babel-evaluate nil
         org-return-follows-link t)
-  (setq org-agenda-files '("~/org"))
+  (setq org-agenda-files '("~/org")
+        org-default-notes-file "~/org/notes.org")
   :bind*
-  (("C-x o a" . org-agenda)))
+  (("C-x o a" . org-agenda)
+   ("C-x o c" . org-capture)))
 
 ;;MAGIT
 (setq vc-handled-backends nil)
