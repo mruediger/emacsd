@@ -156,6 +156,9 @@
     :config
     (require 'secrets)
     (setq org-gcal-file-alist '(("ruediger@blueboot.org" .  "~/org/gcal-blueboot.org"))))
+  (use-package org-jira
+    :config
+    (setq jiralib-url "https://devstack.vwgroup.com/jira"))
 
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
