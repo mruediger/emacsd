@@ -216,6 +216,7 @@
 	:config
     (add-hook 'racer-mode-hook #'eldoc-mode)
     (add-hook 'racer-mode-hook #'company-mode)
+    (setq racer-cmd "/run/current-system/sw/bin/racer")
 	(setq racer-rust-src-path "/run/current-system/sw/lib/rustlib/src/rust/src"))
   (setq rust-format-on-save t)
   (add-hook 'rust-mode-hook #'racer-mode)
