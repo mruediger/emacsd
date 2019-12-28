@@ -36,12 +36,14 @@
 (use-package soft-morning-theme :defer t)
 (use-package darktooth-theme :defer t)
 (use-package zenburn-theme :defer t)
+(use-package base16-theme :defer t)
+(use-package gruvbox-theme :defer t)
 (use-package solarized-theme
   :defer t
   :init
   (setq solarized-scale-org-headlines nil))
 
-(load-theme 'solarized-light 't)
+(load-theme 'base16-eighties 't)
 
 (use-package powerline)
 (powerline-default-theme)
