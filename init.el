@@ -118,8 +118,20 @@
 
 ;;COMPANY
 (use-package company
+  :hook (prog-mode . company-mode)
   :config
-  (local-set-key (kbd "TAB") #'company-indent-or-complete-common))
+  (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
+  (setq company-tooltip-align-annotations t)
+  (setq company-minimum-prefix-length 1))
+
+(use-package lsp-mode
+  :commands lsp
+  :config
+  (require 'lsp-clients))
+
+(use-package lsp-ui)
+
+(use-package company-lsp)
 
 ;;SCALA
 (use-package scala-mode
@@ -214,19 +226,15 @@
 ;;RUST
 (use-package rust-mode
   :init
+  :hook (rust-mode . lsp)
   :config
-  (use-package company-racer)
+  (use-package toml-mode)
   (use-package flycheck-rust
-	:config
-	(add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-  (use-package racer
-	:config
-    (add-hook 'racer-mode-hook #'eldoc-mode)
-    (add-hook 'racer-mode-hook #'company-mode)
-    (setq racer-cmd "/run/current-system/sw/bin/racer")
-	(setq racer-rust-src-path "/run/current-system/sw/lib/rustlib/src/rust/src"))
+    :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+  (use-package cargo
+    :hook (rust-mode . cargo-minor-mode))
+
   (setq rust-format-on-save t)
-  (add-hook 'rust-mode-hook #'racer-mode)
   (defun cargo-test () (interactive) (compile "cargo test -- --nocapture"))
   (defun cargo-run () (interactive) (compile "cargo run"))
   :bind (:map rust-mode-map
