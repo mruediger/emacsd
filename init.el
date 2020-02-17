@@ -44,6 +44,9 @@
   (setq solarized-scale-org-headlines nil))
 
 (load-theme 'base16-eighties 't)
+(custom-theme-set-faces
+ 'base16-eighties
+ '(org-document-title ((t (:foreground "#999999" :weight bold :height 1.0)))))
 
 (use-package powerline)
 (powerline-default-theme)
@@ -166,6 +169,7 @@
 ;;ORG
 (use-package org
   :config
+  (use-package org-bullets)
   (use-package org-gcal
     :config
     (require 'secrets)
