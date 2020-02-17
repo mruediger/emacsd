@@ -120,7 +120,7 @@
   (use-package org-jira
     :config
     (setq jiralib-url "https://devstack.vwgroup.com/jira"))
-
+  (use-package ox-gfm)
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
 								 (emacs-lisp . t)
