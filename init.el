@@ -127,15 +127,24 @@
 								 (python     . t)))
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync)))
+  (defun org-agenda-show-agenda-and-todo () (interactive) (org-agenda nil "c"))
   :init
   (setq org-src-fontify-natively t   ;; Pretty code blocks
         org-src-tab-acts-natively t
 		org-confirm-babel-evaluate nil
         org-return-follows-link t)
   (setq org-agenda-files '("~/org")
+        org-agenda-window-setup (quote current-window)
         org-default-notes-file "~/org/notes.org")
+  (setq org-agenda-custom-commands
+        '(("c" "Agenda and TODO" ((agenda "" ((org-agenda-span 9)
+                                              (org-agenda-start-day "-2d")
+                                              ))
+                                  (alltodo "" ((org-agenda-todo-ignore-deadlines (quote all))
+                                               (org-agenda-todo-ignore-scheduled (quote all))))))))
   :bind*
-  (("C-x o a" . org-agenda)
+  (("C-x o a" . org-agenda-show-agenda-and-todo)
+   ("C-x o t" . org-todo-list)
    ("C-x o c" . org-capture)))
 
 ;;MAGIT
