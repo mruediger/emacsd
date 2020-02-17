@@ -108,56 +108,6 @@
 ;; SETUP EXTERNAL PACKAGES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 
-;;FLYCHECK
-(use-package flycheck
-  :init (global-flycheck-mode))
-
-;;COMPANY
-(use-package company
-  :hook (prog-mode . company-mode)
-  :config
-  (local-set-key (kbd "TAB") #'company-indent-or-complete-common)
-  (setq company-tooltip-align-annotations t)
-  (setq company-minimum-prefix-length 1))
-
-(use-package lsp-mode
-  :commands lsp
-  :config
-  (require 'lsp-clients))
-
-(use-package lsp-ui)
-
-(use-package company-lsp)
-
-;;SCALA
-(use-package scala-mode
-  :defer t
-  :pin melpa-stable
-  :init
-  ;; disable ugly implicit underlining
-  (setq ensime-sem-high-faces
-        '((implicitConversion nil)
-          (implicitParams nil))))
-
-(use-package ensime
-  :defer t
-  :pin melpa-stable)
-
-(use-package sbt-mode
-  :defer t
-  :pin melpa-stable)
-
-;;IDO
-;;(use-package flx-ido
-;;  :init
-;;  (setq
-;;   ido-enable-flex-matching t
-;;   ido-everywhere t
-;;   ido-default-buffer-method 'selected-window)
-;;  :config
-;;  (ido-mode t)
-;;  (ido-everywhere t)
-;;  (flx-ido-mode t))
 
 ;;ORG
 (use-package org
@@ -199,35 +149,51 @@
    ("C-x g l a" . magit-log-all)
    ("C-x g p" . magit-push-current-to-pushremote)))
 
-;;PYTHON
-(use-package python
-  :config
-  (defun python-test () (interactive) (compile (concat "python " (buffer-file-name))))
-  (defun python-run () (interactive) (compile (concat "python -m unittest " (buffer-file-name))))
-  :bind (:map python-mode-map
-	      ("<f6>" . python-test)
-	      ("<f7>" . python-run)))
+;;Completion
 
-;;GOLANG
-(use-package go-mode
-  :init
-  (setq gofmt-command "goimports")
-  (add-hook 'before-save-hook 'gofmt-before-save)
+
+(use-package lsp-mode
+  :commands lsp
+  :hook (lsp-mode . lsp-enable-which-key-integration)
   :config
-  (defun go-test () (interactive) (compile "go test -v"))
-  (defun go-run () (interactive) (compile (concat "go run " (buffer-file-name))))
-  :bind (:map go-mode-map
-	      ("<f6>" . go-test)
-	      ("<f7>" . go-run)))
+  (lsp-register-custom-settings
+   '(("gopls.completeUnimported" t t)
+     ("gopls.staticcheck" t t)))
+  (require 'lsp-clients))
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package lsp-ui)
+
+(use-package lsp-treemacs
+  :commands lsp-treemacs-errors-list)
+
+(use-package company-lsp
+  :after (lsp-mode company)
+  :config
+  (push 'company-lsp company-backends))
+
+(use-package company
+  :hook (prog-mode . company-mode)
+  :bind (:map company-mode-map
+              ("<tab>" . company-indent-or-complete-common))
+  :config
+  (setq company-tooltip-align-annotations t)
+  (setq company-minimum-prefix-length 1)
+  (setq python-shell-interpreter "python3"))
+
+(use-package yasnippet
+  :ensure t
+  :commands yas-minor-mode
+  :hook (go-mode . yas-minor-mode))
 
 ;;RUST
 (use-package rust-mode
-  :init
   :hook (rust-mode . lsp)
   :config
   (use-package toml-mode)
-  (use-package flycheck-rust
-    :config (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
   (use-package cargo
     :hook (rust-mode . cargo-minor-mode))
 
@@ -237,6 +203,30 @@
   :bind (:map rust-mode-map
               ("<f6>" . cargo-test)
               ("<f7>" . cargo-run)))
+
+
+;;GOLANG
+(use-package go-mode
+  :hook (go-mode . lsp)
+  :config
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'lsp-format-buffer)
+  (add-hook 'before-save-hook 'lsp-organize-imports)
+  (defun go-test () (interactive) (compile "go test -v"))
+  (defun go-run () (interactive) (compile (concat "go run " (buffer-file-name))))
+  :bind (:map go-mode-map
+              ("<f6>" . go-test)
+              ("<f7>" . go-run)))
+
+;;PYTHON
+(use-package python
+  :hook (python-mode . lsp)
+  :config
+  (defun python-test () (interactive) (compile (concat "python " (buffer-file-name))))
+  (defun python-run () (interactive) (compile (concat "python -m unittest " (buffer-file-name))))
+  :bind (:map python-mode-map
+	      ("<f6>" . python-test)
+	      ("<f7>" . python-run)))
 
 ;;LaTeX
 (setq latex-run-command "latex")
