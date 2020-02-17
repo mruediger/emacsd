@@ -67,9 +67,7 @@
 ;;
 
 ;; MOUSE
-;;(when window-system
 (setq mouse-autoselect-window t)
-
 (setq mouse-yank-at-point t)
 
 ;; KEYBINDINGS
@@ -105,11 +103,6 @@
 
 (electric-indent-mode 1)
 (savehist-mode 1)
-
-;;
-;; SETUP INTERNAL PACKAGES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-
 
 ;;
 ;; SETUP EXTERNAL PACKAGES ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -248,6 +241,7 @@
 ;;LaTeX
 (setq latex-run-command "latex")
 
+;;Markdown
 (use-package markdown-mode
   :mode (("README\\.md\\'" . gfm-mode)
          ("\\.md\\'" . markdown-mode)
