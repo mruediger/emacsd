@@ -159,8 +159,6 @@
    ("C-x g p" . magit-push-current-to-pushremote)))
 
 ;;Completion
-
-
 (use-package lsp-mode
   :hook (lsp-mode . lsp-enable-which-key-integration)
   :commands (lsp lsp-deferred)
@@ -197,7 +195,6 @@
   (setq python-shell-interpreter "python3"))
 
 (use-package yasnippet
-  :ensure t
   :commands yas-minor-mode
   :hook (go-mode . yas-minor-mode))
 
@@ -215,7 +212,6 @@
   :bind (:map rust-mode-map
               ("<f6>" . cargo-test)
               ("<f7>" . cargo-run)))
-
 
 ;;GOLANG
 (use-package go-mode
