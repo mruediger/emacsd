@@ -48,9 +48,6 @@
  'base16-eighties
  '(org-document-title ((t (:foreground "#999999" :weight bold :height 1.0)))))
 
-(use-package powerline)
-(powerline-default-theme)
-
 (tool-bar-mode 0)
 (menu-bar-mode 0)
 (when window-system (scroll-bar-mode 0))
