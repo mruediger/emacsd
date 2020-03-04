@@ -160,8 +160,11 @@
 
 
 (use-package lsp-mode
-  :commands lsp
   :hook (lsp-mode . lsp-enable-which-key-integration)
+  :commands (lsp lsp-deferred)
+  :hook ((go-mode . lsp-deferred)
+         (rust-mode . lsp-deferred)
+         (python-mode . lsp-deferred))
   :config
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
@@ -198,7 +201,6 @@
 
 ;;RUST
 (use-package rust-mode
-  :hook (rust-mode . lsp)
   :config
   (use-package toml-mode)
   (use-package cargo
@@ -215,7 +217,6 @@
 
 ;;GOLANG
 (use-package go-mode
-  :hook (go-mode . lsp)
   :config
   (setq gofmt-command "goimports")
   (add-hook 'before-save-hook 'lsp-format-buffer)
@@ -228,7 +229,6 @@
 
 ;;PYTHON
 (use-package python
-  :hook (python-mode . lsp)
   :config
   (defun python-test () (interactive) (compile (concat "python " (buffer-file-name))))
   (defun python-run () (interactive) (compile (concat "python -m unittest " (buffer-file-name))))
