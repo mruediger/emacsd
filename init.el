@@ -202,9 +202,10 @@
   :config
   (use-package toml-mode)
   (use-package cargo
-    :hook (rust-mode . cargo-minor-mode))
+    :hook ((rust-mode . cargo-minor-mode)))
 
   (setq rust-format-on-save t)
+  (setq lsp-auto-guess-root t)
   (defun cargo-test () (interactive) (compile "cargo test -- --nocapture"))
   (defun cargo-run () (interactive) (compile "cargo run"))
   :bind (:map rust-mode-map
