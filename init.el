@@ -59,6 +59,8 @@
 
 (setq frame-title-format "emacs: %b")
 
+(setq window-combination-resize 't)
+
 ;;
 ;; INPUT SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
