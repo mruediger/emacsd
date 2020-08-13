@@ -27,7 +27,7 @@
  inhibit-startup-screen t
  initial-scratch-message nil)
 
-(add-to-list 'default-frame-alist '(font . "DroidSansMono:10"))
+(add-to-list 'default-frame-alist '(font . "Iosevka:10"))
 
 (setq-default indent-tabs-mode nil)
 
