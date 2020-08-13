@@ -268,6 +268,8 @@
   :init
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
+(use-package dockerfile-mode)
+
 ;;Ledger
 (use-package ledger-mode)
 
