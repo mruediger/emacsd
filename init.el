@@ -273,6 +273,8 @@
 ;;Ledger
 (use-package ledger-mode)
 
+(use-package csv-mode)
+
 ;;NixOS
 (use-package nix-mode
   :config
