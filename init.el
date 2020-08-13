@@ -198,6 +198,11 @@
   :commands yas-minor-mode
   :hook (go-mode . yas-minor-mode))
 
+(use-package flymake)
+
+(use-package flycheck
+  :init (global-flycheck-mode))
+
 ;;RUST
 (use-package rust-mode
   :config
