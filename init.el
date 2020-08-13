@@ -166,13 +166,17 @@
 
 ;;Completion
 (use-package lsp-mode
-  :hook (lsp-mode . lsp-enable-which-key-integration)
   :commands (lsp lsp-deferred)
   :hook ((go-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
-         (python-mode . lsp-deferred))
+         (python-mode . lsp-deferred)
          (scala-mode . lsp-deferred))
   :config
+  (setq lsp-ui-doc-enable t
+        lsp-ui-peek-enable t
+        lsp-ui-sideline-enable t
+        lsp-ui-imenu-enable t
+        lsp-ui-flycheck-enable t)
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
      ("gopls.staticcheck" t t)))
@@ -182,10 +186,11 @@
   :config
   (which-key-mode))
 
-(use-package lsp-ui)
+(use-package lsp-ui
+  :commands lsp-ui-mode
+  :init)
 
-(use-package lsp-treemacs
-  :commands lsp-treemacs-errors-list)
+(use-package lsp-treemacs)
 
 (use-package company-lsp
   :after (lsp-mode company)
