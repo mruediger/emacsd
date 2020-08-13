@@ -164,6 +164,7 @@
   :hook ((go-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
          (python-mode . lsp-deferred))
+         (scala-mode . lsp-deferred))
   :config
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
@@ -277,6 +278,17 @@
   :bind (:map nix-mode-map
               ("C-c C-c" . nix-update)))
 
+;; Scala
+(use-package scala-mode
+  :mode "\\.s\\(cala\\|bt\\)$"
+  :config
+  (defun scala-run () (interactive) (compile "sbt --no-colors run"))
+  :bind (:map scala-mode-map
+            ("C-c C-c" . scala-run)))
+
+(use-package sbt-mode)
+
+(use-package lsp-metals)
 
 ;; XKCD
 (use-package xkcd
