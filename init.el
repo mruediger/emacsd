@@ -40,12 +40,17 @@
 (use-package solarized-theme
   :defer t
   :init
-  (setq solarized-scale-org-headlines nil))
+  (setq solarized-scale-org-headlines nil)
+  (setq solarized-use-variable-pitch nil))
 
-(load-theme 'base16-eighties 't)
-(custom-theme-set-faces
- 'base16-eighties
- '(org-document-title ((t (:foreground "#999999" :weight bold :height 1.0)))))
+(load-theme 'solarized-light 't)
+
+
+
+;;(load-theme 'base16-eighties 't)
+;;(custom-theme-set-faces
+;; 'base16-eighties
+;; '(org-document-title ((t (:foreground "#999999" :weight bold :height 1.0)))))
 
 (tool-bar-mode 0)
 (menu-bar-mode 0)
