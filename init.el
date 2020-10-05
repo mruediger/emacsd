@@ -125,9 +125,6 @@
     (setq org-jira-working-dir "~/org/jira")
     (setq jiralib-url "https://devstack.vwgroup.com/jira"))
   (use-package ox-gfm)
-  (use-package org-trello
-    :config
-    (setq org-trello-files '("~/org/trello-tausendkind.org")))
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
 								 (emacs-lisp . t)
