@@ -316,6 +316,9 @@
 
 (use-package lsp-metals)
 
+;; JSON
+(use-package json-mode)
+
 ;; XKCD
 (use-package xkcd
   :config
