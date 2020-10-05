@@ -144,7 +144,7 @@
         org-startup-indented t
         org-indent-mode-turns-on-hiding-stars t
         org-indent-mode-turns-off-org-adapt-indentation t) ;;use indent-mode by default
-  (setq org-agenda-files '("~/org")
+  (setq org-agenda-files '("~/org" "~/allianz")
         org-agenda-window-setup (quote current-window)
         org-default-notes-file "~/org/notes.org")
   (setq org-agenda-custom-commands
