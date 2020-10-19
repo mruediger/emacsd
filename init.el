@@ -323,6 +323,8 @@
   :config
   (defun xkcd-emacs () (interactive) (xkcd-get 378)))
 
+(use-package vagrant-tramp)
+
 ;;
 ;; HELPER FUNCTIONS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
