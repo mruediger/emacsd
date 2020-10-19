@@ -122,8 +122,10 @@
     (setq org-gcal-file-alist '(("ruediger@blueboot.org" .  "~/org/gcal-blueboot.org"))))
   (use-package org-jira
     :config
-    (setq org-jira-working-dir "~/org/jira")
-    (setq jiralib-url "https://devstack.vwgroup.com/jira"))
+    (setq org-jira-working-dir "~/allianz/jira")
+    (setq org-jira-verbosity 'debug)
+    (setq jiralib-url "https://jira.gda.allianz"))
+
   (use-package ox-gfm)
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
