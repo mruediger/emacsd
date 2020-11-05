@@ -143,13 +143,16 @@
         org-startup-indented t
         org-indent-mode-turns-on-hiding-stars t
         org-indent-mode-turns-off-org-adapt-indentation t) ;;use indent-mode by default
+  (setq org-directory "~/org"
+        org-refile-use-outline-path 'file)
   (setq org-agenda-files '("~/org" "~/allianz")
-        org-agenda-window-setup (quote current-window)
-        org-default-notes-file "~/org/notes.org")
+        org-agenda-window-setup (quote current-window))
+  (setq org-capture-templates
+        '(("t" "task" entry (file "inbox.org") "* TODO %?\n")
+          ("n" "note" entry (file "inbox.org") "* TODO %?\n %a")))
   (setq org-agenda-custom-commands
         '(("c" "Agenda and TODO" ((agenda "" ((org-agenda-span 9)
-                                              (org-agenda-start-day "-2d")
-                                              ))
+                                              (org-agenda-start-day "-2d")))
                                   (alltodo "" ((org-agenda-todo-ignore-deadlines (quote all))
                                                (org-agenda-todo-ignore-scheduled (quote all))))))))
   :bind*
