@@ -186,8 +186,7 @@
         lsp-ui-flycheck-enable t)
   (lsp-register-custom-settings
    '(("gopls.completeUnimported" t t)
-     ("gopls.staticcheck" t t)))
-  (require 'lsp-clients))
+     ("gopls.staticcheck" t t))))
 
 (use-package which-key
   :config
