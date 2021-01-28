@@ -127,6 +127,10 @@
     (setq jiralib-url "https://jira.gda.allianz/"))
 
   (use-package ox-gfm)
+
+  ;; (add-to-list 'org-structure-template-alist '("sh" "#+BEGIN_SRC sh\n?\n#+END_SRC"))
+  (require 'org-tempo)
+  (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
 								 (emacs-lisp . t)
