@@ -129,7 +129,6 @@
   (use-package ox-gfm)
 
   ;; (add-to-list 'org-structure-template-alist '("sh" "#+BEGIN_SRC sh\n?\n#+END_SRC"))
-  (require 'org-tempo)
   (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
@@ -154,6 +153,7 @@
   (setq org-capture-templates
         '(("t" "task" entry (file "inbox.org") "* TODO %?\n")
           ("n" "note" entry (file "inbox.org") "* TODO %?\n %a")))
+  (setq org-duration-format (quote h:mm)) ;;format of org-time-report
   (setq org-agenda-custom-commands
         '(("c" "Agenda and TODO" ((agenda "" ((org-agenda-span 9)
                                               (org-agenda-start-day "-2d")))
