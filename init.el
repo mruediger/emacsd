@@ -274,9 +274,6 @@
   (add-hook 'markdown-mode-hook #'visual-line-mode)
   (add-hook 'markdown-mode-hook #'flyspell-mode))
 
-;;LUA
-(use-package lua-mode)
-
 ;; YAML
 (use-package yaml-mode
   :mode ("\\.sls\\'" . yaml-mode))
