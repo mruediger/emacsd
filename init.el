@@ -303,16 +303,14 @@
 (use-package nix-mode
   :config
   (defun nix-update () (interactive) (let ((default-directory "/sudo::")) (compile "nixos-rebuild switch")))
-  :bind (:map nix-mode-map
-              ("C-c C-c" . nix-update)))
+  :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
 
 ;; Scala
 (use-package scala-mode
   :mode "\\.s\\(cala\\|bt\\)$"
   :config
   (defun scala-run () (interactive) (compile "sbt --no-colors run"))
-  :bind (:map scala-mode-map
-            ("C-c C-c" . scala-run)))
+  :bind (:map scala-mode-map ("C-c C-c" . scala-run)))
 
 (use-package sbt-mode)
 
