@@ -158,6 +158,7 @@
         '(("t" "task" entry (file "inbox.org") "* TODO %?\n")
           ("n" "note" entry (file "inbox.org") "* TODO %?\n %a")))
   (setq org-duration-format (quote h:mm)) ;;format of org-time-report
+  (setq org-export-with-toc nil)
   (setq org-agenda-custom-commands
         '(("c" "Agenda and TODO" ((agenda "" ((org-agenda-span 9)
                                               (org-agenda-start-day "-2d")))
