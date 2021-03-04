@@ -181,55 +181,29 @@
    ("C-x g l a" . magit-log-all)
    ("C-x g p" . magit-push-current-to-pushremote)))
 
-;;Completion
+;;LSP
 (use-package lsp-mode
-  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
   :hook ((go-mode . lsp-deferred)
          (rust-mode . lsp-deferred)
          (python-mode . lsp-deferred)
-         (scala-mode . lsp-deferred))
+         (sh-mode . lsp-deferred)
+         (yaml-mode . lsp-deferred)
+         (nix-mode . lsp-deferred)
+         (terraform-mode . lsp-deferred))
   :config
-  (setq lsp-ui-doc-enable t
-        lsp-ui-peek-enable t
-        lsp-ui-sideline-enable t
-        lsp-ui-imenu-enable t
-        lsp-ui-flycheck-enable t)
-  (lsp-register-custom-settings
-   '(("gopls.completeUnimported" t t)
-     ("gopls.staticcheck" t t))))
-
-(use-package which-key
-  :config
-  (which-key-mode))
-
-(use-package lsp-ui
-  :commands lsp-ui-mode
-  :init)
-
-(use-package lsp-treemacs)
-
-(use-package company-lsp
-  :after (lsp-mode company)
-  :config
-  (push 'company-lsp company-backends))
-
-(use-package company
-  :hook (prog-mode . company-mode)
-  :bind (:map company-mode-map
-              ("<tab>" . company-indent-or-complete-common))
-  :config
-  (setq company-tooltip-align-annotations t)
-  (setq company-minimum-prefix-length 1)
-  (setq python-shell-interpreter "python3"))
-
-(use-package yasnippet
-  :commands yas-minor-mode
-  :hook (go-mode . yas-minor-mode))
-
-(use-package flymake)
-
-(use-package flycheck
-  :init (global-flycheck-mode))
+  (setq tab-always-indent 'complete)
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("/run/current-system/sw/bin/terraform-ls" "serve"))
+                    :major-modes '(terraform-mode)
+                    :server-id 'terraform-ls))
+  (lsp-register-client
+   (make-lsp-client :new-connection (lsp-stdio-connection '("rnix-lsp"))
+                    :major-modes '(nix-mode)
+                    :server-id 'nix))
+  :commands (lsp lsp-deferred))
 
 ;;RUST
 (use-package rust-mode
@@ -319,8 +293,6 @@
   (defun scala-run () (interactive) (compile "sbt --no-colors run"))
   :bind (:map scala-mode-map ("C-c C-c" . scala-run)))
 
-
-(use-package lsp-metals)
 
 ;; JSON
 (use-package json-mode)
