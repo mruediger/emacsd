@@ -171,7 +171,6 @@
 ;;MAGIT
 (setq vc-handled-backends nil)
 (use-package magit
-  :init
   :bind*
   (("C-x g s" . magit-status)
    ("C-x g l b" . magit-log-buffer-file)
