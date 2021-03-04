@@ -137,7 +137,9 @@
   (org-babel-do-load-languages 'org-babel-load-languages
 							   '((shell      . t)
 								 (emacs-lisp . t)
-								 (python     . t)))
+								 (python     . t)
+                                 (R          . t)
+                                 (gnuplot    . t)))
   (add-hook 'org-mode-hook #'visual-line-mode)
   (add-hook 'org-agenda-mode-hook (lambda () (org-gcal-sync)))
   (defun org-agenda-show-agenda-and-todo () (interactive) (org-agenda nil "c"))
