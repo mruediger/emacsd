@@ -315,10 +315,10 @@
 (use-package scala-mode
   :mode "\\.s\\(cala\\|bt\\)$"
   :config
+  (use-package sbt-mode)
   (defun scala-run () (interactive) (compile "sbt --no-colors run"))
   :bind (:map scala-mode-map ("C-c C-c" . scala-run)))
 
-(use-package sbt-mode)
 
 (use-package lsp-metals)
 
