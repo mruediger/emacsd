@@ -128,6 +128,10 @@
 
   (use-package ox-gfm)
 
+  (use-package org-trello
+    :config
+    (setq org-trello-files '("~/src/justwatch/org/trello.org")))
+
   ;; (add-to-list 'org-structure-template-alist '("sh" "#+BEGIN_SRC sh\n?\n#+END_SRC"))
   (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages 'org-babel-load-languages
