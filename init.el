@@ -154,7 +154,7 @@
         org-indent-mode-turns-off-org-adapt-indentation t) ;;use indent-mode by default
   (setq org-directory "~/org"
         org-refile-use-outline-path 'file)
-  (setq org-agenda-files '("~/org" "~/allianz")
+  (setq org-agenda-files '("~/org" "~/src/justwatch/org")
         org-agenda-window-setup (quote current-window))
   (setq org-capture-templates
         '(("t" "task" entry (file "inbox.org") "* TODO %?\n")
