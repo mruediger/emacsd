@@ -230,6 +230,7 @@
   (defun go-run () (interactive) (compile (concat "go run " (buffer-file-name))))
   :bind (:map go-mode-map
               ("<f6>" . go-test)
+              ("C-c C-c" . go-test)
               ("<f7>" . go-run)))
 
 ;;PYTHON
