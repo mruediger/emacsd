@@ -70,7 +70,7 @@
 ;;
 
 ;; MOUSE
-(setq mouse-autoselect-window t)
+(setq mouse-autoselect-window nil)
 (setq mouse-yank-at-point t)
 
 ;; KEYBINDINGS
