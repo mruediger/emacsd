@@ -257,6 +257,8 @@
 
 ;; YAML
 (use-package yaml-mode
+  :config
+  (use-package indent-tools)
   :mode ("\\.sls\\'" . yaml-mode))
 
 ;; R-Mode
