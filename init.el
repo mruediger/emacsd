@@ -171,6 +171,9 @@
    ("C-x o t" . org-todo-list)
    ("C-x o c" . org-capture)))
 
+;;PANDOC
+(use-package pandoc-mode)
+
 ;;MAGIT
 (setq vc-handled-backends nil)
 (use-package magit
