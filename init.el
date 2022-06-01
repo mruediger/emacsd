@@ -155,6 +155,9 @@
 
 ;; Projectile
 
+;; Stuff
+(add-hook 'after-save-hook
+            'executable-make-buffer-file-executable-if-script-p)
 
 ;; flycheck
 (use-package flycheck
