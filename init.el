@@ -155,6 +155,12 @@
 
 ;; Projectile
 
+
+;; flycheck
+(use-package flycheck
+  :straight t
+  :hook (emacs-lisp . flycheck-mode))
+
 ;; Languages
 (use-package yaml-mode
   :straight t
