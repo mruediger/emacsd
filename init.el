@@ -57,6 +57,9 @@
 (use-package doom-modeline :straight t
   :init (doom-modeline-mode 1))
 
+;;always delete trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
 ;;
 ;; INPUT SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
@@ -107,7 +110,6 @@
 	 ("C-x o c" . origami-close-node)
 	 ("C-x o C" . origami-close-node-recursively)))
 
-
 ;;
 ;; Server Mode
 ;;
@@ -134,7 +136,7 @@
 
 ;;
 ;; Development
-;; 
+;;
 
 ;; GIT
 (setq vc-handled-backends nil)
@@ -158,4 +160,3 @@
   :straight t
   :init
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
-
