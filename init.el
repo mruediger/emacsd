@@ -57,6 +57,10 @@
 (use-package doom-modeline :straight t
   :init (doom-modeline-mode 1))
 
+;; Behaviour
+;; don't create tilde files (~)
+(setq make-backup-files nil)
+
 ;;always delete trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
