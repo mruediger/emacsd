@@ -173,3 +173,9 @@
   :straight t
   :init
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
+
+(use-package nix-mode
+  :straight t
+  :config
+  (defun nix-update () (interactive) (let ((default-directory "/sudo::")) (compile "nixos-rebuild switch")))
+  :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
