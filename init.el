@@ -184,3 +184,7 @@
 
 (use-package go-mode
   :straight t)
+
+;;SUDO-EDIT
+(use-package sudo-edit
+  :straight t)
