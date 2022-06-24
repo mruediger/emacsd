@@ -128,10 +128,6 @@
   :straight t
 
   :config
-  (use-package org-bullets
-    :straight t
-    :hook (org-mode . org-bullets-mode))
-
   ;; add <s support
   (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages 'org-babel-load-languages
