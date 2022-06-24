@@ -167,6 +167,18 @@
   :straight t
   :hook (emacs-lisp . flycheck-mode))
 
+;;LSP
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (lsp-enable-which-key-integration t)
+  (setq read-process-output-max (* 1024 1024))
+  :hook
+  ((go-mode) . lsp))
+
 ;; Languages
 (use-package yaml-mode
   :straight t
@@ -184,7 +196,16 @@
   :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
 
 (use-package go-mode
+  :config
+  (add-hook 'before-save-hook 'lsp-format-buffer)
+  (add-hook 'before-save-hook 'lsp-organize-imports)
+  :bind (:map go-mode-map
+			  ("C-c C-c" . go-test-current-project)))
+
+
+(use-package go-test
   :straight t)
+
 
 ;;SUDO-EDIT
 (use-package sudo-edit
