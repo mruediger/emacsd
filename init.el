@@ -137,7 +137,7 @@
 				 (python     . t)
                                  (R          . t)
                                  (gnuplot    . t)))
-  (setq  org-confirm-babel-evaluate nil)
+  (setq org-confirm-babel-evaluate nil)
   :hook (org-mode . visual-line-mode))
 
 ;;
