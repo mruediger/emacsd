@@ -106,7 +106,9 @@
 ;;
 ;; Editing Config
 ;;
-(setq tab-width 4)
+(setq
+ tab-width 4
+ make-backup-files nil)
 
 (use-package origami
   :straight t
