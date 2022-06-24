@@ -106,6 +106,7 @@
 ;;
 ;; Editing Config
 ;;
+(setq tab-width 4)
 
 (use-package origami
   :straight t
