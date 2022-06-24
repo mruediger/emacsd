@@ -138,6 +138,7 @@
                                  (R          . t)
                                  (gnuplot    . t)))
   (setq org-confirm-babel-evaluate nil)
+  (setq org-duration-format (quote h:mm))
   :hook (org-mode . visual-line-mode))
 
 ;;
