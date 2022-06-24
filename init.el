@@ -181,3 +181,6 @@
   :config
   (defun nix-update () (interactive) (let ((default-directory "/sudo::")) (compile "nixos-rebuild switch")))
   :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
+
+(use-package go-mode
+  :straight t)
