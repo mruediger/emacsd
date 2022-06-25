@@ -4,23 +4,7 @@
 ;; PACKAGE MANAGEMENT
 ;;
 
-;;install straight.el
-(unless (featurep 'straight)
-  (defvar bootstrap-version)
-  (let ((bootstrap-file
-         (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-        (bootstrap-version 5))
-    (unless (file-exists-p bootstrap-file)
-      (with-current-buffer
-          (url-retrieve-synchronously
-           "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
-           'silent 'inhibit-cookies)
-        (goto-char (point-max))
-        (eval-print-last-sexp)))
-    (load bootstrap-file nil 'nomessage)))
-
-;; Install use-package
-(straight-use-package 'use-package)
+(require 'use-package)
 
 ;;
 ;; LOOK AND FEEL
@@ -46,15 +30,14 @@
                     :height 130)
 
 (use-package solarized-theme
-  :straight t
   :init
   (setq solarized-scale-org-headlines nil)
   (setq solarized-use-variable-pitch nil))
 (load-theme 'solarized-light 't)
 
-(use-package all-the-icons :straight t)
+(use-package all-the-icons)
 
-(use-package doom-modeline :straight t
+(use-package doom-modeline
   :init (doom-modeline-mode 1))
 
 ;; Behaviour
@@ -70,7 +53,6 @@
 
 ;; Show keybindings with which-key
 (use-package which-key
-  :straight t
   :init (which-key-mode)
   :config (setq which-key-idle-delay 0.5))
 
@@ -98,11 +80,6 @@
 (define-key global-map (kbd "C-x o") 'nil)
 (define-key global-map (kbd "S-DEL") 'kill-whole-line)
 
-(use-package which-key
-  :straight t
-  :init (which-key-mode)
-  :config (setq which-key-idle-delay 0.5))
-
 ;;
 ;; Editing Config
 ;;
@@ -111,7 +88,6 @@
  make-backup-files nil)
 
 (use-package origami
-  :straight t
   :bind (("C-x o o" . origami-open-node)
 	 ("C-x o O" . origami-open-all-nodes)
 	 ("C-x o c" . origami-close-node)
@@ -128,8 +104,6 @@
 ;; Org Mode
 ;;
 (use-package org
-  :straight t
-
   :config
   ;; add <s support
   (add-to-list 'org-modules 'org-tempo t)
@@ -150,7 +124,6 @@
 ;; GIT
 (setq vc-handled-backends nil)
 (use-package magit
-  :straight t
   :bind*
   (("C-x g s" . magit-status)
    ("C-x g l b" . magit-log-buffer-file)
@@ -166,7 +139,6 @@
 
 ;; flycheck
 (use-package flycheck
-  :straight t
   :hook (emacs-lisp . flycheck-mode))
 
 ;;LSP
@@ -183,16 +155,13 @@
 
 ;; Languages
 (use-package yaml-mode
-  :straight t
   :mode ("\\.sls\\'" . yaml-mode))
 
 (use-package terraform-mode
-  :straight t
   :init
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 (use-package nix-mode
-  :straight t
   :config
   (defun nix-update () (interactive) (let ((default-directory "/sudo::")) (compile "nixos-rebuild switch")))
   :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
@@ -205,10 +174,8 @@
 			  ("C-c C-c" . go-test-current-project)))
 
 
-(use-package go-test
-  :straight t)
+(use-package go-test)
 
 
 ;;SUDO-EDIT
-(use-package sudo-edit
-  :straight t)
+(use-package sudo-edit)
