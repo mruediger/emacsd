@@ -30,15 +30,22 @@
                     :height 130)
 
 (use-package solarized-theme
-  :init
-  (setq solarized-scale-org-headlines nil)
-  (setq solarized-use-variable-pitch nil))
-(load-theme 'solarized-light 't)
+  :config
+  (load-theme 'solarized-light t)
+  (let ((line (face-attribute 'mode-line :underline)))
+    (set-face-attribute 'mode-line          nil :overline   line)
+    (set-face-attribute 'mode-line-inactive nil :overline   line)
+    (set-face-attribute 'mode-line-inactive nil :underline  line)
+    (set-face-attribute 'mode-line          nil :box        nil)
+    (set-face-attribute 'mode-line-inactive nil :box        nil)
+    (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
 
-(use-package all-the-icons)
-
-(use-package doom-modeline
-  :init (doom-modeline-mode 1))
+(use-package moody
+  :config
+  (setq x-underline-at-descent-line t)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode)
+  (moody-replace-eldoc-minibuffer-message-function))
 
 ;; Behaviour
 ;; don't create tilde files (~)
