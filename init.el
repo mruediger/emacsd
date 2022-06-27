@@ -177,12 +177,9 @@
   :config
   (add-hook 'before-save-hook 'lsp-format-buffer)
   (add-hook 'before-save-hook 'lsp-organize-imports)
+  (setq go-test-verbose t)
   :bind (:map go-mode-map
 			  ("C-c C-c" . go-test-current-project)))
-
-
-(use-package go-test)
-
 
 ;;SUDO-EDIT
 (use-package sudo-edit)
