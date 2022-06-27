@@ -155,6 +155,7 @@
   (setq lsp-keymap-prefix "C-c l")
   :config
   (setq lsp-headerline-breadcrumb-enable nil)
+  (setq tab-always-indent 'complete)
   (lsp-enable-which-key-integration t)
   (setq read-process-output-max (* 1024 1024))
   :hook
