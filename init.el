@@ -31,6 +31,8 @@
 
 (use-package solarized-theme
   :config
+  (setq solarized-scale-org-headlines nil)
+  (setq solarized-use-variable-pitch nil))
   (load-theme 'solarized-light t)
   (let ((line (face-attribute 'mode-line :underline)))
     (set-face-attribute 'mode-line          nil :overline   line)
