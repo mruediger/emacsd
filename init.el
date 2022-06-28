@@ -22,8 +22,8 @@
 (tooltip-mode -1)    ; Disable tooltips
 (menu-bar-mode -1)   ; Disable menu bar
 
-(column-number-mode)
-(display-time-mode)
+(setq frame-title-format "emacs: %b")
+(setq window-combination-resize 't)
 
 (set-face-attribute 'default nil
                     :font "Iosevka"
@@ -32,7 +32,7 @@
 (use-package solarized-theme
   :config
   (setq solarized-scale-org-headlines nil)
-  (setq solarized-use-variable-pitch nil))
+  (setq solarized-use-variable-pitch nil)
   (load-theme 'solarized-light t)
   (let ((line (face-attribute 'mode-line :underline)))
     (set-face-attribute 'mode-line          nil :overline   line)
@@ -92,9 +92,14 @@
 ;;
 ;; Editing Config
 ;;
-(setq
- tab-width 4
- make-backup-files nil)
+(setq make-backup-files nil)
+(setq-default tab-width 4)
+(line-number-mode)
+(column-number-mode)
+(display-time-mode)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+
 
 (use-package origami
   :bind (("C-x o o" . origami-open-node)
@@ -113,6 +118,8 @@
 ;; Org Mode
 ;;
 (use-package org
+  :init
+  (defun org-agenda-show-agenda-and-todo () (interactive) (org-agenda nil "c"))
   :config
   ;; add <s support
   (add-to-list 'org-modules 'org-tempo t)
@@ -124,7 +131,27 @@
                                  (gnuplot    . t)))
   (setq org-confirm-babel-evaluate nil)
   (setq org-duration-format (quote h:mm))
-  :hook (org-mode . visual-line-mode))
+  ;; Pretty code blocks
+  (setq org-src-fontify-natively t
+        org-src-tab-acts-natively t)
+  (setq org-directory "~/org"
+        org-refile-use-outline-path 'file)
+  (setq org-agenda-files '("~/org")
+        org-agenda-window-setup (quote current-window))
+  (setq org-capture-templates
+        '(("t" "task" entry (file "inbox.org") "* TODO %?\n")
+          ("n" "note" entry (file "inbox.org") "* TODO %?\n %a")))
+  (setq org-export-with-toc nil)
+  (setq org-agenda-custom-commands
+        '(("c" "Agenda and TODO" ((agenda "" ((org-agenda-span 9)
+                                              (org-agenda-start-day "-2d")))
+                                  (alltodo "" ((org-agenda-todo-ignore-deadlines (quote all))
+                                               (org-agenda-todo-ignore-scheduled (quote all))))))))
+  :hook (org-mode . visual-line-mode)
+  :bind
+  (("C-x o a" . org-agenda-show-agenda-and-todo)
+   ("C-x o t" . org-todo-list)
+   ("C-x o c" . org-capture)))
 
 ;;
 ;; Development
