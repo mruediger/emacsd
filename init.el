@@ -99,8 +99,6 @@
 (display-time-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-
-
 (use-package origami
   :bind (("C-x o o" . origami-open-node)
 	 ("C-x o O" . origami-open-all-nodes)
@@ -199,6 +197,7 @@
   :mode ("\\.sls\\'" . yaml-mode))
 
 (use-package terraform-mode
+  :mode "\\.hcl\\'"
   :init
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
