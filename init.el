@@ -112,7 +112,11 @@
 ;;
 
 ;; enable emacs server so that emacsclient calls are routed here
-(server-start)
+(use-package edit-server
+  :if window-system
+  :init
+  (add-hook 'after-init-hook 'server-start t)
+  (add-hook 'after-init-hook 'edit-server-start t))
 
 ;;
 ;; Org Mode
