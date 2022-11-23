@@ -216,3 +216,15 @@
 
 ;;SUDO-EDIT
 (use-package sudo-edit)
+
+
+(use-package tramp
+  :config
+  (add-to-list 'tramp-methods
+			   '("gcssh"
+				 (tramp-login-program "gcloud")
+				 (tramp-login-args (("compute ssh") ("%h") ("--ssh-flag='-l %u'")))
+				 (tramp-async-args (("-q")))
+				 (tramp-remote-shell "/bin/bash")
+				 (tramp-remote-shell-args ("-c"))
+				 (tramp-default-port 22))))
