@@ -216,6 +216,8 @@
   :bind (:map go-mode-map
 			  ("C-c C-c" . go-test-current-project)))
 
+(use-package jsonnet-mode)
+
 ;;SUDO-EDIT
 (use-package sudo-edit)
 
