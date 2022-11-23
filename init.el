@@ -89,6 +89,8 @@
 (define-key global-map (kbd "C-x o") 'nil)
 (define-key global-map (kbd "S-DEL") 'kill-whole-line)
 
+(define-key ctl-x-map "v" 'nil)
+
 ;;
 ;; Editing Config
 ;;
