@@ -179,6 +179,11 @@
    ("C-x o c" . org-capture)
    ("C-x o i" . mr/org-open-inbox)))
 
+;; direnv
+(use-package direnv
+  :config
+  (direnv-mode))
+
 ;;
 ;; Development
 ;;
