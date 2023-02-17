@@ -270,6 +270,12 @@
 
 (use-package jsonnet-mode)
 
+(use-package python
+  :init
+  (setq-default indent-tabs-mode nil)
+  :config
+  (setq python-indent-offset 4))
+
 ;;SUDO-EDIT
 (use-package sudo-edit)
 
