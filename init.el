@@ -149,9 +149,9 @@
   ;; add <s support
   (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages 'org-babel-load-languages
-			       '((shell      . t)
-				 (emacs-lisp . t)
-				 (python     . t)
+			                   '((shell      . t)
+				                 (emacs-lisp . t)
+				                 (python     . t)
                                  (R          . t)
                                  (gnuplot    . t)))
   (setq org-confirm-babel-evaluate nil)
