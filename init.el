@@ -232,3 +232,5 @@
 				 (tramp-remote-shell "/bin/bash")
 				 (tramp-remote-shell-args ("-c"))
 				 (tramp-default-port 22))))
+
+(use-package ledger-mode)
