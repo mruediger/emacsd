@@ -203,6 +203,9 @@
   :hook
   ((go-mode) . lsp))
 
+(use-package lsp-ui
+  :after lsp-mode)
+
 (use-package corfu
   ;; Optional customizations
   ;; :custom
