@@ -236,9 +236,8 @@
   :mode ("\\.sls\\'" . yaml-mode))
 
 (use-package terraform-mode
-  :mode "\\.hcl\\'"
   :init
-  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
+  (add-hook 'terraform-mode-hook 'terraform-format-on-save-mode))
 
 (use-package nix-mode
   :config
