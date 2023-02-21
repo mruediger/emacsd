@@ -175,9 +175,6 @@
 ;;
 ;; Development
 ;;
-
-;; GIT
-(setq vc-handled-backends nil)
 (use-package magit
   :bind*
   (("C-x g s" . magit-status)
@@ -185,8 +182,6 @@
    ("C-x g l c" . magit-log-current)
    ("C-x g l a" . magit-log-all)
    ("C-x g p" . magit-push-current-to-pushremote)))
-
-;; Projectile
 
 ;; Stuff
 (add-hook 'after-save-hook
