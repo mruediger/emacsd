@@ -246,6 +246,8 @@
            (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/nixos-config#'")))
   :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
 
+(use-package gotest)
+
 (use-package go-mode
   :config
   (add-hook 'before-save-hook 'lsp-format-buffer)
