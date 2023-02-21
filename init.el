@@ -12,15 +12,15 @@
 
 ;; User Interface
 
-
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 
 ;; cleanup user interface - remove unneded fluff
-(scroll-bar-mode -1) ; Disable visible scrollbar
-(tool-bar-mode -1)   ; Disable toolbar
-(tooltip-mode -1)    ; Disable tooltips
-(menu-bar-mode -1)   ; Disable menu bar
+(scroll-bar-mode -1)   ; Disable visible scrollbar
+(tool-bar-mode -1)     ; Disable toolbar
+(tooltip-mode -1)      ; Disable tooltips
+(menu-bar-mode -1)     ; Disable menu bar
+(blink-cursor-mode -1) ;
 
 (setq frame-title-format "emacs: %b")
 (setq window-combination-resize 't)
