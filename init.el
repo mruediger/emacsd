@@ -241,7 +241,9 @@
 
 (use-package nix-mode
   :config
-  (defun nix-update () (interactive) (let ((default-directory "/sudo::")) (compile "nixos-rebuild switch")))
+  (defun nix-update () (interactive)
+         (let ((default-directory "/sudo::"))
+           (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/nixos-config#'")))
   :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
 
 (use-package go-mode
