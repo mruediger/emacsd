@@ -136,6 +136,8 @@
 (use-package org
   :init
   (defun org-agenda-show-agenda-and-todo () (interactive) (org-agenda nil "c"))
+  (defun mr/org-open-inbox () (interactive)
+	(find-file "~/org/inbox.org"))
   :config
   ;; add <s support
   (add-to-list 'org-modules 'org-tempo t)
@@ -167,7 +169,8 @@
   :bind
   (("C-x o a" . org-agenda-show-agenda-and-todo)
    ("C-x o t" . org-todo-list)
-   ("C-x o c" . org-capture)))
+   ("C-x o c" . org-capture)
+   ("C-x o i" . mr/org-open-inbox)))
 
 ;;
 ;; Development
