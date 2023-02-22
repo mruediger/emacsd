@@ -127,12 +127,6 @@
 (display-time-mode)
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-(use-package origami
-  :bind (("C-x o o" . origami-open-node)
-	 ("C-x o O" . origami-open-all-nodes)
-	 ("C-x o c" . origami-close-node)
-	 ("C-x o C" . origami-close-node-recursively)))
-
 ;;
 ;; Server Mode
 ;;
