@@ -25,7 +25,6 @@
 ;;
 
 ;; User Interface
-
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 
@@ -74,7 +73,7 @@
   (moody-replace-mode-line-buffer-identification)
   (moody-replace-vc-mode)
   (moody-replace-eldoc-minibuffer-message-function))
-    
+
 
 ;; Behaviour
 ;; don't create tilde files (~)
@@ -115,13 +114,10 @@
 (keymap-global-set "C-o" 'other-window)
 (keymap-global-set "C-x o" 'nil)
 (keymap-global-set "S-DEL" 'kill-whole-line)
-
 (keymap-global-set "M-1" 'delete-other-windows)
 (keymap-global-set "M-2" 'split-window-below)
 (keymap-global-set "M-3" 'split-window-right)
 (keymap-global-set "M-0" 'delete-window)
-
-
 (keymap-set ctl-x-map "v" 'nil)
 
 ;;
@@ -292,7 +288,6 @@
 
 ;;SUDO-EDIT
 (use-package sudo-edit)
-
 
 (use-package tramp
   :config
