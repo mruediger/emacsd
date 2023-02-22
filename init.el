@@ -189,7 +189,7 @@
 ;; Development
 ;;
 (use-package magit
-  :bind*
+  :bind
   (("C-x g s" . magit-status)
    ("C-x g l b" . magit-log-buffer-file)
    ("C-x g l c" . magit-log-current)
@@ -210,11 +210,9 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   :config
-  (setq lsp-headerline-breadcrumb-enable nil)
-  (lsp-enable-which-key-integration t)
-  (setq read-process-output-max (* 1024 1024))
+  (setq lsp-disabled-clients '(tfls))
   :hook
-  ((go-mode) . lsp))
+  (lsp-mode . lsp-enable-which-key-integration))
 
 (use-package lsp-ui
   :after (lsp-mode)
@@ -261,25 +259,29 @@
   :mode ("\\.sls\\'" . yaml-mode))
 
 (use-package terraform-mode
-  :init
-  (add-hook 'terraform-mode-hook 'terraform-format-on-save-mode))
+  :after (lsp-mode)
+  :hook
+  ((terraform-mode . lsp)
+   (terraform-mode . terraform-format-on-save-mode)))
 
 (use-package nix-mode
   :config
   (defun nix-update () (interactive)
          (let ((default-directory "/sudo::"))
            (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/nixos-config#'")))
-  :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
+  :bind (:map nix-mode-map ("C-c C-c" . nix-update))
+  :hook (nix-mode . lsp-deferred))
 
 (use-package gotest)
 
 (use-package go-mode
-  :config
-  (add-hook 'before-save-hook 'lsp-format-buffer)
-  (add-hook 'before-save-hook 'lsp-organize-imports)
-  (setq go-test-verbose t)
-  :bind (:map go-mode-map
-			  ("C-c C-c" . go-test-current-project)))
+  :after (lsp-mode)
+  :init
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t)
+  :config (setq go-test-verbose t)
+  :bind (:map go-mode-map ("C-c C-c" . go-test-current-project))
+  :hook (go-mode . lsp-deferred))
 
 (use-package jsonnet-mode)
 
