@@ -243,6 +243,9 @@
   :ensure lsp-mode
   :after lsp-mode)
 
+(use-package yasnippet
+  :after (lsp-mode)
+  :hook ((lsp-mode . yas-minor-mode)))
 
 (use-package company
   :init
