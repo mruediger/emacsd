@@ -226,6 +226,21 @@
   ((go-mode) . lsp))
 
 (use-package lsp-ui
+  :after (lsp-mode)
+  :commands lsp-ui-mode
+  :custom
+  (lsp-ui-doc-enable t)
+  (lsp-ui-doc-header t)
+  (lsp-ui-doc-show-with-cursor t)
+  (lsp-ui-doc-include-signature t))
+
+(use-package lsp-origami
+  :after (lsp-mode)
+  :config
+  (add-hook 'lsp-after-open-hook #'lsp-origami-try-enable))
+
+(use-package lsp-markdown
+  :ensure lsp-mode
   :after lsp-mode)
 
 (use-package corfu
