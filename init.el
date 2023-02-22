@@ -1,5 +1,3 @@
-;; -*- lexical-binding: t; -*-
-
 ;;
 ;; PACKAGE MANAGEMENT
 ;;
