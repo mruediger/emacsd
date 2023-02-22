@@ -282,7 +282,9 @@
   :init
   (setq-default indent-tabs-mode nil)
   :config
-  (setq python-indent-offset 4))
+  (setq python-indent-offset 4)
+  :bind (:map python-mode-map
+              ("C-c C-c" . recompile)))
 
 ;;SUDO-EDIT
 (use-package sudo-edit)
