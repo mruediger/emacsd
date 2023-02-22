@@ -37,11 +37,6 @@
 
 (setq frame-title-format "emacs: %b")
 
-;; nice scrolling
-(setq scroll-margin 0
-      scroll-conservatively 100000
-      scroll-preserve-screen-position 1)
-
 ;;split windows proportionally
 (setq window-combination-resize 't)
 
