@@ -243,6 +243,13 @@
   :ensure lsp-mode
   :after lsp-mode)
 
+(use-package lsp-terraform
+  :ensure lsp-mode
+  :after lsp-mode
+  :custom
+  (lsp-terraform-ls-enable-show-reference t)
+  (lsp-terraform-ls-prefer-treemacs-all-the-icons-theme t))
+
 (use-package yasnippet
   :after (lsp-mode)
   :hook ((lsp-mode . yas-minor-mode)))
