@@ -10,7 +10,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(setq use-package-always-ensure t)
+(setq use-package-always-ensure t
+	  use-package-always-defer t)
 
 (require 'use-package)
 
@@ -49,7 +50,7 @@
 (setq tab-always-indent 'complete)
 
 (use-package solarized-theme
-  :config
+  :init
   (setq solarized-scale-org-headlines nil)
   (setq solarized-use-variable-pitch nil)
   (load-theme 'solarized-light t)
@@ -63,11 +64,12 @@
 
 ;; nice mode-line
 (use-package moody
-  :config
-  (setq x-underline-at-descent-line t)
+  :init
   (moody-replace-mode-line-buffer-identification)
   (moody-replace-vc-mode)
-  (moody-replace-eldoc-minibuffer-message-function))
+  (moody-replace-eldoc-minibuffer-message-function)
+  :config
+  (setq x-underline-at-descent-line t))
 
 
 ;; Behaviour
@@ -186,7 +188,7 @@
 
 ;; direnv
 (use-package direnv
-  :config
+  :init
   (direnv-mode))
 
 ;;
