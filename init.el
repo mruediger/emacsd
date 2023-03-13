@@ -221,7 +221,6 @@
   (lsp-mode . lsp-enable-which-key-integration))
 
 (use-package lsp-ui
-  :after (lsp-mode)
   :commands lsp-ui-mode
   :custom
   (lsp-ui-doc-enable t)
@@ -231,7 +230,6 @@
   :hook (lsp-mode . lsp-ui-mode))
 
 (use-package corfu
-  :after (lsp-mode)
   ;; Optional customizations
   ;; :custom
   ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
@@ -247,7 +245,6 @@
   (global-corfu-mode))
 
 (use-package yasnippet
-  :after (lsp-mode)
   :hook ((lsp-mode . yas-minor-mode)))
 
 ;; Languages
@@ -255,7 +252,6 @@
   :mode ("\\.sls\\'" . yaml-mode))
 
 (use-package terraform-mode
-  :after (lsp-mode)
   :hook
   ((terraform-mode . lsp)
    (terraform-mode . terraform-format-on-save-mode)))
@@ -271,7 +267,6 @@
 (use-package gotest)
 
 (use-package go-mode
-  :after (lsp-mode)
   :init
   (add-hook 'before-save-hook #'lsp-format-buffer t t)
   (add-hook 'before-save-hook #'lsp-organize-imports t t)
