@@ -91,6 +91,7 @@
 ;; MOUSE
 (setq mouse-autoselect-window nil)
 (setq mouse-yank-at-point t)
+(setq make-pointer-invisible nil)
 
 ;; KEYBINDINGS
 (keymap-global-set "C-z" 'undo)
