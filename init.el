@@ -211,7 +211,12 @@
   :init
   (setq lsp-keymap-prefix "C-c l")
   :config
-  (setq lsp-disabled-clients '(tfls))
+  ;; Terraform (https://emacs-lsp.github.io/lsp-mode/page/lsp-terraform-ls)
+  (setq lsp-disabled-clients '(tfls)
+        lsp-terraform-ls-enable-show-reference t
+        lsp-semantic-tokens-enable t
+        lsp-semantic-tokens-honor-refresh-requests t
+        lsp-enable-links t)
   :hook
   (lsp-mode . lsp-enable-which-key-integration))
 
@@ -228,12 +233,6 @@
   :ensure lsp-mode
   :after lsp-mode)
 
-(use-package lsp-terraform
-  :ensure lsp-mode
-  :after lsp-mode
-  :custom
-  (lsp-terraform-ls-enable-show-reference t)
-  (lsp-terraform-ls-prefer-treemacs-all-the-icons-theme t))
 
 (use-package corfu
   :after (lsp-mode)
