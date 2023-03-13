@@ -229,9 +229,6 @@
   (lsp-ui-doc-show-with-cursor t)
   (lsp-ui-doc-include-signature t))
 
-(use-package lsp-markdown
-  :ensure lsp-mode
-  :after lsp-mode)
 
 
 (use-package corfu
