@@ -227,9 +227,8 @@
   (lsp-ui-doc-enable t)
   (lsp-ui-doc-header t)
   (lsp-ui-doc-show-with-cursor t)
-  (lsp-ui-doc-include-signature t))
-
-
+  (lsp-ui-doc-include-signature t)
+  :hook (lsp-mode . lsp-ui-mode))
 
 (use-package corfu
   :after (lsp-mode)
