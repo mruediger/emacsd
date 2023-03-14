@@ -251,6 +251,11 @@
 (use-package yaml-mode
   :mode ("\\.sls\\'" . yaml-mode))
 
+(use-package highlight-indent-guides
+  :config
+  (setq highlight-indent-guides-method 'character)
+  :hook (yaml-mode . highlight-indent-guides-mode))
+
 (use-package terraform-mode
   :hook
   ((terraform-mode . lsp)
@@ -308,7 +313,7 @@
  '(custom-safe-themes
    '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" default))
  '(package-selected-packages
-   '(auto-package-update ledger-mode sudo-edit jsonnet-mode go-mode gotest nix-mode terraform-mode yaml-mode corfu lsp-terraform lsp-markdown lsp-origami lsp-ui edit-server which-key direnv origami moody solarized-theme flycheck magit lsp-mode)))
+   '(highlight-indent-guides auto-package-update ledger-mode sudo-edit jsonnet-mode go-mode gotest nix-mode terraform-mode yaml-mode corfu lsp-terraform lsp-markdown lsp-origami lsp-ui edit-server which-key direnv origami moody solarized-theme flycheck magit lsp-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
