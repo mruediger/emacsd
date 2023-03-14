@@ -1,25 +1,12 @@
+
+
+
 ;;
 ;; PACKAGE MANAGEMENT
 ;;
-(require 'package)
-(add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(package-initialize)
-
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-(setq use-package-always-ensure t
-	  use-package-always-defer t)
-
+(setq use-package-always-defer t)
 (require 'use-package)
 
-(use-package auto-package-update
-   :config
-   (setq auto-package-update-delete-old-versions t
-         auto-package-update-interval 4)
-   (auto-package-update-maybe))
 
 ;;
 ;; LOOK AND FEEL
@@ -305,18 +292,3 @@
 
 (use-package ledger-mode)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   '("4c56af497ddf0e30f65a7232a8ee21b3d62a8c332c6b268c81e9ea99b11da0d3" default))
- '(package-selected-packages
-   '(highlight-indent-guides auto-package-update ledger-mode sudo-edit jsonnet-mode go-mode gotest nix-mode terraform-mode yaml-mode corfu lsp-terraform lsp-markdown lsp-origami lsp-ui edit-server which-key direnv origami moody solarized-theme flycheck magit lsp-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
