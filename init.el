@@ -1,5 +1,12 @@
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+(require 'init-ui)
+(require 'init-editor)
+(require 'init-global-keybindings)
+(require 'init-email)
 
+(require 'module-go)
+(require 'module-magit)
 
 ;;
 ;; PACKAGE MANAGEMENT
@@ -7,113 +14,6 @@
 (setq use-package-always-defer t)
 (require 'use-package)
 
-
-;;
-;; LOOK AND FEEL
-;;
-
-;; User Interface
-(setq inhibit-startup-screen t
-      initial-scratch-message nil)
-
-;; cleanup user interface - remove unneded fluff
-(scroll-bar-mode -1)   ; Disable visible scrollbar
-(tool-bar-mode -1)     ; Disable toolbar
-(tooltip-mode -1)      ; Disable tooltips
-(menu-bar-mode -1)     ; Disable menu bar
-(blink-cursor-mode -1) ;
-
-(setq frame-title-format "emacs: %b")
-
-;;split windows proportionally
-(setq window-combination-resize 't)
-
-(set-face-attribute 'default nil
-                    :font "Iosevka"
-                    :height 130)
-
-;; Enable indentation+completion using the TAB key.
-;; `completion-at-point' is often bound to M-TAB.
-(setq tab-always-indent 'complete)
-
-(use-package solarized-theme
-  :init
-  (setq solarized-scale-org-headlines nil)
-  (setq solarized-use-variable-pitch nil)
-  (load-theme 'solarized-light t)
-  (let ((line (face-attribute 'mode-line :underline)))
-    (set-face-attribute 'mode-line          nil :overline   line)
-    (set-face-attribute 'mode-line-inactive nil :overline   line)
-    (set-face-attribute 'mode-line-inactive nil :underline  line)
-    (set-face-attribute 'mode-line          nil :box        nil)
-    (set-face-attribute 'mode-line-inactive nil :box        nil)
-    (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
-
-;; nice mode-line
-(use-package moody
-  :init
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode)
-  (moody-replace-eldoc-minibuffer-message-function)
-  :config
-  (setq x-underline-at-descent-line t))
-
-
-;; Behaviour
-;; don't create tilde files (~)
-(setq make-backup-files nil)
-
-;;always delete trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-
-;;
-;; INPUT SETTINGS ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;
-
-;; Show keybindings with which-key
-(use-package which-key
-  :init (which-key-mode)
-  :config (setq which-key-idle-delay 0.5))
-
-;; MOUSE
-(setq mouse-autoselect-window nil)
-(setq mouse-yank-at-point t)
-(setq make-pointer-invisible nil)
-
-;; KEYBINDINGS
-(keymap-global-set "C-z" 'undo)
-(keymap-global-set "C-x C-z" 'nil)
-(keymap-global-set "<insert>" 'nil)
-(keymap-global-set "C-b" nil)
-(keymap-global-set "C-x C-b" nil)
-(keymap-global-set "C-x b" nil)
-(keymap-global-set "C-b C-p" 'switch-to-prev-buffer)
-(keymap-global-set "C-b b" 'switch-to-buffer)
-(keymap-global-set "C-b C-b" 'ibuffer)
-(keymap-global-set "C-b C-k" 'kill-buffer)
-(keymap-global-set "C-b C-s" (lambda() (interactive) (switch-to-buffer "*scratch*")))
-(keymap-global-set "C-s" 'isearch-forward)
-(keymap-global-set "C-M-s" 'isearch-backward)
-(keymap-global-set "C-S-s" 'isearch-backward)
-(keymap-global-set "C-r" 'query-replace)
-(keymap-global-set "C-o" 'other-window)
-(keymap-global-set "C-x o" 'nil)
-(keymap-global-set "S-DEL" 'kill-whole-line)
-(keymap-global-set "M-1" 'delete-other-windows)
-(keymap-global-set "M-2" 'split-window-below)
-(keymap-global-set "M-3" 'split-window-right)
-(keymap-global-set "M-0" 'delete-window)
-(keymap-set ctl-x-map "v" 'nil)
-
-;;
-;; Editing Config
-;;
-(setq make-backup-files nil)
-(setq-default tab-width 4)
-(line-number-mode)
-(column-number-mode)
-(display-time-mode)
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;;
 ;; Server Mode
@@ -176,13 +76,6 @@
 ;;
 ;; Development
 ;;
-(use-package magit
-  :bind
-  (("C-x g s" . magit-status)
-   ("C-x g l b" . magit-log-buffer-file)
-   ("C-x g l c" . magit-log-current)
-   ("C-x g l a" . magit-log-all)
-   ("C-x g p" . magit-push-current-to-pushremote)))
 
 ;; Stuff
 (add-hook 'after-save-hook
@@ -191,30 +84,6 @@
 ;; flycheck
 (use-package flycheck
   :hook (emacs-lisp . flycheck-mode))
-
-;;LSP
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  ;; Terraform (https://emacs-lsp.github.io/lsp-mode/page/lsp-terraform-ls)
-  (setq lsp-disabled-clients '(tfls)
-        lsp-terraform-ls-enable-show-reference t
-        lsp-semantic-tokens-enable t
-        lsp-semantic-tokens-honor-refresh-requests t
-        lsp-enable-links t)
-  :hook
-  (lsp-mode . lsp-enable-which-key-integration))
-
-(use-package lsp-ui
-  :commands lsp-ui-mode
-  :custom
-  (lsp-ui-doc-enable t)
-  (lsp-ui-doc-header t)
-  (lsp-ui-doc-show-with-cursor t)
-  (lsp-ui-doc-include-signature t)
-  :hook (lsp-mode . lsp-ui-mode))
 
 (use-package corfu
   ;; Optional customizations
@@ -256,16 +125,6 @@
   :bind (:map nix-mode-map ("C-c C-c" . nix-update))
   :hook (nix-mode . lsp-deferred))
 
-(use-package gotest)
-
-(use-package go-mode
-  :init
-  (add-hook 'before-save-hook #'lsp-format-buffer t t)
-  (add-hook 'before-save-hook #'lsp-organize-imports t t)
-  :config (setq go-test-verbose t)
-  :bind (:map go-mode-map ("C-c C-c" . go-test-current-project))
-  :hook (go-mode . lsp-deferred))
-
 (use-package jsonnet-mode)
 
 (use-package python
@@ -273,6 +132,7 @@
   (setq-default indent-tabs-mode nil)
   :config
   (setq python-indent-offset 4)
+  (setq-local compile-command (concat "python " buffer-file-name))
   :bind (:map python-mode-map
               ("C-c C-c" . recompile)))
 
@@ -292,3 +152,4 @@
 
 (use-package ledger-mode)
 
+(use-package notmuch)
