@@ -15,6 +15,9 @@
       lsp-ui-peek-enable t
       lsp-ui-peek-always-show t)
 
+;; disable company and use corfu
+(setq lsp-completion-provider :none)
+
 (add-hook 'lsp-mode-hook 'lsp-enable-which-key-integration)
 (add-hook 'lsp-mode-hook 'lsp-ui-mode)
 
