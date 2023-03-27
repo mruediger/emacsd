@@ -8,6 +8,7 @@
 (require 'module-go)
 (require 'module-magit)
 (require 'module-nix)
+(require 'module-terraform)
 
 ;;
 ;; PACKAGE MANAGEMENT
@@ -100,10 +101,6 @@
   :config
   (setq highlight-indent-guides-method 'character)
   :hook (yaml-mode . highlight-indent-guides-mode))
-
-(use-package terraform-mode
-  :hook
-  ((terraform-mode . terraform-format-on-save-mode)))
 
 (use-package jsonnet-mode)
 
