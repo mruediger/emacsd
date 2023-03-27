@@ -7,6 +7,7 @@
 
 (require 'module-go)
 (require 'module-magit)
+(require 'module-nix)
 
 ;;
 ;; PACKAGE MANAGEMENT
@@ -116,14 +117,6 @@
   :hook
   ((terraform-mode . lsp)
    (terraform-mode . terraform-format-on-save-mode)))
-
-(use-package nix-mode
-  :config
-  (defun nix-update () (interactive)
-         (let ((default-directory "/sudo::"))
-           (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/nixos-config#'")))
-  :bind (:map nix-mode-map ("C-c C-c" . nix-update))
-  :hook (nix-mode . lsp-deferred))
 
 (use-package jsonnet-mode)
 
