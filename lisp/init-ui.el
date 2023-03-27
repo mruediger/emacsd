@@ -32,6 +32,11 @@
 (moody-replace-eldoc-minibuffer-message-function)
 
 
+
+
+(set-fontset-font "fontset-default" nil
+                  (font-spec :size 20 :name "FontAwesome"))
+
 (set-face-attribute 'default nil
                     :font "Iosevka"
                     :height 130)
