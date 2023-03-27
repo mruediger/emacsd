@@ -101,8 +101,7 @@
   :init
   (global-corfu-mode))
 
-(use-package yasnippet
-  :hook ((lsp-mode . yas-minor-mode)))
+(use-package yasnippet)
 
 ;; Languages
 (use-package yaml-mode
@@ -115,8 +114,7 @@
 
 (use-package terraform-mode
   :hook
-  ((terraform-mode . lsp)
-   (terraform-mode . terraform-format-on-save-mode)))
+  ((terraform-mode . terraform-format-on-save-mode)))
 
 (use-package jsonnet-mode)
 
