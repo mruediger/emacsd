@@ -95,6 +95,8 @@
 
 ;; Languages
 (use-package yaml-mode
+  :config
+  (setq yas-indent-line 'fixed)
   :mode ("\\.sls\\'" . yaml-mode))
 
 (use-package highlight-indent-guides
