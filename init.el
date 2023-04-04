@@ -33,7 +33,8 @@
 				             (emacs-lisp . t)
 				             (python     . t)
                                              (R          . t)
-                                             (gnuplot    . t)))
+                                             (gnuplot    . t)
+                                             (js         . t)))
   (setq org-confirm-babel-evaluate nil)
   (setq org-duration-format (quote h:mm))
   ;; Pretty code blocks
