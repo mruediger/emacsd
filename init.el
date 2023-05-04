@@ -9,56 +9,13 @@
 (require 'module-magit)
 (require 'module-nix)
 (require 'module-terraform)
+(require 'module-org)
 
 ;;
 ;; PACKAGE MANAGEMENT
 ;;
 (setq use-package-always-defer t)
 (require 'use-package)
-
-
-;;
-;; Org Mode
-;;
-(use-package org
-  :init
-  (defun org-agenda-show-agenda-and-todo () (interactive) (org-agenda nil "c"))
-  (defun mr/org-open-inbox () (interactive)
-	(find-file "~/org/inbox.org"))
-  :config
-  ;; add <s support
-  (add-to-list 'org-modules 'org-tempo t)
-  (org-babel-do-load-languages 'org-babel-load-languages
-			                   '((shell      . t)
-				             (emacs-lisp . t)
-				             (python     . t)
-                                             (R          . t)
-                                             (gnuplot    . t)
-                                             (js         . t)))
-  (setq org-confirm-babel-evaluate nil)
-  (setq org-duration-format (quote h:mm))
-  ;; Pretty code blocks
-  (setq org-src-fontify-natively t
-        org-src-tab-acts-natively t)
-  (setq org-directory "~/org"
-        org-refile-use-outline-path 'file)
-  (setq org-agenda-files '("~/org")
-        org-agenda-window-setup (quote current-window))
-  (setq org-capture-templates
-        '(("t" "task" entry (file "inbox.org") "* TODO %?\n")
-          ("n" "note" entry (file "inbox.org") "* TODO %?\n %a")))
-  (setq org-export-with-toc nil)
-  (setq org-agenda-custom-commands
-        '(("c" "Agenda and TODO" ((agenda "" ((org-agenda-span 9)
-                                              (org-agenda-start-day "-2d")))
-                                  (alltodo "" ((org-agenda-todo-ignore-deadlines (quote all))
-                                               (org-agenda-todo-ignore-scheduled (quote all))))))))
-  :hook (org-mode . visual-line-mode)
-  :bind
-  (("C-x o a" . org-agenda-show-agenda-and-todo)
-   ("C-x o t" . org-todo-list)
-   ("C-x o c" . org-capture)
-   ("C-x o i" . mr/org-open-inbox)))
 
 ;; direnv
 (use-package direnv
