@@ -1,4 +1,4 @@
-(require 'module-lsp)
+(require 'eglot)
 
 ;; switch to go-mode if go-ts-mode gets loaded
 (add-hook 'go-ts-mode-hook 'go-mode)
@@ -11,21 +11,20 @@
 
   (setq go-test-verbose t)
 
-
-  (defun lsp-go-install-save-hooks ()
-    (add-hook 'before-save-hook #'lsp-format-buffer t t)
-    (add-hook 'before-save-hook #'lsp-organize-imports t t))
-
   (add-hook 'go-mode-hook
             (lambda ()
               (setq tab-width 2)
               (setq standard-indent 2)
               (setq indent-tabs-mode nil)))
 
+  (add-hook 'go-mode-hook
+            (lamba ()
+                   (add-hook 'before-save-hook #'eglot-format-buffer -10 t)))
 
+  (add-hook 'go-mode-hook
+            (lamba ()
+                   (add-hook 'before-save-hook #'eglot-code-action-organize-imports -10 t)))
 
-  (add-hook 'go-mode-hook 'lsp-go-install-save-hooks)
-  (add-hook 'go-mode-hook 'flycheck-mode)
-  (add-hook 'go-mode-hook 'lsp-deferred))
+  (add-hook 'go-mode-hook 'eglot-ensure))
 
 (provide 'module-go)
