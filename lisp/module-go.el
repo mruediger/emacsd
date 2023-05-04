@@ -18,11 +18,11 @@
               (setq indent-tabs-mode nil)))
 
   (add-hook 'go-mode-hook
-            (lamba ()
+            (lambda ()
                    (add-hook 'before-save-hook #'eglot-format-buffer -10 t)))
 
   (add-hook 'go-mode-hook
-            (lamba ()
+            (lambda ()
                    (add-hook 'before-save-hook #'eglot-code-action-organize-imports -10 t)))
 
   (add-hook 'go-mode-hook 'eglot-ensure))
