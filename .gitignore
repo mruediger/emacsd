@@ -5,5 +5,8 @@
 /history
 /network-security.data
 /.org-id-locations
-/bookmarks
 /.last-package-update-day
+/straight/
+/request/
+/eln-cache/
+/.trello/

@@ -1,0 +1,21 @@
+;;;; Emacs Bookmark Format Version 1;;;; -*- coding: utf-8-emacs; mode: lisp-data -*-
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("ingress"
+ (filename . "~/src/justwatch/src/terraform/infra/ingress/")
+ (front-context-string . "00-provider-gen.")
+ (rear-context-string . "52 May  9 15:11 ")
+ (position . 196)
+ (last-modified 25691 23434 282865 595000))
+("org-capture-last-stored"
+ (filename . "~/org/inbox.org")
+ (front-context-string . "* TODO check jw-")
+ (rear-context-string . "          :edc:\n")
+ (position . 1874)
+ (last-modified 25691 26176 372868 853000))
+("timetracking.org"
+ (filename . "~/src/justwatch/org/timetracking.org")
+ (front-context-string)
+ (rear-context-string . "sticsearch tests"))
+)
