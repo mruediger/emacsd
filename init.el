@@ -156,3 +156,12 @@
 (use-package ledger-mode)
 
 (use-package notmuch)
+
+(use-package chatgpt-shell :straight t
+  :config
+   :custom
+   ((chatgpt-shell-openai-key
+     (lambda ()
+       (auth-source-pass-get 'secret "dev/openai-key")))))
+
+(use-package dall-e-shell :straight t)
