@@ -6,8 +6,6 @@
 (require 'init-email)
 
 (require 'module-go)
-(require 'module-magit)
-(require 'module-nix)
 (require 'module-terraform)
 
 ;;
@@ -31,7 +29,7 @@
 (require 'use-package)
 
 ;; direnv
-(use-package direnv
+(use-package direnv :straight t
   :init
   (direnv-mode))
 
@@ -85,19 +83,47 @@
   :hook
   (org-mode . visual-line-mode))
 
-
-
+;;
+;; Magit
+;;
+(use-package magit :straight t
+  :bind
+  (("C-x g s"   . magit-status)
+   ("C-x g p"   . magit-push-current-to-pushremote)
+   ("C-x g l b" . magit-log-buffer-file)
+   ("C-x g l c" . magit-log-current)
+   ("C-x g l a" . magit-log-all)))
 
 ;;
 ;; Development
 ;;
+(use-package eglot
+  :config
+  (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
+  (add-hook 'eglot-managed-mode-hook (lambda ()
+                                       (add-hook 'before-save-hook #'eglot-format-buffer nil t)
+                                       (add-hook 'before-save-hook #'eglot-organize-imports-on-save nil t)))
+  :hook
+  (nix-mode . eglot-ensure))
+
+;;
+;; Nix
+;;
+(use-package nix-mode :straight t
+  :config
+  (defun nix-update () (interactive)
+         (let ((default-directory "/sudo::"))
+           (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/nixos-config#'")))
+  :bind ("C-c C-c" . nix-update)
+  :hook ((nix-mode . eglot-format-buffer-on-save)
+         (nix-mode . eglot-ensure)))
 
 ;; Stuff
 (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
 
 ;; flycheck
-(use-package flycheck
+(use-package flycheck :straight t
   :hook (emacs-lisp . flycheck-mode))
 
 (use-package corfu
@@ -115,20 +141,22 @@
   :init
   (global-corfu-mode))
 
-(use-package yasnippet)
+(use-package yasnippet :straight t
+  :init
+  (use-package yasnippet-snippets :straight t))
 
 ;; Languages
-(use-package yaml-mode
+(use-package yaml-mode :straight t
   :config
   (setq yas-indent-line 'fixed)
   :mode ("\\.sls\\'" . yaml-mode))
 
-(use-package highlight-indent-guides
+(use-package highlight-indent-guides :straight t
   :config
   (setq highlight-indent-guides-method 'character)
   :hook (yaml-mode . highlight-indent-guides-mode))
 
-(use-package jsonnet-mode)
+(use-package jsonnet-mode :straight t)
 
 (use-package python
   :init
@@ -140,7 +168,7 @@
               ("C-c C-c" . recompile)))
 
 ;;SUDO-EDIT
-(use-package sudo-edit)
+(use-package sudo-edit :straight t)
 
 (use-package tramp
   :config
@@ -153,9 +181,7 @@
 				 (tramp-remote-shell-args ("-c"))
 				 (tramp-default-port 22))))
 
-(use-package ledger-mode)
-
-(use-package notmuch)
+(use-package ledger-mode :straight t)
 
 (use-package chatgpt-shell :straight t
   :config
@@ -165,3 +191,5 @@
        (auth-source-pass-get 'secret "dev/openai-key")))))
 
 (use-package dall-e-shell :straight t)
+
+(use-package copy-as-format :straight t)
