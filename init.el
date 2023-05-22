@@ -6,7 +6,7 @@
 (require 'init-email)
 
 (require 'module-go)
-(require 'module-terraform)
+;(require 'module-terraform)
 
 ;;
 ;; PACKAGE MANAGEMENT
@@ -101,10 +101,10 @@
   :config
   (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
   (add-hook 'eglot-managed-mode-hook (lambda ()
-                                       (add-hook 'before-save-hook #'eglot-format-buffer nil t)
-                                       (add-hook 'before-save-hook #'eglot-organize-imports-on-save nil t)))
+                                       (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
   :hook
-  (nix-mode . eglot-ensure))
+  (nix-mode . eglot-ensure)
+  (terraform-mode . eglot-ensure))
 
 ;;
 ;; Nix
@@ -114,9 +114,12 @@
   (defun nix-update () (interactive)
          (let ((default-directory "/sudo::"))
            (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/nixos-config#'")))
-  :bind ("C-c C-c" . nix-update)
-  :hook ((nix-mode . eglot-format-buffer-on-save)
-         (nix-mode . eglot-ensure)))
+  :bind ("C-c C-c" . nix-update))
+
+(use-package terraform-mode :straight t
+  :hook
+  ;; workarround for https://github.com/hashicorp/terraform-ls/issues/1067
+  (terraform-mode . (lambda () (setq-local create-lockfiles nil))))
 
 ;; Stuff
 (add-hook 'after-save-hook
