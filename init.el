@@ -178,7 +178,7 @@
   (add-to-list 'tramp-methods
 			   '("gcssh"
 				 (tramp-login-program "gcloud")
-				 (tramp-login-args (("compute ssh") ("%h") ("--ssh-flag='-l %u'")))
+				 (tramp-login-args (("compute ssh --tunnel-through-iap") ("%h") ("--ssh-flag='-l %u'")))
 				 (tramp-async-args (("-q")))
 				 (tramp-remote-shell "/bin/bash")
 				 (tramp-remote-shell-args ("-c"))
