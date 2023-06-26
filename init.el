@@ -1,6 +1,5 @@
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(require 'init-ui)
 (require 'init-editor)
 (require 'init-global-keybindings)
 (require 'init-email)
@@ -27,6 +26,72 @@
 (straight-use-package 'use-package)
 (setq use-package-always-defer t)
 (require 'use-package)
+
+;;
+;; Setup UI
+;;
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
+
+;; cleanup user interface - remove unneded fluff
+(scroll-bar-mode -1)   ; Disable visible scrollbar
+(tool-bar-mode -1)     ; Disable toolbar
+(tooltip-mode -1)      ; Disable tooltips
+(menu-bar-mode -1)     ; Disable menu bar
+(blink-cursor-mode -1)
+
+;; mode line settings
+(line-number-mode t)
+(column-number-mode t)
+(size-indication-mode t)
+(display-time-mode t)
+
+(set-fontset-font "fontset-default" nil
+                  (font-spec :size 20 :name "FontAwesome"))
+
+(set-face-attribute 'default nil
+                    :font "Iosevka"
+                    :height 130)
+
+(setq frame-title-format "emacs: %b")
+
+;;split windows proportionally
+(setq window-combination-resize 't)
+
+;; MOUSE
+(setq mouse-autoselect-window nil)
+(setq mouse-yank-at-point t)
+(setq make-pointer-invisible nil)
+
+(use-package which-key :straight t
+  :init (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.5))
+
+(use-package solarized-theme :straight t
+  :init (load-theme 'solarized-light t)
+  :config
+  (setq solarized-scale-org-headlines nil
+        solarized-use-variable-pitch nil
+        solarized-height-plus-1 1.0
+        solarized-height-plus-2 1.0
+        solarized-height-plus-3 1.0
+        solarized-height-plus-4 1.0)
+
+  (let ((line (face-attribute 'mode-line :underline)))
+    (set-face-attribute 'mode-line          nil :overline   line)
+    (set-face-attribute 'mode-line-inactive nil :overline   line)
+    (set-face-attribute 'mode-line-inactive nil :underline  line)
+    (set-face-attribute 'mode-line          nil :box        nil)
+    (set-face-attribute 'mode-line-inactive nil :box        nil)
+    (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
+
+(use-package moody :straight t
+  :init
+  (setq x-underline-at-descent-line t)
+  (moody-replace-mode-line-buffer-identification)
+  (moody-replace-vc-mode)
+  (moody-replace-eldoc-minibuffer-message-function))
 
 ;; direnv
 (use-package direnv :straight t
