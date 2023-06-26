@@ -194,7 +194,7 @@
 (use-package flycheck :straight t
   :hook (emacs-lisp . flycheck-mode))
 
-(use-package corfu
+(use-package corfu :straight t
   ;; Optional customizations
   ;; :custom
   ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
