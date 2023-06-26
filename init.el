@@ -9,7 +9,7 @@
 ;(require 'module-terraform)
 
 ;;
-;; PACKAGE MANAGEMENT
+;; Setup Package Management
 ;;
 (defvar bootstrap-version)
 (let ((bootstrap-file
