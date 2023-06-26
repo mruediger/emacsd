@@ -5,7 +5,6 @@
 (require 'init-email)
 
 (require 'module-go)
-;(require 'module-terraform)
 
 ;;
 ;; Setup Package Management
