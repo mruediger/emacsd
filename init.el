@@ -178,7 +178,7 @@
   :config
   (defun nix-update () (interactive)
          (let ((default-directory "/sudo::"))
-           (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/nixos-config#'")))
+           (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")))
   :bind ("C-c C-c" . nix-update))
 
 (use-package terraform-mode :straight t
