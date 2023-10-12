@@ -23,7 +23,6 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
-(setq use-package-always-defer t)
 (require 'use-package)
 
 ;;
