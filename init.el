@@ -260,3 +260,13 @@
 (use-package dall-e-shell :straight t)
 
 (use-package copy-as-format :straight t)
+
+(use-package use-package-chords
+  :straight t
+  :init (key-chord-mode 1))
+
+(use-package "window"
+  :chords ((" 0" . delete-window)
+           (" 1" . delete-other-windows)
+           (" 2" . split-window-below)
+           (" 3" . split-window-right)))
