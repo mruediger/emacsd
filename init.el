@@ -4,8 +4,6 @@
 (require 'init-global-keybindings)
 (require 'init-email)
 
-(require 'module-go)
-
 ;;
 ;; Setup Package Management
 ;;
@@ -224,6 +222,13 @@
   :hook (yaml-mode . highlight-indent-guides-mode))
 
 (use-package jsonnet-mode :straight t)
+
+;;TODO finish migration
+;;(use-package go-mode :straight t
+;;  :bind (:map go-mode-map "C-c C-c" 'go-test-current-project)
+;;  :hook
+;;  (go-ts-mode-hook . go-mode)
+;;  (go-mode . subword-mode))
 
 (use-package python
   :init
