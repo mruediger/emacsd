@@ -166,7 +166,8 @@
                                        (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
   :hook
   (nix-mode . eglot-ensure)
-  (terraform-mode . eglot-ensure))
+  (terraform-mode . eglot-ensure)
+  (go-mode . eglot-ensure))
 
 ;;
 ;; Nix
@@ -223,13 +224,6 @@
 
 (use-package jsonnet-mode :straight t)
 
-;;TODO finish migration
-;;(use-package go-mode :straight t
-;;  :bind (:map go-mode-map "C-c C-c" 'go-test-current-project)
-;;  :hook
-;;  (go-ts-mode-hook . go-mode)
-;;  (go-mode . subword-mode))
-
 (use-package python
   :init
   (setq-default indent-tabs-mode nil)
@@ -240,6 +234,16 @@
                    (setq-local compile-command (concat "python " buffer-file-name))))
   :bind (:map python-mode-map
               ("C-c C-c" . compile)))
+(use-package go-mode :straight t
+  :hook
+  (go-mode . (lambda () (setq tab-width 2))))
+
+(use-package gotest :straight t
+  :after go-mode
+  :config
+  (setq go-test-verbose t)
+  :bind (:map go-mode-map
+              ("C-c C-c" . go-test-current-project)))
 
 ;;SUDO-EDIT
 (use-package sudo-edit :straight t)
