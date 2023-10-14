@@ -156,6 +156,9 @@
    ("C-x g l c" . magit-log-current)
    ("C-x g l a" . magit-log-all)))
 
+(use-package forge :straight t
+  :after magit)
+
 ;;
 ;; Development
 ;;
