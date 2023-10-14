@@ -164,8 +164,12 @@
 ;;
 (use-package eglot
   :config
+  (defun my-eglot-organize-imports () (interactive)
+	 (eglot-code-actions nil nil "source.organizeImports" t))
+
   (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
   (add-hook 'eglot-managed-mode-hook (lambda ()
+                                       (add-hook 'before-save-hook #'my-eglot-organize-imports nil t)
                                        (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
   :hook
   (nix-mode . eglot-ensure)
