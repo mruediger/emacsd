@@ -176,7 +176,7 @@
   (defun nix-update () (interactive)
          (let ((default-directory "/sudo::"))
            (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")))
-  :bind ("C-c C-c" . nix-update))
+  :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
 
 (use-package terraform-mode :straight t
   :hook
@@ -235,12 +235,17 @@
   (setq-default indent-tabs-mode nil)
   :config
   (setq python-indent-offset 4)
-  (setq-local compile-command (concat "python " buffer-file-name))
+  :hook
+  (python-mode . (lambda ()
+                   (setq-local compile-command (concat "python " buffer-file-name))))
   :bind (:map python-mode-map
-              ("C-c C-c" . recompile)))
+              ("C-c C-c" . compile)))
 
 ;;SUDO-EDIT
 (use-package sudo-edit :straight t)
+
+(use-package elisp
+  :bind ("C-c C-c" . eval-buffer))
 
 (use-package tramp
   :config
