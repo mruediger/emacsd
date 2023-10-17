@@ -119,6 +119,9 @@
 
   (setq org-duration-format (quote h:mm))
 
+  (setq org-lowest-priority ?E)
+  (setq org-default-priority ?E)
+
   (setq org-directory "~/org"
         org-refile-use-outline-path 'file)
   (setq org-agenda-files '("~/org")
