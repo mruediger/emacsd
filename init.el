@@ -177,7 +177,7 @@
   :hook
   (nix-mode . eglot-ensure)
   (terraform-mode . eglot-ensure)
-  (go-mode . eglot-ensure))
+  (go-ts-mode . eglot-ensure))
 
 ;;
 ;; Nix
@@ -244,15 +244,16 @@
                    (setq-local compile-command (concat "python " buffer-file-name))))
   :bind (:map python-mode-map
               ("C-c C-c" . compile)))
-(use-package go-mode :straight t
+
+(use-package go-ts-mode
   :hook
-  (go-mode . (lambda () (setq tab-width 2))))
+  (go-ts-mode . (lambda () (setq tab-width 2))))
 
 (use-package gotest :straight t
-  :after go-mode
+  :after go-ts-mode
   :config
   (setq go-test-verbose t)
-  :bind (:map go-mode-map
+  :bind (:map go-ts-mode-map
               ("C-c C-c" . go-test-current-project)))
 
 ;;SUDO-EDIT
