@@ -246,6 +246,8 @@
               ("C-c C-c" . compile)))
 
 (use-package go-ts-mode
+  :config
+  (setq go-ts-mode-indent-offset 2)
   :hook
   (go-ts-mode . (lambda () (setq tab-width 2))))
 
