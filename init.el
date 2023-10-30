@@ -102,6 +102,8 @@
 (use-package org :straight t
   :config
   (use-package org-trello :straight (:build (:not compile)))
+  (use-package ob-http :straight t)
+  (use-package ob-graphql :straight t)
 
   (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages 'org-babel-load-languages
@@ -110,7 +112,29 @@
 			         (python     . t)
                                  (R          . t)
                                  (gnuplot    . t)
+                                 (http       . t)
+                                 (graphql    . t)
                                  (js         . t)))
+
+  (defun org-babel-execute:json (body params)
+    (let ((jq (cdr (assoc :jq params)))
+        (node (cdr (assoc :node params))))
+    (cond
+     (jq
+      (with-temp-buffer
+        ;; Insert the JSON into the temp buffer
+        (insert body)
+        ;; Run jq command on the whole buffer, and replace the buffer
+        ;; contents with the result returned from jq
+        (shell-command-on-region (point-min) (point-max) (format "jq -r \"%s\"" jq) nil 't)
+        ;; Return the contents of the temp buffer as the result
+        (buffer-string)))
+     (node
+      (with-temp-buffer
+        (insert (format "const it = %s;" body))
+        (insert node)
+        (shell-command-on-region (point-min) (point-max) "node -p" nil 't)
+        (buffer-string))))))
 
   (setq org-confirm-babel-evaluate nil)
   ;; Pretty code blocks
