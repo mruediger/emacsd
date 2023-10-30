@@ -297,3 +297,5 @@
            (" 1" . delete-other-windows)
            (" 2" . split-window-below)
            (" 3" . split-window-right)))
+
+(use-package csv-mode :straight t)
