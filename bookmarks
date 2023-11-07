@@ -16,6 +16,5 @@
  (last-modified 25691 26176 372868 853000))
 ("timetracking.org"
  (filename . "~/src/justwatch/org/timetracking.org")
- (front-context-string)
- (rear-context-string . "sticsearch tests"))
+ (front-context-string))
 )
