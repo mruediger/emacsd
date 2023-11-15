@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: log error
+# key: lerr
+# --
+if err != nil {
+	log.Println("$1:", err)
+}
