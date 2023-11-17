@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: test error
+# key: terr
+# --
+if err != nil {
+	t.Error(err)
+}
