@@ -104,6 +104,7 @@
   (use-package org-trello :straight (:build (:not compile)))
   (use-package ob-http :straight t)
   (use-package ob-graphql :straight t)
+  (use-package ox-hugo :straight t)
 
   (add-to-list 'org-modules 'org-tempo t)
   (org-babel-do-load-languages 'org-babel-load-languages
