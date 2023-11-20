@@ -47,7 +47,7 @@
 
 (set-face-attribute 'default nil
                     :font "Iosevka"
-                    :height 130)
+                    :height 120)
 
 (setq frame-title-format "emacs: %b")
 
