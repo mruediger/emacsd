@@ -202,7 +202,8 @@
   :hook
   (nix-mode . eglot-ensure)
   (terraform-mode . eglot-ensure)
-  (go-ts-mode . eglot-ensure))
+  (go-ts-mode . eglot-ensure)
+  (yaml-ts-mode . eglot-ensure))
 
 (use-package flycheck :straight t
   :hook (emacs-lisp . flycheck-mode))
