@@ -227,6 +227,12 @@
   :init
   (use-package yasnippet-snippets :straight t))
 
+(use-package flyspell
+  :commands (flyspell-mode flyspell-prog-mode)
+  :after ispell
+  :hook ((text-mode . turn-on-flyspell)
+         (prog-mode . flyspell-prog-mode)))
+
 ;;
 ;; Languages
 ;;
