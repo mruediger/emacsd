@@ -204,26 +204,6 @@
   (terraform-mode . eglot-ensure)
   (go-ts-mode . eglot-ensure))
 
-;;
-;; Nix
-;;
-(use-package nix-mode :straight t
-  :config
-  (defun nix-update () (interactive)
-         (let ((default-directory "/sudo::"))
-           (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")))
-  :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
-
-(use-package terraform-mode :straight t
-  :hook
-  ;; workarround for https://github.com/hashicorp/terraform-ls/issues/1067
-  (terraform-mode . (lambda () (setq-local create-lockfiles nil))))
-
-;; Stuff
-(add-hook 'after-save-hook
-            'executable-make-buffer-file-executable-if-script-p)
-
-;; flycheck
 (use-package flycheck :straight t
   :hook (emacs-lisp . flycheck-mode))
 
@@ -246,16 +226,29 @@
   :init
   (use-package yasnippet-snippets :straight t))
 
+;;
 ;; Languages
-(use-package yaml-mode :straight t
+;;
+(use-package nix-mode :straight t
   :config
-  (setq yas-indent-line 'fixed)
-  :mode ("\\.sls\\'" . yaml-mode))
+  (defun nix-update () (interactive)
+         (let ((default-directory "/sudo::"))
+           (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")))
+  :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
+
+(use-package terraform-mode :straight t
+  :hook
+  ;; workarround for https://github.com/hashicorp/terraform-ls/issues/1067
+  (terraform-mode . (lambda () (setq-local create-lockfiles nil))))
+
+;; Stuff
+(add-hook 'after-save-hook
+            'executable-make-buffer-file-executable-if-script-p)
 
 (use-package highlight-indent-guides :straight t
   :config
   (setq highlight-indent-guides-method 'character)
-  :hook (yaml-mode . highlight-indent-guides-mode))
+  :hook (yaml-ts-mode . highlight-indent-guides-mode))
 
 (use-package jsonnet-mode :straight t)
 
@@ -283,7 +276,6 @@
   :bind (:map go-ts-mode-map
               ("C-c C-c" . go-test-current-project)))
 
-;;SUDO-EDIT
 (use-package sudo-edit :straight t)
 
 (use-package elisp
@@ -303,7 +295,6 @@
 (use-package ledger-mode :straight t)
 
 (use-package chatgpt-shell :straight t
-  :config
   :custom
   ((chatgpt-shell-openai-key
     (lambda ()
@@ -313,8 +304,7 @@
 
 (use-package copy-as-format :straight t)
 
-(use-package use-package-chords
-  :straight t
+(use-package use-package-chords :straight t
   :init (key-chord-mode 1))
 
 (use-package "window"
