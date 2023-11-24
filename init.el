@@ -64,24 +64,9 @@
   :config
   (setq which-key-idle-delay 0.5))
 
-(use-package solarized-theme :straight t
+(use-package zenburn-theme :straight t
   :init
-  (setq solarized-scale-org-headlines nil
-        solarized-use-variable-pitch nil
-        solarized-height-plus-1 1.0
-        solarized-height-plus-2 1.0
-        solarized-height-plus-3 1.0
-        solarized-height-plus-4 1.0)
-
-  (load-theme 'solarized-light t)
-
-  (let ((line (face-attribute 'mode-line :underline)))
-    (set-face-attribute 'mode-line          nil :overline   line)
-    (set-face-attribute 'mode-line-inactive nil :overline   line)
-    (set-face-attribute 'mode-line-inactive nil :underline  line)
-    (set-face-attribute 'mode-line          nil :box        nil)
-    (set-face-attribute 'mode-line-inactive nil :box        nil)
-    (set-face-attribute 'mode-line-inactive nil :background "#f9f2d9")))
+  (load-theme 'zenburn t))
 
 (use-package moody :straight t
   :init
