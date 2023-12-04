@@ -336,3 +336,6 @@
   :config
   (unless (server-running-p)
     (server-start)))
+
+
+(setq compilation-read-command nil)
