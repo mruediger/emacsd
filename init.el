@@ -289,7 +289,7 @@
   :mode "\\.rs\\'"
   :hook
   (rust-ts-mode . (lambda ()
-                   (setq-local compile-command "cargo test")))
+                   (setq-local compile-command "cargo test -- --nocapture")))
   :bind (:map rust-ts-mode-map
               ("C-c C-c" . compile)))
 
