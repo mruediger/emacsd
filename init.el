@@ -64,9 +64,9 @@
   :config
   (setq which-key-idle-delay 0.5))
 
-(use-package zenburn-theme :straight t
-  :init
-  (load-theme 'zenburn t))
+(use-package gruvbox-theme :straight t
+  :config
+  (load-theme 'gruvbox-light-soft t))
 
 (use-package moody :straight t
   :init
