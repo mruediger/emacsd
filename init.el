@@ -235,6 +235,12 @@
 
   (setq project-find-functions '(mr/project-try-rust project-try-vc)))
 
+(use-package compile
+  :config
+  (setq compilation-always-kill t)
+  (setq compilation-scroll-output t)
+  (setq compilation-read-command nil))
+
 ;;
 ;; Languages
 ;;
