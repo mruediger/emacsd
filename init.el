@@ -66,7 +66,7 @@
 
 (use-package gruvbox-theme :straight t
   :config
-  (load-theme 'gruvbox-light-soft t))
+  (load-theme 'gruvbox-light-medium t))
 
 (use-package moody :straight t
   :init
@@ -259,6 +259,9 @@
 ;; Stuff
 (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
+
+(use-package yaml-ts-mode
+    :mode "\\.ya?ml\\'")
 
 (use-package highlight-indent-guides :straight t
   :config
