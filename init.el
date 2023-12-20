@@ -232,8 +232,14 @@
            (is-vc-root (file-directory-p (expand-file-name ".git" module-root))))
       (when (and module-root (not is-vc-root))
         (cons 'transient module-root))))
-
   (setq project-find-functions '(mr/project-try-rust project-try-vc)))
+
+(use-package ag :straight t
+  :config
+  (defun mr/ag-project-with-thing-at-point ()
+    (interactive)
+    (let ((thing (thing-at-point 'symbol)))
+      (ag-project thing))))
 
 (use-package compile
   :config
