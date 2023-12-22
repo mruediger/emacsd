@@ -2,7 +2,13 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("ingress"
+(("content-api contentapi_query_response_code"
+ (filename . "~/src/justwatch/src/jw-content-api/lib/instrumentation/instrumentation.go")
+ (front-context-string . "	queryResponseCo")
+ (rear-context-string . "rt).Seconds()))\n")
+ (position . 4609)
+ (last-modified 25986 47665 175901 612000))
+("ingress"
  (filename . "~/src/justwatch/src/terraform/infra/ingress/")
  (front-context-string . "00-provider-gen.")
  (rear-context-string . "52 May  9 15:11 ")
