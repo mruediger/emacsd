@@ -13,3 +13,6 @@
 /chatgpt/
 /games/
 /forge-database.sqlite
+/forge-database*
+/elpa/
+/projects
