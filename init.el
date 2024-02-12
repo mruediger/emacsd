@@ -1,27 +1,13 @@
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(defconst my-local-dir (expand-file-name "local/" user-emacs-directory))
+(defconst my-lisp-dir (expand-file-name "lisp/" user-emacs-directory))
 
+(add-to-list 'load-path my-lisp-dir)
+
+(require 'init-bootstrap)
+(require 'init-gc)
 (require 'init-editor)
 (require 'init-global-keybindings)
 (require 'init-email)
-
-;;
-;; Setup Package Management
-;;
-(defvar bootstrap-version)
-(let ((bootstrap-file
-       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
-      (bootstrap-version 6))
-  (unless (file-exists-p bootstrap-file)
-    (with-current-buffer
-        (url-retrieve-synchronously
-         "https://raw.githubusercontent.com/radian-software/straight.el/develop/install.el"
-         'silent 'inhibit-cookies)
-      (goto-char (point-max))
-      (eval-print-last-sexp)))
-  (load bootstrap-file nil 'nomessage))
-
-(straight-use-package 'use-package)
-(require 'use-package)
 
 ;;
 ;; Setup UI
@@ -171,6 +157,22 @@
 
 (use-package forge :straight t
   :after magit)
+
+;;(use-package code-review
+;;  :straight (:host github :repo "phelrine/code-review" :branch "fix/closql-update")
+;;  :after magit
+;;  :custom
+;;  (code-review-download-dir (concat minemacs-cache-dir "code-review/"))
+;;  (code-review-db-database-file (concat minemacs-local-dir "code-review/database.sqlite"))
+;;  (code-review-log-file (concat minemacs-local-dir "code-review/code-review-error.log"))
+;;  (code-review-auth-login-marker 'forge) ; use the same credentials as forge in ~/.authinfo.gpg
+;;  :init
+;;  (with-eval-after-load 'magit
+;;    (transient-append-suffix 'magit-merge "i"
+;;      '("y" "Review pull-request" code-review-forge-pr-at-point)))
+;;  (with-eval-after-load 'forge
+;;    (transient-append-suffix 'forge-dispatch "c u"
+;;      '("c r" "review pull-request" code-review-forge-pr-at-point))))
 
 ;;
 ;; Development
@@ -326,6 +328,11 @@
 
 (use-package ledger-mode :straight t)
 
+(use-package markdown
+  :hook
+  (markdown-mode . visual-line-mode)
+  (markdown-mode . flyspell-mode))
+
 (use-package chatgpt-shell :straight t
   :custom
   ((chatgpt-shell-openai-key
@@ -354,3 +361,16 @@
 
 
 (setq compilation-read-command nil)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
+ '(org-trello-current-prefix-keybinding "C-c o" nil (org-trello)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
