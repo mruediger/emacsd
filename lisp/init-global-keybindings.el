@@ -1,3 +1,8 @@
+(use-package which-key :straight t
+  :init (which-key-mode)
+  :config
+  (setq which-key-idle-delay 0.5))
+
 (keymap-global-set "C-z" 'undo)
 (keymap-global-set "C-x C-z" 'nil)
 (keymap-global-set "<insert>" 'nil)

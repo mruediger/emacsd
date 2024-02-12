@@ -45,11 +45,6 @@
 (setq mouse-yank-at-point t)
 (setq make-pointer-invisible nil)
 
-(use-package which-key :straight t
-  :init (which-key-mode)
-  :config
-  (setq which-key-idle-delay 0.5))
-
 (use-package gruvbox-theme :straight t
   :config
   (load-theme 'gruvbox-light-medium t))
