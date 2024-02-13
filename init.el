@@ -11,6 +11,7 @@
 (require 'init-keybindings)
 (require 'init-email)
 
+(require 'init-files)
 
 ;;
 ;; Setup UI
