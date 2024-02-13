@@ -6,7 +6,7 @@
 (require 'init-bootstrap)
 (require 'init-gc)
 (require 'init-editor)
-(require 'init-global-keybindings)
+(require 'init-keybindings)
 (require 'init-email)
 
 ;;
