@@ -31,11 +31,8 @@
   :config
   (load-theme 'gruvbox-light-medium t))
 
-(use-package moody :straight t
-  :init
-  (setq x-underline-at-descent-line t)
-  (moody-replace-mode-line-buffer-identification)
-  (moody-replace-vc-mode)
-  (moody-replace-eldoc-minibuffer-message-function))
+(use-package doom-modeline
+  :straight t
+  :hook (after-init . doom-modeline-mode))
 
 (provide 'init-ui)
