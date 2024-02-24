@@ -15,6 +15,9 @@
 
 (require 'init-completion)
 
+
+(require 'module-go)
+
 ;;
 ;; Setup UI
 ;;
@@ -131,19 +134,6 @@
                    (setq-local compile-command (concat "python " buffer-file-name))))
   :bind (:map python-mode-map
               ("C-c C-c" . compile)))
-
-(use-package go-ts-mode
-  :config
-  (setq go-ts-mode-indent-offset 2)
-  :hook
-  (go-ts-mode . (lambda () (setq tab-width 2))))
-
-(use-package gotest :straight t
-  :after go-ts-mode
-  :config
-  (setq go-test-verbose t)
-  :bind (:map go-ts-mode-map
-              ("C-c C-c" . go-test-current-project)))
 
 (use-package rust-ts-mode
   :mode "\\.rs\\'"

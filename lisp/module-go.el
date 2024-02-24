@@ -1,7 +1,9 @@
 (require 'eglot)
 
-;; switch to go-mode if go-ts-mode gets loaded
-(add-hook 'go-ts-mode-hook 'go-mode)
+(straight-use-package 'gotest)
+
+(with-eval-after-load 'go-ts-mode)
+
 
 (with-eval-after-load 'go-mode
   (keymap-set go-mode-map "C-c C-c" 'go-test-current-project)
