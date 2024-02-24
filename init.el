@@ -13,6 +13,8 @@
 
 (require 'init-files)
 
+(require 'init-completion)
+
 ;;
 ;; Setup UI
 ;;
@@ -60,24 +62,6 @@
 (use-package flycheck :straight t
   :hook (emacs-lisp . flycheck-mode))
 
-(use-package corfu :straight t
-  ;; Optional customizations
-  ;; :custom
-  ;; (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
-  ;; (corfu-auto t)                 ;; Enable auto completion
-  ;; (corfu-separator ?\s)          ;; Orderless field separator
-  ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
-  ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
-  ;; (corfu-preview-current nil)    ;; Disable current candidate preview
-  ;; (corfu-preselect 'prompt)      ;; Preselect the prompt
-  ;; (corfu-on-exact-match nil)     ;; Configure handling of exact matches
-  ;; (corfu-scroll-margin 5)        ;; Use scroll margin
-  :init
-  (global-corfu-mode))
-
-(use-package yasnippet :straight t
-  :init
-  (use-package yasnippet-snippets :straight t))
 
 (use-package flyspell
   :commands (flyspell-mode flyspell-prog-mode)
