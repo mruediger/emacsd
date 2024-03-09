@@ -1,6 +1,7 @@
 (use-package magit :straight t
   :bind
-  (("C-x g s"   . magit-status)
+  (("C-x g"     . nil)
+   ("C-x g s"   . magit-status)
    ("C-x g p"   . magit-push-current-to-pushremote)
    ("C-x g l b" . magit-log-buffer-file)
    ("C-x g l c" . magit-log-current)
