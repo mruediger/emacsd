@@ -14,14 +14,6 @@
   (setq go-test-verbose t)
 
   (add-hook 'go-ts-mode-hook (lambda ()
-                               (setq tab-width 2)))
-;;  (add-hook 'go-ts-mode-hook (lambda ()
-;;                               (add-hook 'before-save-hook #'eglot-format-buffer -10 t)))
-;;  (add-hook 'go-ts-mode-hook (lambda ()
-;;                               (add-hook 'before-save-hook #'eglot-code-action-organize-imports -10 t)))
-;;
-  ;;  (add-hook 'go-ts-mode-hook 'eglot-ensure)
-  )
->>>>>>> Stashed changes
+                               (setq tab-width 2))))
 
 (provide 'module-go)
