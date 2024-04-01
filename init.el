@@ -1,5 +1,6 @@
 (defconst my-local-dir (expand-file-name "local/" user-emacs-directory))
 (defconst my-lisp-dir (expand-file-name "lisp/" user-emacs-directory))
+(defconst my-cache-dir (expand-file-name "cache/" user-emacs-directory))
 
 (add-to-list 'load-path my-lisp-dir)
 
@@ -169,3 +170,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+(use-package pdf-tools :straight t)

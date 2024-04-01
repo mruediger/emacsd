@@ -10,6 +10,17 @@
 (use-package forge :straight t
   :after magit)
 
+(use-package code-review
+  :straight (:host github :repo "phelrine/code-review" :branch "fix/closql-update")
+  :after magit
+  :custom
+  (code-review-download-dir (concat my-cache-dir "code-review/"))
+  (code-review-db-database-file (concat my-local-dir "code-review/database.sqlite"))
+  (code-review-log-file (concat my-local-dir "code-review/code-review-error.log"))
+ ; use the same credentials as forge in ~/.authinfo.gpg
+  (code-review-auth-login-marker 'forge))
+
+
 ;;(use-package code-review
 ;;  :straight (:host github :repo "phelrine/code-review" :branch "fix/closql-update")
 ;;  :after magit

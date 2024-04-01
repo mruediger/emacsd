@@ -2,17 +2,26 @@
 
 (straight-use-package 'gotest)
 
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))
+
 (with-eval-after-load 'go-ts-mode
   (keymap-set go-ts-mode-map "C-c C-c" 'go-test-current-project)
 
   ;; CamelCase aware editing operations
   (subword-mode +1)
 
-  (setq go-test-verbose t)
   (setq go-ts-mode-indent-offset 2)
+  (setq go-test-verbose t)
 
-  (add-hook 'go-ts-mode-hook
-            (lambda ()
-              (setq tab-width 2))))
+  (add-hook 'go-ts-mode-hook (lambda ()
+                               (setq tab-width 2)))
+;;  (add-hook 'go-ts-mode-hook (lambda ()
+;;                               (add-hook 'before-save-hook #'eglot-format-buffer -10 t)))
+;;  (add-hook 'go-ts-mode-hook (lambda ()
+;;                               (add-hook 'before-save-hook #'eglot-code-action-organize-imports -10 t)))
+;;
+  ;;  (add-hook 'go-ts-mode-hook 'eglot-ensure)
+  )
+>>>>>>> Stashed changes
 
 (provide 'module-go)
