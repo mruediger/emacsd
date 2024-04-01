@@ -1,5 +1,6 @@
 (use-package yasnippet :straight t
   :init
+  (yas-global-mode)
   (use-package yasnippet-snippets :straight t))
 
 (use-package company :straight t
