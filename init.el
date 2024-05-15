@@ -157,6 +157,10 @@
 (use-package rego-mode :straight t)
 
 
+(defun insert-quotes (&optional arg)
+  (interactive "P")
+  (insert-pair arg ?\" ?\"))
+
 
 (setq compilation-read-command nil)
 (custom-set-variables
