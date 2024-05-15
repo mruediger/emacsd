@@ -130,10 +130,9 @@
   (markdown-mode . flyspell-mode))
 
 (use-package chatgpt-shell :straight t
-  :custom
-  ((chatgpt-shell-openai-key
-    (lambda ()
-      (auth-source-pass-get 'secret "dev/openai-key")))))
+  :config (setq
+           chatgpt-shell-chatgpt-model-version "gpt-4"
+           chatgpt-shell-openai-key '(lambda () (auth-source-pass-get 'secret "justwatch/openai-key"))))
 
 (use-package dall-e-shell :straight t)
 
