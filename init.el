@@ -154,6 +154,9 @@
   (unless (server-running-p)
     (server-start)))
 
+(use-package rego-mode :straight t)
+
+
 
 (setq compilation-read-command nil)
 (custom-set-variables
