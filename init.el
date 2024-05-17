@@ -35,6 +35,9 @@
   :init
   (direnv-mode))
 
+;; make bash alias work
+(setq shell-file-name "bash")
+(setq shell-command-switch "-ic")
 
 (require 'init-org)
 (require 'init-git)
