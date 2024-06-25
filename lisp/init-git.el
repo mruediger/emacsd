@@ -15,13 +15,11 @@
 
 (use-package diff-hl
   :straight t
-  :hook (find-file . diff-hl-mode)
-  :hook (dired-mode . diff-hl-dired-mode)
-  :hook (vc-dir-mode . diff-hl-dir-mode)
-  :hook (diff-hl-mode . diff-hl-flydiff-mode)
+  :init
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode)
+  (diff-hl-margin-mode)
   :hook (magit-pre-refresh . diff-hl-magit-pre-refresh)
-  :hook (magit-post-refresh . diff-hl-magit-post-refresh)
-  :custom
-  (diff-hl-draw-borders nil))
+  :hook (magit-post-refresh . diff-hl-magit-post-refresh))
 
 (provide 'init-git)
