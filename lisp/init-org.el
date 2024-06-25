@@ -1,20 +1,15 @@
-(use-package org :straight t
-  :config
-  (use-package org-trello :straight (:build (:not compile)))
-  (use-package ob-http :straight t)
-  (use-package ob-graphql :straight t)
-  (use-package ox-hugo :straight t)
+(use-package epresent :straight t)
+(use-package org-tree-slide :straight t)
 
-  (add-to-list 'org-modules 'org-tempo t)
+(use-package org
   :mode ("\\.t?org\\'" . org-mode)
+  :config
   (org-babel-do-load-languages 'org-babel-load-languages
 			       '((shell      . t)
 			         (emacs-lisp . t)
 			         (python     . t)
                                  (R          . t)
                                  (gnuplot    . t)
-                                 (http       . t)
-                                 (graphql    . t)
                                  (js         . t)))
 
   (defun org-babel-execute:json (body params)
@@ -44,8 +39,8 @@
 
   (setq org-duration-format (quote h:mm))
 
-  (setq org-lowest-priority ?E)
-  (setq org-default-priority ?E)
+  (setq org-lowest-priority ?Z)
+  (setq org-default-priority ?Z)
 
   (setq org-directory "~/org"
         org-refile-use-outline-path 'file)
