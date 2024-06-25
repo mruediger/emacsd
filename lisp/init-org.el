@@ -6,6 +6,7 @@
   (use-package ox-hugo :straight t)
 
   (add-to-list 'org-modules 'org-tempo t)
+  :mode ("\\.t?org\\'" . org-mode)
   (org-babel-do-load-languages 'org-babel-load-languages
 			       '((shell      . t)
 			         (emacs-lisp . t)
@@ -62,7 +63,7 @@
 
   (defun org-agenda-show-agenda-and-todo () (interactive) (org-agenda nil "c"))
   (defun org-open-inbox () (interactive) (find-file "~/org/inbox.org"))
-  (defun org-open-today () (interactive) (find-file (concat "~/org/today/" (format-time-string "%Y-%m-%d") ".org")))
+  (defun org-open-today () (interactive) (find-file (concat "~/org/today/" (format-time-string "%Y-%m-%d") ".torg")))
   :bind
   ("C-x o a" . org-agenda-show-agenda-and-todo)
   ("C-x o t" . org-todo-list)
