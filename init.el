@@ -39,6 +39,7 @@
 (require 'init-org)
 (require 'init-git)
 (require 'init-prog)
+(require 'init-ai)
 
 
 (use-package flycheck :straight t
@@ -129,13 +130,6 @@
   :hook
   (markdown-mode . visual-line-mode)
   (markdown-mode . flyspell-mode))
-
-(use-package chatgpt-shell :straight t
-  :config (setq
-           chatgpt-shell-chatgpt-model-version "gpt-4"
-           chatgpt-shell-openai-key '(lambda () (auth-source-pass-get 'secret "justwatch/openai-key"))))
-
-(use-package dall-e-shell :straight t)
 
 (use-package copy-as-format :straight t)
 
