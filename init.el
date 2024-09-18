@@ -4,7 +4,7 @@
 
 (add-to-list 'load-path my-lisp-dir)
 
-(require 'init-bootstrap)
+(require 'init-bootstrap-straight)
 (require 'init-gc)
 (require 'init-ui)
 
@@ -69,6 +69,7 @@
   :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
 
 (use-package terraform-mode :straight t
+  :mode ("\\.tf" . terraform-mode)
   :hook
   ;; workarround for https://github.com/hashicorp/terraform-ls/issues/1067
   (terraform-mode . (lambda () (setq-local create-lockfiles nil))))

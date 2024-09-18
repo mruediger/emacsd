@@ -20,4 +20,4 @@
 (unless (require 'use-package nil t)
   (straight-use-package 'use-package))
 
-(provide 'init-bootstrap)
+(provide 'init-bootstrap-straight)
