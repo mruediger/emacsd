@@ -19,8 +19,10 @@
   :init
   (marginalia-mode))
 
+;; completion during buffer selection, yanking, ...
 (use-package consult
   :straight t
+  :bind ("M-g l" . consult-line)
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
 (provide 'init-completion)
