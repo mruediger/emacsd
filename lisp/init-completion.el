@@ -22,7 +22,16 @@
 ;; completion during buffer selection, yanking, ...
 (use-package consult
   :straight t
-  :bind ("M-g l" . consult-line)
+  :bind
+  ("M-g l" . consult-line)
+  ("C-b b" . consult-buffer)
+  ("C-x 4 b" . consult-buffer-other-window)
+  ("M-g g" . consult-goto-line)             ;; orig. goto-line
+  ("M-g M-g" . consult-goto-line)           ;; orig. goto-line
+  ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
+  ("M-g m" . consult-mark)
+  ("M-g k" . consult-global-mark)
+
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
 (provide 'init-completion)
