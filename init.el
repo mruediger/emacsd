@@ -171,4 +171,15 @@
  )
 
 
+
 (use-package pdf-tools :straight t)
+
+(use-package treesit-fold
+  :straight (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")
+  :init
+  (global-treesit-fold-mode)
+  :bind
+  ("C-x f c" . treesit-fold-close)
+  ("C-x f o" . treesit-fold-open)
+  ("C-x f a c" . treesit-fold-close-all)
+  ("C-x f a o" . treesit-fold-open-all))

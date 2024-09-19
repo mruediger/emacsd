@@ -28,4 +28,6 @@
 (keymap-global-set "M-0" 'delete-window)
 (keymap-set ctl-x-map "v" 'nil)
 
+(keymap-global-set "C-x f" 'nil)
+
 (provide 'init-keybindings)
