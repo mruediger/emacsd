@@ -5,4 +5,4 @@
 
 (use-package dall-e-shell :straight t)
 
-(provide 'init-ai)
+(provide 'module-ai)

@@ -4,6 +4,9 @@
 
 (add-to-list 'load-path my-lisp-dir)
 
+(add-to-list 'load-path (expand-file-name "core/" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
+
 (require 'init-bootstrap-straight)
 (require 'init-gc)
 (require 'init-ui)
@@ -16,12 +19,16 @@
 
 (require 'init-completion)
 
+(require 'module-completion)
+(require 'module-org)
+(require 'module-git)
+(require 'module-compile)
+(require 'module-ai)
 
 (require 'module-go)
+(require 'module-terraform)
 
-;;
-;; Setup UI
-;;
+
 
 
 ;; MOUSE
@@ -36,10 +43,6 @@
   (direnv-mode))
 
 
-(require 'init-org)
-(require 'init-git)
-(require 'init-prog)
-(require 'init-ai)
 
 
 (use-package flycheck :straight t
@@ -69,11 +72,6 @@
            (compile "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")))
   :bind (:map nix-mode-map ("C-c C-c" . nix-update)))
 
-(use-package terraform-mode :straight t
-  :mode ("\\.tf" . terraform-mode)
-  :hook
-  ;; workarround for https://github.com/hashicorp/terraform-ls/issues/1067
-  (terraform-mode . (lambda () (setq-local create-lockfiles nil))))
 
 ;; Stuff
 (add-hook 'after-save-hook

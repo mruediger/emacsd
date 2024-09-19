@@ -68,4 +68,4 @@
   :hook
   (org-mode . visual-line-mode))
 
-(provide 'init-org)
+(provide 'module-org)

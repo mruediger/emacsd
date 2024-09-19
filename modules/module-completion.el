@@ -1,4 +1,7 @@
-;; eglot, project & company
+(use-package yasnippet :straight t
+  :init
+  (yas-global-mode)
+  (use-package yasnippet-snippets :straight t))
 
 
 (use-package eglot
@@ -14,14 +17,21 @@
   (add-hook 'eglot-managed-mode-hook (lambda ()
                                        (add-hook 'before-save-hook #'my-eglot-organize-imports nil t)
                                        (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
-
   :hook
   (nix-mode . eglot-ensure)
-  (terraform-mode . eglot-ensure)
   (go-ts-mode . eglot-ensure)
   (rust-ts-mode . eglot-ensure)
   (yaml-ts-mode . eglot-ensure))
 
+;; used by eglot for showing the drop down
+(use-package company :straight t
+  :hook (eglot-managed-mode . company-mode))
+
+;; used by eglot for highlighting errors
+(use-package flymake
+  :hook (eglot-managed-mode . flymake-mode))
+
+;; used by eglot for defining a lsp workspace/set of files
 (use-package project
   :config
   (defun mr/project-try-rust (dir)
@@ -32,10 +42,4 @@
         (cons 'transient module-root))))
   (setq project-find-functions '(mr/project-try-rust project-try-vc)))
 
-(use-package compile
-  :config
-  (setq compilation-always-kill t)
-  (setq compilation-scroll-output t)
-  (setq compilation-read-command nil))
-
-(provide 'init-prog)
+(provide 'module-completion)

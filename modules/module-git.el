@@ -22,4 +22,4 @@
   :hook (magit-pre-refresh . diff-hl-magit-pre-refresh)
   :hook (magit-post-refresh . diff-hl-magit-post-refresh))
 
-(provide 'init-git)
+(provide 'module-git)
