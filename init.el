@@ -109,7 +109,8 @@
 (use-package sudo-edit :straight t)
 
 (use-package elisp
-  :bind ("C-c C-c" . eval-buffer))
+  :bind (:map emacs-lisp-mode-map
+              ("C-c C-c" . eval-buffer)))
 
 (use-package tramp
   :config
