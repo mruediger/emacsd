@@ -22,7 +22,7 @@
 (require 'module-completion)
 (require 'module-org)
 (require 'module-git)
-(require 'module-compile)
+(require 'module-dev)
 (require 'module-ai)
 
 (require 'module-go)
