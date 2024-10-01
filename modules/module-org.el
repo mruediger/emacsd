@@ -1,4 +1,3 @@
-(use-package epresent :straight t)
 (use-package org-tree-slide :straight t)
 
 (use-package org
