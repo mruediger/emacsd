@@ -19,7 +19,6 @@
                                        (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
   :hook
   (nix-mode . eglot-ensure)
-  (go-ts-mode . eglot-ensure)
   (rust-ts-mode . eglot-ensure)
   (yaml-ts-mode . eglot-ensure))
 
