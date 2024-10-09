@@ -58,6 +58,7 @@
   (defun org-agenda-show-agenda-and-todo () (interactive) (org-agenda nil "c"))
   (defun org-open-inbox () (interactive) (find-file "~/org/inbox.org"))
   (defun org-open-today () (interactive) (find-file (concat "~/org/today/" (format-time-string "%Y-%m-%d") ".torg")))
+  (defun org-open-today-folder () (interactive) (find-file "~/org/today/"))
   (defun org-open-ppp () (interactive)
          (let ((filename (concat "~/org/ppp/" (format-time-string "%Y-%U") ".torg")))
            (find-file filename)
@@ -69,6 +70,7 @@
   ("C-x o c" . org-capture)
   ("C-x o i" . org-open-inbox)
   ("C-x o n" . org-open-today)
+  ("C-x o N" . org-open-today-folder)
   ("C-x o p" . org-open-ppp)
   :hook
   (org-mode . visual-line-mode))
