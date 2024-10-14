@@ -14,9 +14,8 @@
              '((rust-ts-mode rust-mode) .
                ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
 
-  (add-hook 'eglot-managed-mode-hook (lambda ()
-                                       (add-hook 'before-save-hook #'my-eglot-organize-imports nil t)
-                                       (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
+;;  (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'my-eglot-organize-imports nil t)))
+;;  (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
   :hook
   (nix-mode . eglot-ensure)
   (rust-ts-mode . eglot-ensure)
