@@ -65,6 +65,7 @@
            (find-file filename)
            (unless (file-exists filename)
              (insert-file "~/org/ppp/template.torg"))))
+  (defun org-open-random () (interactive) (find-file (seq-random-elt (directory-files "~/org/" t ".org$"))))
   :bind
   ("C-x o a" . org-agenda-show-agenda-and-todo)
   ("C-x o t" . org-todo-list)
@@ -73,6 +74,7 @@
   ("C-x o n" . org-open-today)
   ("C-x o N" . org-open-today-folder)
   ("C-x o p" . org-open-ppp)
+  ("C-x o r" . org-open-random)
   :hook
   (org-mode . visual-line-mode))
 
