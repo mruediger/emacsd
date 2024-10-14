@@ -1,4 +1,5 @@
 (use-package org-tree-slide :straight t)
+(use-package ob-async :straight t)
 
 (use-package org
   :mode ("\\.t?org\\'" . org-mode)

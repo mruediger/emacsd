@@ -20,4 +20,7 @@
 (unless (require 'use-package nil t)
   (straight-use-package 'use-package))
 
+;; make sure org is installed via straight before its ever used
+(straight-use-package 'org)
+
 (provide 'init-bootstrap-straight)
