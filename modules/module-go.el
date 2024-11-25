@@ -15,7 +15,7 @@
   (keymap-set go-ts-mode-map "C-c C-c" 'compile)
   (add-hook 'go-ts-mode-hook (lambda () (setq-local compile-command (concat "go test"))))
   (add-hook 'go-ts-mode-hook (lambda () (setq tab-width 2)))
-  (add-hook 'go-ts-mode-hook eglot-ensure)
+  (add-hook 'go-ts-mode-hook 'eglot-ensure)
   (add-hook 'go-ts-mode-hook (lambda () (add-hook 'before-save-hook 'my-eglot-organize-imports nil t)))
   (add-hook 'go-ts-mode-hook (lambda () (add-hook 'before-save-hook 'eglot-format-buffer nil t))))
 
