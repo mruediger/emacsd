@@ -6,16 +6,10 @@
 
 (use-package eglot
   :config
-  (defun my-eglot-organize-imports () (interactive)
-	 (eglot-code-actions nil nil "source.organizeImports" t))
-
   (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
   (add-to-list 'eglot-server-programs
              '((rust-ts-mode rust-mode) .
                ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
-
-;;  (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'my-eglot-organize-imports nil t)))
-;;  (add-hook 'eglot-managed-mode-hook (lambda () (add-hook 'before-save-hook #'eglot-format-buffer nil t)))
   :hook
   (nix-mode . eglot-ensure)
   (rust-ts-mode . eglot-ensure)
