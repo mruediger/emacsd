@@ -184,3 +184,5 @@
   ("C-x f o" . treesit-fold-open)
   ("C-x f a c" . treesit-fold-close-all)
   ("C-x f a o" . treesit-fold-open-all))
+
+(use-package pass :straight t)
