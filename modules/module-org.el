@@ -10,7 +10,8 @@
 			         (python     . t)
                                  (R          . t)
                                  (gnuplot    . t)
-                                 (js         . t)))
+                                 (js         . t)
+                                 (sql        . t)))
 
   (defun org-babel-execute:json (body params)
     (let ((jq (cdr (assoc :jq params)))
@@ -31,6 +32,8 @@
         (insert node)
         (shell-command-on-region (point-min) (point-max) "node -p" nil 't)
         (buffer-string))))))
+
+
 
   (setq org-confirm-babel-evaluate nil)
   ;; Pretty code blocks
@@ -66,6 +69,7 @@
            (unless (file-exists filename)
              (insert-file "~/org/ppp/template.torg"))))
   (defun org-open-random () (interactive) (find-file (seq-random-elt (directory-files "~/org/" t ".org$"))))
+
   :bind
   ("C-x o a" . org-agenda-show-agenda-and-todo)
   ("C-x o t" . org-todo-list)
@@ -77,5 +81,18 @@
   ("C-x o r" . org-open-random)
   :hook
   (org-mode . visual-line-mode))
+
+
+(use-package ox-latex :straight nil :after (org ox)
+  :config
+  (add-to-list 'org-latex-classes '("mycv"
+                                    "\\documentclass{mycv}
+                                     [NO-DEFAULT-PACKAGES]
+                                     [EXTRA]"
+                                    ("\\section{%s}" . "\\section*{%s}")
+                                    ("\\subsection{%s}" . "\\subsection*{%s}")
+                                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
 (provide 'module-org)
