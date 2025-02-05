@@ -11,9 +11,13 @@
   (setq gptel-default-mode 'org-mode
         gptel-api-key (auth-source-pass-get 'secret "justwatch/openai-key"))
 
-  (gptel-make-gemini "Gemini"
-    :key (auth-source-pass-get 'secret "cloud/gemini-n96")
-    :stream t)
+  (setq
+   gptel-backend-gemini (gptel-make-gemini "Gemini"
+                          :key (auth-source-pass-get 'secret "cloud/gemini-n96")
+                          :stream t))
+
+  (setq gptel-backend gptel-backend-gemini
+        gptel-model 'gemini-1.5-flash)
 
   :bind (("C-c RET" . gptel-send)))
 
