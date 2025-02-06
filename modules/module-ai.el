@@ -17,7 +17,7 @@
                           :stream t))
 
   (setq gptel-backend gptel-backend-gemini
-        gptel-model 'gemini-1.5-flash)
+        gptel-model 'gemini-2.0-flash-exp)
 
   :bind (("C-c RET" . gptel-send)))
 
