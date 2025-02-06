@@ -21,6 +21,12 @@
 
   :bind (("C-c RET" . gptel-send)))
 
+(use-package aider
+  :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
+  :config (setq aider-args '("--model" "anthropic/claude-3-5-sonnet-20241022"))
+  (setenv "ANTHROPIC_API_KEY" (auth-source-pass-get 'secret "provider/anthropic"))
+  (global-set-key (kbd "C-c a") 'aider-transient-menu))
+
 ;;(use-package magit-magit-gptcommit :straight t
 ;;  :after magit
 ;;  :bind (:map git-commit-mode-map
