@@ -24,12 +24,10 @@
 (require 'module-git)
 (require 'module-dev)
 (require 'module-ai)
+(require 'module-yaml)
 
 (require 'module-go)
 (require 'module-terraform)
-
-
-
 
 ;; MOUSE
 (setq mouse-autoselect-window nil)
@@ -41,9 +39,6 @@
 (use-package direnv :straight t
   :init
   (direnv-mode))
-
-
-
 
 (use-package flycheck :straight t
   :hook (emacs-lisp . flycheck-mode))
@@ -62,26 +57,11 @@
     (let ((thing (thing-at-point 'symbol)))
       (ag-project thing))))
 
-;;
-;; Languages
-;;
-
-
 ;; Stuff
 (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
 
-(use-package yaml-ts-mode
-    :mode "\\.ya?ml\\'")
-
-(use-package highlight-indent-guides :straight t
-  :config
-  (setq highlight-indent-guides-method 'character)
-  :hook (yaml-ts-mode . highlight-indent-guides-mode))
-
 (use-package jsonnet-mode :straight t)
-
-
 
 (use-package sudo-edit :straight t)
 
@@ -126,7 +106,6 @@
     (server-start)))
 
 (use-package rego-mode :straight t)
-
 
 (defun insert-quotes (&optional arg)
   (interactive "P")
