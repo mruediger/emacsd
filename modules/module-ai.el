@@ -19,7 +19,7 @@
   (setq gptel-backend gptel-backend-gemini
         gptel-model 'gemini-2.0-flash-exp)
 
-  :bind (("C-c RET" . gptel-send)))
+  :bind (("C-c C-<return>" . gptel-send)))
 
 (use-package aider
   :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
