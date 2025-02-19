@@ -31,6 +31,7 @@
   ("M-g o" . consult-outline)               ;; Alternative: consult-org-heading
   ("M-g m" . consult-mark)
   ("M-g k" . consult-global-mark)
+  ("C-x C-g" . consult-ripgrep)
 
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
