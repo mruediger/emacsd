@@ -95,4 +95,6 @@
                                     ("\\paragraph{%s}" . "\\paragraph*{%s}")
                                     ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
+(use-package ox-md :straight nil :after (org ox))
+
 (provide 'module-org)
