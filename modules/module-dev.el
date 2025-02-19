@@ -1,4 +1,6 @@
 (use-package compile
+  :config
+  (setq compilation-read-command nil)
   :custom
   (compilation-always-kill t)
   (compilation-scroll-output t)
@@ -43,6 +45,5 @@
            (compile compile-command)))
   (setq compile-command "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")
   :bind (:map nix-mode-map ("C-c C-c" . sudo-compile)))
-
 
 (provide 'module-dev)
