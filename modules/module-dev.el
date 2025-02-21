@@ -46,4 +46,6 @@
   (setq compile-command "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")
   :bind (:map nix-mode-map ("C-c C-c" . sudo-compile)))
 
+(use-package typst-ts-mode :straight t)
+
 (provide 'module-dev)
