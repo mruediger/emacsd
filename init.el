@@ -140,3 +140,8 @@
   ("C-x f a o" . treesit-fold-open-all))
 
 (use-package pass :straight t)
+
+;; XKCD
+(use-package xkcd :straight t
+  :config
+  (defun xkcd-emacs () (interactive) (xkcd-get 378)))
