@@ -1,3 +1,6 @@
+(use-package prog-mode
+  :bind (:map prog-mode-map ("C-c C-c" . compile)))
+
 (use-package compile
   :config
   (setq compilation-read-command nil)
@@ -34,9 +37,7 @@
 (use-package rust-ts-mode
   :mode "\\.rs\\'"
   :config
-  (setq compile-command "cargo test -- --nocapture")
-  :bind (:map rust-ts-mode-map
-              ("C-c C-c" . compile)))
+  (setq compile-command "cargo test -- --nocapture"))
 
 (use-package nix-mode :straight t
   :config
