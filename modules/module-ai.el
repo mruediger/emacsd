@@ -35,4 +35,9 @@
 ;;  :bind (:map git-commit-mode-map
 ;;              ("C-c C-g" . magit-gptcommit-commit-accept))
 
+(use-package elysium :straight t
+  :custom
+  (elysium-window-size 0.33)
+  (elysium-window-style 'vertical))
+
 (provide 'module-ai)
