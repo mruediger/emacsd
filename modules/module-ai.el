@@ -11,10 +11,13 @@
   (setq gptel-default-mode 'org-mode
         gptel-api-key (auth-source-pass-get 'secret "justwatch/openai-key"))
 
-  (setq
-   gptel-backend-gemini (gptel-make-gemini "Gemini"
-                          :key (auth-source-pass-get 'secret "cloud/gemini-n96")
-                          :stream t))
+  (setq gptel-backend-gemini (gptel-make-gemini "Gemini"
+                               :key (auth-source-pass-get 'secret "cloud/gemini-n96")
+                               :stream t))
+
+  (setq gptel-backend-claude (gptel-make-anthropic "Claude"
+                               :key (auth-source-pass-get 'secret "provider/anthropic")
+                               :stream t))
 
   (setq gptel-backend gptel-backend-gemini
         gptel-model 'gemini-2.0-flash-exp)
