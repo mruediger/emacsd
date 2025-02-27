@@ -61,8 +61,6 @@
 (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
 
-(use-package jsonnet-mode :straight t)
-
 (use-package sudo-edit :straight t)
 
 (use-package elisp

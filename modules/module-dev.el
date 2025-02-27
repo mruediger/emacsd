@@ -48,4 +48,6 @@
 
 (use-package typst-ts-mode :straight t)
 
+(use-package jsonnet-mode :straight t)
+
 (provide 'module-dev)
