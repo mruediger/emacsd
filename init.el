@@ -143,3 +143,7 @@
 (use-package xkcd :straight t
   :config
   (defun xkcd-emacs () (interactive) (xkcd-get 378)))
+
+(use-package pdf-tools
+  :init
+  (pdf-tools-install))
