@@ -3,6 +3,8 @@
   (yas-global-mode)
   (use-package yasnippet-snippets :straight t))
 
+(use-package hippie-expand
+  :bind ("M-/" . hippie-expand))
 
 (use-package eglot
   :config
