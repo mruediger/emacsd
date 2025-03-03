@@ -1,23 +1,13 @@
 (defconst my-local-dir (expand-file-name "local/" user-emacs-directory))
-(defconst my-lisp-dir (expand-file-name "lisp/" user-emacs-directory))
-(defconst my-cache-dir (expand-file-name "cache/" user-emacs-directory))
-
-(add-to-list 'load-path my-lisp-dir)
-
-(add-to-list 'load-path (expand-file-name "core/" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
 
 (require 'init-bootstrap-straight)
 (require 'init-gc)
 (require 'init-ui)
-
 (require 'init-editor)
 (require 'init-keybindings)
 (require 'init-email)
-
 (require 'init-files)
-
-(require 'init-completion)
 
 (require 'module-completion)
 (require 'module-org)
@@ -25,7 +15,6 @@
 (require 'module-dev)
 (require 'module-ai)
 (require 'module-yaml)
-
 (require 'module-go)
 (require 'module-terraform)
 
