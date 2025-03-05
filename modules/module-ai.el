@@ -26,7 +26,8 @@
   :bind (("C-c C-<return>" . gptel-send)))
 
 (use-package aider
-  :vc (:url "https://github.com/tninja/aider.el" :branch "main"))
+;;  :vc (:fetcher  github :repo tninja/aider.el)
+  :vc (aider :url "https://github.com/tninja/aider.el" :files ("aider.el"))
   :defer t
   :config (setq aider-args '("--model" "anthropic/claude-3-5-sonnet-20241022"))
   (setenv "ANTHROPIC_API_KEY" (auth-source-pass-get 'secret "provider/anthropic"))
