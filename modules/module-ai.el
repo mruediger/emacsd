@@ -20,8 +20,8 @@
                                :key (auth-source-pass-get 'secret "provider/anthropic")
                                :stream t))
 
-  (setq gptel-backend gptel-backend-gemini
-        gptel-model 'gemini-2.0-flash-exp)
+  (setq gptel-backend gptel-backend-claude
+        gptel-model 'claude-3-5-sonnet-20241022)
 
   :bind (("C-c C-<return>" . gptel-send)))
 
