@@ -7,6 +7,7 @@
 
 
 (use-package gptel :straight t
+  :defer t
   :config
   (setq gptel-default-mode 'org-mode
         gptel-api-key (auth-source-pass-get 'secret "justwatch/openai-key"))
@@ -26,6 +27,7 @@
 
 (use-package aider
   :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
+  :defer t
   :config (setq aider-args '("--model" "anthropic/claude-3-5-sonnet-20241022"))
   (setenv "ANTHROPIC_API_KEY" (auth-source-pass-get 'secret "provider/anthropic"))
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
@@ -36,6 +38,7 @@
 ;;              ("C-c C-g" . magit-gptcommit-commit-accept))
 
 (use-package elysium :straight t
+  :defer t
   :custom
   (elysium-window-size 0.33)
   (elysium-window-style 'vertical))
