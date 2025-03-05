@@ -1,5 +1,5 @@
-(use-package org-tree-slide :straight t)
-(use-package ob-async :straight t)
+(use-package org-tree-slide)
+(use-package ob-async)
 
 (use-package org
   :mode ("\\.t?org\\'" . org-mode)
@@ -83,7 +83,7 @@
   (org-mode . visual-line-mode))
 
 
-(use-package ox-latex :straight nil :after (org ox)
+(use-package ox-latex :after (org ox)
   :config
   (add-to-list 'org-latex-classes '("mycv"
                                     "\\documentclass{mycv}

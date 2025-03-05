@@ -1,4 +1,4 @@
-(use-package terraform-mode :straight t
+(use-package terraform-mode
   :mode ("\\.tf" . terraform-mode)
   :hook
   ;; workarround for https://github.com/hashicorp/terraform-ls/issues/1067

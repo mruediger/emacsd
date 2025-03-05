@@ -1,7 +1,8 @@
 (defconst my-local-dir (expand-file-name "local/" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
 
-(require 'init-bootstrap-straight)
+                                        ;(require 'init-bootstrap-straight)
+(require 'init-use-package)
 (require 'init-gc)
 (require 'init-ui)
 (require 'init-editor)
@@ -25,11 +26,11 @@
 
 
 ;; direnv
-(use-package direnv :straight t
+(use-package direnv
   :init
   (direnv-mode))
 
-(use-package flycheck :straight t
+(use-package flycheck
   :hook (emacs-lisp . flycheck-mode))
 
 (use-package flyspell
@@ -39,7 +40,7 @@
          (prog-mode . flyspell-prog-mode)))
 
 
-(use-package ag :straight t
+(use-package ag
   :config
   (defun mr/ag-project-with-thing-at-point ()
     (interactive)
@@ -50,7 +51,7 @@
 (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
 
-(use-package sudo-edit :straight t)
+(use-package sudo-edit)
 
 (use-package elisp
   :bind (:map emacs-lisp-mode-map
@@ -67,16 +68,16 @@
 		 (tramp-remote-shell-args ("-c"))
 		 (tramp-default-port 22))))
 
-(use-package ledger-mode :straight t)
+(use-package ledger-mode)
 
 (use-package markdown
   :hook
   (markdown-mode . visual-line-mode)
   (markdown-mode . flyspell-mode))
 
-(use-package copy-as-format :straight t)
+(use-package copy-as-format)
 
-(use-package use-package-chords :straight t
+(use-package use-package-chords
   :init (key-chord-mode 1))
 
 (use-package "window"
@@ -85,14 +86,14 @@
            (" 2" . split-window-below)
            (" 3" . split-window-right)))
 
-(use-package csv-mode :straight t)
+(use-package csv-mode)
 
 (use-package server
   :config
   (unless (server-running-p)
     (server-start)))
 
-(use-package rego-mode :straight t)
+(use-package rego-mode)
 
 (defun insert-quotes (&optional arg)
   (interactive "P")
@@ -114,10 +115,10 @@
 
 
 
-(use-package pdf-tools :straight t)
+(use-package pdf-tools)
 
 (use-package treesit-fold
-  :straight (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")
+  :vc (:url "https://github.com/emacs-tree-sitter/treesit-fold" :branch "main"))
   :init
   (global-treesit-fold-mode)
   :bind
@@ -126,10 +127,10 @@
   ("C-x f a c" . treesit-fold-close-all)
   ("C-x f a o" . treesit-fold-open-all))
 
-(use-package pass :straight t)
+(use-package pass)
 
 ;; XKCD
-(use-package xkcd :straight t
+(use-package xkcd
   :config
   (defun xkcd-emacs () (interactive) (xkcd-get 378)))
 

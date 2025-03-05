@@ -39,7 +39,7 @@
   :config
   (setq compile-command "cargo test -- --nocapture"))
 
-(use-package nix-mode :straight t
+(use-package nix-mode
   :config
   (defun sudo-compile () (interactive)
          (let ((default-directory "/sudo::"))
@@ -47,8 +47,8 @@
   (setq compile-command "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")
   :bind (:map nix-mode-map ("C-c C-c" . sudo-compile)))
 
-(use-package typst-ts-mode :straight t)
+(use-package typst-ts-mode)
 
-(use-package jsonnet-mode :straight t)
+(use-package jsonnet-mode)
 
 (provide 'module-dev)

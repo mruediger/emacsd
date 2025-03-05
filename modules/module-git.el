@@ -1,4 +1,4 @@
-(use-package magit :straight t
+(use-package magit
   :bind
   (("C-x g"     . nil)
    ("C-x g s"   . magit-status)
@@ -7,14 +7,14 @@
    ("C-x g l c" . magit-log-current)
    ("C-x g l a" . magit-log-all)))
 
-(use-package forge :straight t
+(use-package forge
   :after magit)
 
 (use-package git-link
-  :straight t)
+ )
 
 (use-package diff-hl
-  :straight t
+
   :init
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode)

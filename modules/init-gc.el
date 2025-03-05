@@ -5,7 +5,7 @@
 ;; A more detailed explanation of the rationale behind this can be found at:
 ;; http://akrl.sdf.org/
 (use-package gcmh
-  :straight t
+
   :hook (after-init . gcmh-mode))
 
 (provide 'init-gc)

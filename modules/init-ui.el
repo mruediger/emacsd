@@ -27,12 +27,12 @@
 ;;split windows proportionally
 (setq window-combination-resize 't)
 
-(use-package gruvbox-theme :straight t
+(use-package gruvbox-theme
   :config
   (load-theme 'gruvbox-light-medium t))
 
 (use-package doom-modeline
-  :straight t
+
   :hook (after-init . doom-modeline-mode))
 
 (provide 'init-ui)
