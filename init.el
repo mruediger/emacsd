@@ -136,3 +136,5 @@
 (use-package pdf-tools
   :init
   (pdf-tools-install))
+
+(use-package nov :straight t)
