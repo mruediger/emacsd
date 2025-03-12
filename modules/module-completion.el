@@ -55,8 +55,12 @@
   (yaml-ts-mode . eglot-ensure))
 
 ;; used by eglot for showing the drop down
-(use-package company :straight t
-  :hook (eglot-managed-mode . company-mode))
+;; (use-package company :straight t
+;;  :hook (eglot-managed-mode . company-mode))
+
+(use-package completion-preview
+  :init
+  (global-completion-preview-mode))
 
 ;; used by eglot for highlighting errors
 (use-package flymake
