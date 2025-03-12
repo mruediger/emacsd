@@ -42,9 +42,9 @@
 (use-package nix-mode :straight t
   :config
   (defun sudo-compile () (interactive)
-         (let ((default-directory "/sudo::"))
-           (compile compile-command)))
-  (setq compile-command "nixos-rebuild switch --flake '/home/bag/src/nixos/src#'")
+         (let ((default-directory (concat "/sudo::" (expand-file-name (project-root (project-current t))))))
+               (call-interactively #'compile)))
+  (setq compile-command "nixos-rebuild switch --flake '.#'")
   :bind (:map nix-mode-map ("C-c C-c" . sudo-compile)))
 
 (use-package typst-ts-mode :straight t)
