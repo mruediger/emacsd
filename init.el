@@ -79,7 +79,7 @@
 (use-package use-package-chords :straight t
   :init (key-chord-mode 1))
 
-(use-package "window"
+(use-package window
   :chords ((" 0" . delete-window)
            (" 1" . delete-other-windows)
            (" 2" . split-window-below)
