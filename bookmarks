@@ -2,37 +2,10 @@
 ;;; This format is meant to be slightly human-readable;
 ;;; nevertheless, you probably don't want to edit it.
 ;;; -*- End Of Bookmark File Format Version Stamp -*-
-(("k8s-scripts"
- (filename . "~/src/justwatch/src/jw-k8s/scripts/")
- (front-context-string)
- (rear-context-string . "2:40 swc-labels\n")
- (position . 605)
- (last-modified 26179 5661 940161 390000))
-("jw-k8s"
- (filename . "~/src/justwatch/src/jw-k8s/")
- (front-context-string . "1password-clean-")
- (rear-context-string . "96 May  8 10:42 ")
- (position . 306)
- (last-modified 26179 5603 421482 968000))
-("terraform"
- (filename . "~/src/justwatch/src/terraform/")
- (front-context-string . "amazon\n  drwxr-x")
- (rear-context-string . "96 Apr 22 11:31 ")
- (position . 179)
- (last-modified 26168 45657 46311 188000))
-("1password-clean-import"
- (filename . "~/src/justwatch/src/jw-k8s/scripts/1password-clean-import/")
- (front-context-string . "algo\n  -rw-r--r-")
- (rear-context-string . "36 Apr 25 15:02 ")
- (position . 207)
- (last-modified 26168 36140 501766 808000))
-("org-capture-last-stored"
- (filename . "~/org/inbox.org")
- (front-context-string . "* TODO check jw-")
- (rear-context-string . "          :edc:\n")
- (position . 1874)
- (last-modified 25691 26176 372868 853000))
-("timetracking.org"
- (filename . "~/src/justwatch/org/timetracking.org")
- (front-context-string))
+(("org-capture-last-stored"
+  (filename . "~/org/inbox.org")
+  (front-context-string . "* TODO check jw-")
+  (rear-context-string . "          :edc:\n")
+  (position . 1874)
+  (last-modified 25691 26176 372868 853000))
 )
