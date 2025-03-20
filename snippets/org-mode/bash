@@ -4,5 +4,5 @@
 # --
 
 #+begin_src bash :results output
-$1
+  $1
 #+end_src
