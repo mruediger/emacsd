@@ -13,6 +13,8 @@
                                  (js         . t)
                                  (sql        . t)))
 
+  (add-to-list 'org-src-lang-modes '("go" . go-ts))
+
   (defun org-babel-execute:json (body params)
     (let ((jq (cdr (assoc :jq params)))
         (node (cdr (assoc :node params))))
