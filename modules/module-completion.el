@@ -64,6 +64,12 @@
 
 ;; used by eglot for highlighting errors
 (use-package flymake
+  :config
+  (setq flymake-show-diagnostics-at-end-of-line nil)
+  :bind
+  (:map flymake-mode-map
+        ("M-n" . flymake-goto-next-error)
+        ("M-p" . flymake-goto-prev-error))
   :hook (eglot-managed-mode . flymake-mode))
 
 ;; used by eglot for defining a lsp workspace/set of files
