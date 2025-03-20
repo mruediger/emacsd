@@ -10,6 +10,10 @@
 (use-package forge :straight t
   :after magit)
 
+(use-package magit-todos :straight t
+  :after magit
+  :config (magit-todos-mode 1))
+
 (use-package git-link
   :straight t)
 
