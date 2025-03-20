@@ -1,16 +1,7 @@
-(use-package chatgpt-shell :straight t
-  :config (setq
-           chatgpt-shell-chatgpt-model-version "gpt-4"
-           chatgpt-shell-openai-key '(lambda () (auth-source-pass-get 'secret "justwatch/openai-key"))))
-
-(use-package dall-e-shell :straight t)
-
-
 (use-package gptel :straight t
   :defer t
   :config
-  (setq gptel-default-mode 'org-mode
-        gptel-api-key (auth-source-pass-get 'secret "justwatch/openai-key"))
+  (setq gptel-default-mode 'org-mode)
 
   (setq gptel-backend-gemini (gptel-make-gemini "Gemini"
                                :key (auth-source-pass-get 'secret "cloud/gemini-n96")
