@@ -51,4 +51,7 @@
 
 (use-package jsonnet-mode :straight t)
 
+(use-package eglot-java
+  :hook (java . eglot-java-mode))
+
 (provide 'module-dev)
