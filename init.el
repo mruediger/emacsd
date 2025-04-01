@@ -136,4 +136,5 @@
   :init
   (pdf-tools-install))
 
-(use-package nov :straight t)
+(use-package nov :straight t
+  :mode ("\\.epub\\'" . nov-mode))
