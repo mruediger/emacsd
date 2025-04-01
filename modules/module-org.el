@@ -49,7 +49,7 @@
 
   (setq org-directory "~/org"
         org-refile-use-outline-path 'file)
-  (setq org-agenda-files '("~/org")
+  (setq org-agenda-files '("~/org" "~/org/jobs/")
         org-agenda-window-setup (quote current-window))
   (setq org-capture-templates
         '(("t" "task" entry (file "inbox.org") "* TODO %?\n")
