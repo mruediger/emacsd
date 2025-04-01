@@ -18,7 +18,6 @@
 
 ;; Show trailing whitespaces
 (use-package whitespace
-  :ensure nil
   :hook ((prog-mode markdown-mode conf-mode) . whitespace-mode)
   :custom
   (whitespace-style '(face trailing)))
@@ -39,7 +38,7 @@
   :config
   (setq compile-command "cargo test -- --nocapture"))
 
-(use-package nix-mode :straight t
+(use-package nix-mode
   :config
   (defun sudo-compile () (interactive)
          (let ((default-directory (concat "/sudo::" (expand-file-name (project-root (project-current t))))))
@@ -47,9 +46,9 @@
   (setq compile-command "nixos-rebuild switch --flake '.#'")
   :bind (:map nix-mode-map ("C-c C-c" . sudo-compile)))
 
-(use-package typst-ts-mode :straight t)
+(use-package typst-ts-mode)
 
-(use-package jsonnet-mode :straight t)
+(use-package jsonnet-mode)
 
 (use-package eglot-java
   :hook (java . eglot-java-mode))

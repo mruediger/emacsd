@@ -1,11 +1,11 @@
 (use-package orderless
-  :straight t
+
   :init
   (setq completion-styles '(substring orderless basic)))
 
 ;; minimalistic vertical completion UI
 (use-package vertico
-  :straight t
+
   :init
   (vertico-mode)
   :bind
@@ -15,13 +15,13 @@
 
 ;; margin annotation for the minibuffer
 (use-package marginalia
-  :straight t
+
   :init
   (marginalia-mode))
 
 ;; completion during buffer selection, yanking, ...
 (use-package consult
-  :straight t
+
   :bind
   ("M-g l" . consult-line)
   ("C-b b" . consult-buffer)
@@ -35,10 +35,10 @@
 
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
-(use-package yasnippet :straight t
+(use-package yasnippet
   :init
   (yas-global-mode)
-  (use-package yasnippet-snippets :straight t))
+  (use-package yasnippet-snippets))
 
 (use-package hippie-expand
   :bind ("M-/" . hippie-expand))
@@ -57,7 +57,7 @@
   (yaml-ts-mode . eglot-ensure))
 
 ;; used by eglot for showing the drop down
-(use-package company :straight t
+(use-package company
   :init (global-company-mode))
 
 ;;(use-package completion-preview

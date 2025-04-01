@@ -27,24 +27,20 @@
 ;;split windows proportionally
 (setq window-combination-resize 't)
 
-(use-package gruvbox-theme :straight t
+(use-package gruvbox-theme
   :config
   (load-theme 'gruvbox-light-medium t))
 
 (use-package doom-modeline
-  :straight t
   :hook (after-init . doom-modeline-mode))
 
-(use-package nerd-icons
-  :straight t)
+(use-package nerd-icons)
 
 (use-package nerd-icons-dired
-  :straight t
   :hook
   (dired-mode . nerd-icons-dired-mode))
 
 (use-package nerd-icons-completion
-  :straight t
   :config
   (nerd-icons-completion-mode))
 
