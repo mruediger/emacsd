@@ -35,4 +35,17 @@
   :straight t
   :hook (after-init . doom-modeline-mode))
 
+(use-package nerd-icons
+  :straight t)
+
+(use-package nerd-icons-dired
+  :straight t
+  :hook
+  (dired-mode . nerd-icons-dired-mode))
+
+(use-package nerd-icons-completion
+  :straight t
+  :config
+  (nerd-icons-completion-mode))
+
 (provide 'init-ui)

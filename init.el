@@ -7,7 +7,6 @@
 (require 'init-editor)
 (require 'init-keybindings)
 (require 'init-email)
-(require 'init-files)
 
 (require 'module-completion)
 (require 'module-org)
