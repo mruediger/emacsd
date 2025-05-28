@@ -39,8 +39,8 @@
 
 (use-package rust-ts-mode
   :mode "\\.rs\\'"
-  :config
-  (setq compile-command "cargo test -- --nocapture"))
+  :hook
+  (rust-ts-mode . (lambda () (setq-local compile-command "cargo test -- --nocapture"))))
 
 (use-package nix-mode
   :config
