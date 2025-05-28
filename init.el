@@ -21,11 +21,8 @@
 (setq mouse-yank-at-point t)
 (setq make-pointer-invisible nil)
 
-
 ;; direnv
-(use-package direnv
-  :init
-  (direnv-mode))
+(use-package direnv)
 
 (use-package flycheck
   :hook (emacs-lisp . flycheck-mode))
