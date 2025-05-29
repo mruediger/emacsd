@@ -14,12 +14,9 @@
 (size-indication-mode t)
 (display-time-mode t)
 
-(set-fontset-font "fontset-default" nil
-                  (font-spec :size 20 :name "FontAwesome"))
 
-(set-face-attribute 'default nil
-                    :font "Iosevka"
-                    :height 120)
+(set-face-attribute 'default nil :font "Iosevka" :height 120)
+(set-fontset-font t nil (font-spec :size 20 :name "Iosevka Nerd Font"))
 
 
 (setq frame-title-format "emacs: %b")
