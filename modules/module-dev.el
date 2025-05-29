@@ -10,6 +10,10 @@
   ;; Save all buffers on M-x `compile'
   (compilation-ask-about-save nil))
 
+;; add color output to compilations
+(use-package ansi-color
+  :hook (compilation-filter . ansi-color-compilation-filter))
+
 ;; The unified debugger
 (use-package gud
   :hook (gud-mode . gud-tooltip-mode)
