@@ -44,11 +44,12 @@
 
 (use-package nix-mode
   :config
-  (defun sudo-compile () (interactive)
-         (let ((default-directory (concat "/sudo::" (expand-file-name (project-root (project-current t))))))
-               (call-interactively #'compile)))
-  (setq compile-command "nixos-rebuild switch --flake '.#'")
-  :bind (:map nix-mode-map ("C-c C-c" . sudo-compile)))
+  (defvar use-sudo-compile nil)
+  (defun nix-compile () (interactive)
+         (let* ((base-directory (expand-file-name (project-root (project-current t))))
+                (default-directory (if use-sudo-compile (concat "/sudo::" base-directory) base-directory)))
+           (call-interactively #'compile)))
+  :bind (:map nix-mode-map ("C-c C-c" . nix-compile)))
 
 (use-package typst-ts-mode)
 
