@@ -45,6 +45,8 @@
 (use-package nix-mode
   :config
   (defvar use-sudo-compile nil)
+  (add-to-list 'safe-local-variable-values
+             '(compile-command . "nixos-rebuild switch --flake '.#'"))
   (defun nix-compile () (interactive)
          (let* ((base-directory (expand-file-name (project-root (project-current t))))
                 (default-directory (if use-sudo-compile (concat "/sudo::" base-directory) base-directory)))
