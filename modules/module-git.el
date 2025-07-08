@@ -10,15 +10,9 @@
 (use-package forge
   :after magit)
 
-(use-package magit-todos
-  :after magit
-  :config (magit-todos-mode 1))
-
-(use-package git-link
- )
+(use-package git-link)
 
 (use-package diff-hl
- 
   :init
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode)
