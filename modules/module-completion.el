@@ -48,6 +48,7 @@
 (use-package eglot
   :config
   (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
+  (add-to-list 'eglot-server-programs '(jsonnet-mode . ("jsonnet-language-server")))
   (add-to-list 'eglot-server-programs
              '((rust-ts-mode rust-mode) .
                ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))

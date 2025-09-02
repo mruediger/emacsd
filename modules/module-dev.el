@@ -55,7 +55,9 @@
 
 (use-package typst-ts-mode)
 
-(use-package jsonnet-mode)
+(use-package jsonnet-mode
+  :hook
+  (jsonnet-mode . eglot-ensure))
 
 (use-package eglot-java
   :hook (java . eglot-java-mode))
