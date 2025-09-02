@@ -32,6 +32,8 @@
   ("M-g m" . consult-mark)
   ("M-g k" . consult-global-mark)
   ("C-x C-g" . consult-ripgrep)
+  ("C-c C-g" . consult-ripgrep)
+  ("C-c C-f" . consult-find)
 
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
