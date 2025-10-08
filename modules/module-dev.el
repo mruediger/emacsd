@@ -34,6 +34,7 @@
   :hook
   (python-mode . (lambda ()
                    (setq-local compile-command (concat "python " buffer-file-name))))
+  (python-mode . eglot-ensure)
   :bind (:map python-mode-map
               ("C-c C-c" . compile)))
 
