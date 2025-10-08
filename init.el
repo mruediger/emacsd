@@ -21,8 +21,8 @@
 (setq mouse-yank-at-point t)
 (setq make-pointer-invisible nil)
 
-;; direnv
-(use-package direnv)
+(use-package envrc
+  :hook (after-init . envrc-global-mode))
 
 (use-package flycheck
   :hook (emacs-lisp . flycheck-mode))
