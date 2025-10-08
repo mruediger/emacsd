@@ -8,7 +8,9 @@
    ("C-x g l a" . magit-log-all)))
 
 (use-package forge
-  :after magit)
+  :after magit
+  :config
+  (setq auth-sources '("~/.authinfo")))
 
 (use-package git-link)
 
