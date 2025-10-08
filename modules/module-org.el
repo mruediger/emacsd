@@ -11,6 +11,7 @@
                                  (R          . t)
                                  (gnuplot    . t)
                                  (js         . t)
+                                 (http       . t)
                                  (sql        . t)))
 
   (add-to-list 'org-src-lang-modes '("go" . go-ts))
