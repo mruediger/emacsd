@@ -2,7 +2,7 @@
 (use-package ob-async)
 
 (use-package org
-  :mode ("\\.t?org\\'" . org-mode)
+  :mode ("\\(?:\\.\\(?:org\\|torg\\|ai\\)\\)\\'" . org-mode)
   :config
   (org-babel-do-load-languages 'org-babel-load-languages
 			       '((shell      . t)
@@ -72,6 +72,9 @@
            (unless (file-exists filename)
              (insert-file "~/org/ppp/template.torg"))))
   (defun org-open-random () (interactive) (find-file (seq-random-elt (directory-files "~/org/" t ".org$"))))
+  (defun gptel-org-mode-hook ()
+    (when (string-suffix-p ".ai" (buffer-name))
+      (gptel-mode)))
 
   :bind
   ("C-x o a" . org-agenda-show-agenda-and-todo)
@@ -83,7 +86,8 @@
   ("C-x o p" . org-open-ppp)
   ("C-x o r" . org-open-random)
   :hook
-  (org-mode . visual-line-mode))
+  (org-mode . visual-line-mode)
+  (org-mode . gptel-org-mode-hook))
 
 
 (use-package ox-latex :after (org ox)
