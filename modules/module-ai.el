@@ -12,7 +12,7 @@
                                :stream t))
 
   (setq gptel-backend gptel-backend-claude
-        gptel-model 'claude-3-5-sonnet-20241022)
+        gptel-model 'claude-3-7-sonnet-20250219)
 
   (gptel-make-tool
    :name "create_file"
@@ -47,7 +47,7 @@
 (use-package aider
   :vc (:url "git@github.com:tninja/aider.el.git")
   :defer t
-  :config (setq aider-args '("--model" "anthropic/claude-3-5-sonnet-20241022"))
+  :config (setq aider-args '("--model" "anthropic/claude-3-7-sonnet-20250219"))
   (setenv "ANTHROPIC_API_KEY" (auth-source-pass-get 'secret "provider/anthropic"))
   (global-set-key (kbd "C-c a") 'aider-transient-menu))
 
