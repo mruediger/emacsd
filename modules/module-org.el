@@ -12,6 +12,7 @@
                                  (gnuplot    . t)
                                  (js         . t)
                                  (http       . t)
+                                 (mermaid    . t)
                                  (sql        . t)))
 
   (add-to-list 'org-src-lang-modes '("go" . go-ts))
