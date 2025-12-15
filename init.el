@@ -16,6 +16,7 @@
 (require 'module-yaml)
 (require 'module-go)
 (require 'module-terraform)
+(require 'module-dired)
 
 ;; MOUSE
 (setq mouse-autoselect-window nil)
