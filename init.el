@@ -81,7 +81,9 @@
            (" 2" . split-window-below)
            (" 3" . split-window-right)))
 
-(use-package csv-mode)
+(use-package csv-mode
+  :config
+  (setq csv-separators '("," ";")))
 
 (use-package server
   :config
