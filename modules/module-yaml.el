@@ -1,5 +1,6 @@
 (use-package yaml-ts-mode
-    :mode "\\.ya?ml\\'")
+  :bind (:map yaml-ts-mode-map ("C-c C-c" . compile))
+  :mode "\\.ya?ml\\'")
 
 (use-package highlight-indent-guides
   :config
