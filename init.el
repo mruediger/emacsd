@@ -17,6 +17,7 @@
 (require 'module-go)
 (require 'module-terraform)
 (require 'module-dired)
+(require 'module-dart)
 
 ;; MOUSE
 (setq mouse-autoselect-window nil)
