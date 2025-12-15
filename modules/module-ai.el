@@ -45,7 +45,7 @@
    :after (gptel mcp))
 
 (use-package aider
-  :vc (:url "git@github.com:tninja/aider.el.git")
+  :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
   :defer t
   :config (setq aider-args '("--model" "anthropic/claude-3-7-sonnet-20250219"))
   (setenv "ANTHROPIC_API_KEY" (auth-source-pass-get 'secret "provider/anthropic"))
@@ -58,10 +58,10 @@
   (elysium-window-style 'vertical))
 
 (use-package monet
-  :vc (:url "https://github.com/stevemolitor/monet" :rev :newest))
+  :straight (monet :type git :host github :repo "stevemolitor/monet"))
 
 (use-package claude-code :ensure t
-  :vc (:url "https://github.com/stevemolitor/claude-code.el" :rev :newest)
+  :straight (:host github :repo "stevemolitor/claude-code.el")
   :config
   ;; optional IDE integration with Monet
   (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)

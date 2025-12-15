@@ -1,6 +1,7 @@
 (defconst my-local-dir (expand-file-name "local/" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
 
+(require 'init-bootstrap-straight)
 (require 'init-gc)
 (require 'init-ui)
 (require 'init-editor)
@@ -96,7 +97,7 @@
 (use-package pdf-tools)
 
 (use-package treesit-fold
-  :vc (:url "git@github.com:emacs-tree-sitter/treesit-fold.git")
+  :straight (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")
   :init
   (global-treesit-fold-mode)
   :bind
