@@ -13,7 +13,6 @@
          (eglot-format-buffer)
          (call-interactively 'eglot-code-action-organize-imports))
 
-
   (keymap-set go-ts-mode-map "C-c C-c" 'compile)
   (add-hook 'go-ts-mode-hook '(lambda () (setq-local compile-command (concat "go test"))))
   (add-hook 'go-ts-mode-hook '(lambda () (setq tab-width 2)))
@@ -21,5 +20,18 @@
   (add-hook 'go-ts-mode-hook '(lambda () (add-hook 'before-save-hook 'eglot-before-save nil t))))
 
 
+(use-package dape
+  :config
+  (setq dape-buffer-window-arrangement 'gud)
+  :hook
+  (kill-emacs . dape-breakpoint-save)
+  (after-init . dape-breakpoint-load))
+;;  (dape-display-source . pulse-momentary-highlight-one-line))
+
+(use-package go-eldoc
+  :hook
+  (go-ts-mode . go-eldoc-setup))
+
+;TODO go-impl, go-tag, go-fill-struct
 
 (provide 'module-go)
