@@ -1,4 +1,5 @@
 (use-package gptel
+  :straight t
   :defer t
   :config
   (setq gptel-default-mode 'org-mode)
