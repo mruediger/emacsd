@@ -18,6 +18,7 @@
 (require 'module-terraform)
 (require 'module-dired)
 (require 'module-dart)
+(require 'module-jira)
 
 ;; MOUSE
 (setq mouse-autoselect-window nil)
