@@ -52,6 +52,7 @@
   (add-to-list 'eglot-server-programs
              '((rust-ts-mode rust-mode) .
                ("rust-analyzer" :initializationOptions (:check (:command "clippy")))))
+  (add-to-list 'eglot-server-programs '(python-mode . ("ty" "server")))
   :bind
   (("M-RET" . eglot-code-actions))
   :hook
