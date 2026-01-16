@@ -4,6 +4,10 @@
   :config
   (setq gptel-default-mode 'org-mode)
 
+  (setq gptel-backend-gemini (gptel-make-gemini "Rennsport-Gemini"
+                               :key (auth-source-pass-get 'secret "rennsport/gemini-api-key")
+                               :stream t))
+
   (setq gptel-backend-gemini (gptel-make-gemini "Gemini"
                                :key (auth-source-pass-get 'secret "cloud/gemini-n96")
                                :stream t))
