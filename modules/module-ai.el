@@ -37,7 +37,10 @@
 	               :type string
 	               :description "The content to write to the file"))
    :category "filesystem"))
-  :bind (("C-c C-<return>" . gptel-send)))
+  :bind
+  (("C-c C-<return>" . gptel-send))
+  (("C-x a r" . gptel-rewrite))
+  (("C-x a b" . gptel)))
 
 (use-package mcp
   :after gptel
