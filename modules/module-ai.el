@@ -4,7 +4,7 @@
   :config
   (setq gptel-default-mode 'org-mode)
 
-  (setq gptel-backend-gemini (gptel-make-gemini "Rennsport-Gemini"
+  (setq gptel-backend-gemini-rennsport (gptel-make-gemini "Rennsport-Gemini"
                                :key (auth-source-pass-get 'secret "rennsport/gemini-api-key")
                                :stream t))
 
@@ -16,8 +16,8 @@
                                :key (auth-source-pass-get 'secret "provider/anthropic")
                                :stream t))
 
-  (setq gptel-backend gptel-backend-claude
-        gptel-model 'claude-3-7-sonnet-20250219)
+  (setq gptel-backend gptel-backend-gemini-rennsport
+        gptel-model 'gemini-pro-latest)
 
   (gptel-make-tool
    :name "create_file"
