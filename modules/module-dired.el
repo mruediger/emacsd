@@ -7,7 +7,8 @@
   :bind
   (:map dired-mode-map
         ("<left>" . dired-up-directory)
-        ("<right>" . dired-find-file)))
+        ("<right>" . dired-find-file)
+        ("S-<right>" . dired-display-file)))
 
 (use-package nerd-icons-dired
   :hook
