@@ -19,6 +19,7 @@
 (require 'module-dired)
 (require 'module-dart)
 (require 'module-jira)
+(require 'module-misc)
 
 ;; MOUSE
 (setq mouse-autoselect-window nil)
