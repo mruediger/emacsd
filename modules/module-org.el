@@ -74,7 +74,7 @@
              (insert-file "~/org/ppp/template.torg"))))
   (defun org-open-random () (interactive) (find-file (seq-random-elt (directory-files "~/org/" t ".org$"))))
   (defun gptel-org-mode-hook ()
-    (when (string-suffix-p ".ai" (buffer-name))
+    (when (string-suffix-p ".ai" (buffer-file-name))
       (gptel-mode)))
 
   :bind
