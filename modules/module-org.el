@@ -1,5 +1,6 @@
 (use-package org-tree-slide)
-(use-package ob-async)
+(use-package ob-go :straight t)
+(use-package ob-redis :straight t)
 
 (use-package org
   :mode ("\\(?:\\.\\(?:org\\|torg\\|ai\\)\\)\\'" . org-mode)
@@ -13,6 +14,8 @@
                                  (js         . t)
                                  (http       . t)
                                  (mermaid    . t)
+                                 (go         . t)
+                                 (redis      . t)
                                  (sql        . t)))
 
   (add-to-list 'org-src-lang-modes '("go" . go-ts))
