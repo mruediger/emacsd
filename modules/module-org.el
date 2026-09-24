@@ -19,6 +19,7 @@
                                  (sql        . t)))
 
   (add-to-list 'org-src-lang-modes '("go" . go-ts))
+  (add-to-list 'org-src-lang-modes '("typst" . typst-ts))
 
   (defun org-babel-execute:json (body params)
     (let ((jq (cdr (assoc :jq params)))
