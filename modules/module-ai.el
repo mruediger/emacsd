@@ -23,24 +23,6 @@
   (setq gptel-backend gptel-backend-gemini-rennsport
         gptel-model 'gemini-pro-latest)
 
-  (gptel-make-tool
-   :name "create_file"
-   :function (lambda (path filename content)   ; the function that runs
-               (let ((full-path (expand-file-name filename path)))
-                 (with-temp-buffer
-                   (insert content)
-                   (write-file full-path))
-                 (format "Created file %s in %s" filename path)))
-   :description "Create a new file with the specified content"
-   :args (list '(:name "path"             ; a list of argument specifications
-	               :type string
-               '(:name "filename"
-	               :type string
-	               :description "The name of the file to create")
-               '(:name "content"
-	               :type string
-	               :description "The content to write to the file"))
-   :category "filesystem"))
   :bind
   (("C-c C-<return>" . gptel-send))
   (("C-x a r" . gptel-rewrite))
