@@ -1,6 +1,10 @@
 (use-package gptel
   :straight t
   :defer t
+  :custom-face
+  ;; do not highlight buffer when adding to context
+  (gptel-context-highlight-face
+   ((t (:background unspecified :foreground unspecified :inherit unspecified))))
   :config
   (setq gptel-default-mode 'org-mode)
 
