@@ -42,6 +42,7 @@
         (buffer-string))))))
 
 
+  (setq org-todo-keywords '((sequence "TODO" "TADA")))
 
   (setq org-confirm-babel-evaluate nil)
   ;; Pretty code blocks
