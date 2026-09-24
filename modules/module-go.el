@@ -21,6 +21,7 @@
 
 
 (use-package dape
+  :straight t
   :config
   (setq dape-buffer-window-arrangement 'gud)
   :hook
