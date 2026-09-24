@@ -3,6 +3,6 @@
 # key: <sh
 # --
 
-#+begin_src bash :results output
+#+begin_src bash :results output :cache yes
   $1
 #+end_src
