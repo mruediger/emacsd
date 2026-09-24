@@ -69,6 +69,9 @@
 
 (use-package ledger-mode)
 
+(use-package beancount
+  :straight (beancount-mode :type git :host github :repo "beancount/beancount-mode"))
+
 (use-package markdown
   :hook
   (markdown-mode . visual-line-mode)
