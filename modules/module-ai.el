@@ -23,6 +23,10 @@
   (setq gptel-backend gptel-backend-gemini-rennsport
         gptel-model 'gemini-pro-latest)
 
+  (setq gptel-use-tools t
+        gptel-log-level 'info
+        gptel--set-buffer-locally t)
+
   :bind
   (("C-c C-<return>" . gptel-send))
   (("C-x a r" . gptel-rewrite))
