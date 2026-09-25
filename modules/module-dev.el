@@ -63,9 +63,6 @@
   :hook
   (jsonnet-mode . eglot-ensure))
 
-(use-package eglot-java
-  :hook (java . eglot-java-mode))
-
 (use-package dockerfile-ts-mode
   :mode "Dockerfile")
 (provide 'module-dev)
