@@ -1,8 +1,7 @@
-(use-package org-tree-slide :straight t)
-(use-package ob-go :straight t)
-(use-package ob-http :straight t)
-(use-package ob-mermaid :straight t)
-
+(use-package org-tree-slide :straight t :after org)
+(use-package ob-go :straight t :after org)
+(use-package ob-http :straight t :after org)
+(use-package ob-mermaid  :straight t :after org)
 
 (use-package org
   :mode ("\\(?:\\.\\(?:org\\|torg\\|ai\\)\\)\\'" . org-mode)

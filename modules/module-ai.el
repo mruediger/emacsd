@@ -66,7 +66,8 @@
   (elysium-window-style 'vertical))
 
 (use-package monet
-  :straight (monet :type git :host github :repo "stevemolitor/monet"))
+  :straight (monet :type git :host github :repo "stevemolitor/monet")
+  :defer t)
 
 (use-package claude-code :ensure t
   :straight (:host github :repo "stevemolitor/claude-code.el")
