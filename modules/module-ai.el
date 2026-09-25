@@ -69,7 +69,7 @@
   :straight (monet :type git :host github :repo "stevemolitor/monet")
   :defer t)
 
-(use-package claude-code :ensure t
+(use-package claude-code
   :straight (:host github :repo "stevemolitor/claude-code.el")
   :config
   ;; optional IDE integration with Monet
