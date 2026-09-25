@@ -47,7 +47,7 @@
   :straight t
   :after yasnippet)
 
-(use-package hippie-expand
+(use-package hippie-exp
   :bind ("M-/" . hippie-expand))
 
 (use-package eglot

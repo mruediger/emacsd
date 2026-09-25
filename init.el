@@ -42,7 +42,7 @@
 (use-package sudo-edit
   :straight t)
 
-(use-package elisp
+(use-package elisp-mode
   :bind (:map emacs-lisp-mode-map
               ("C-c C-c" . eval-buffer)))
 
@@ -63,7 +63,7 @@
 (use-package beancount
   :straight (beancount-mode :type git :host github :repo "beancount/beancount-mode"))
 
-(use-package markdown
+(use-package markdown-mode
   :hook
   (markdown-mode . visual-line-mode)
   (markdown-mode . flyspell-mode))
