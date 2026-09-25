@@ -1,5 +1,5 @@
 (use-package gptel
-  :straight t
+  :straight (:host github :repo "karthink/gptel")
   :defer t
   :custom-face
   ;; do not highlight buffer when adding to context
@@ -34,19 +34,17 @@
 
 ;; collection of tools and prompts to use gptel “agentically”
 (use-package gptel-agent
-  :straight t
+  :straight (:host github :repo "karthink/gptel-agent")
   :after gptel
   :config (gptel-agent-update))
 
 (use-package gptel-preset-collection
-  :vc (:url "https://github.com/karthink/gptel-preset-collection"
-       :rev :newest)
+  :straight (:host github :repo "karthink/gptel-preset-collection")
   :after gptel)
 
 ;; view LLM responses as buffer annotations
 (use-package gptel-annotate
-  :vc (:url "https://github.com/karthink/gptel-annotate"
-       :rev :newest)
+  :straight (:host github :repo "karthink/gptel-annotate")
   :after gptel)
 
 (use-package mcp
