@@ -76,7 +76,8 @@
   (:map flymake-mode-map
         ("M-n" . flymake-goto-next-error)
         ("M-p" . flymake-goto-prev-error))
-  :hook (eglot-managed-mode . flymake-mode))
+  :hook ((eglot-managed-mode . flymake-mode)
+         (emacs-lisp-mode . flymake-mode)))
 
 ;; used by eglot for defining a lsp workspace/set of files
 (use-package project

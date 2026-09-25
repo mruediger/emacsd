@@ -29,9 +29,6 @@
 (use-package envrc
   :hook (after-init . envrc-global-mode))
 
-(use-package flycheck
-  :hook (emacs-lisp . flycheck-mode))
-
 (use-package flyspell
   :commands (flyspell-mode flyspell-prog-mode)
   :hook ((text-mode . turn-on-flyspell)
