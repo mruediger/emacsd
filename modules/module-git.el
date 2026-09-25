@@ -9,9 +9,7 @@
 
 (use-package forge
   :straight t
-  :after magit
-  :config
-  (setq auth-sources '("~/.authinfo")))
+  :after magit)
 
 (use-package git-link :straight t)
 
