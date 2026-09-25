@@ -110,7 +110,7 @@
 (use-package pdf-tools
   :straight t
   :config
-  (pdf-tools-install))
+  (pdf-loader-install))
 
 (use-package nov
   :straight t
