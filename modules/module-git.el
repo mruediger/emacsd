@@ -8,14 +8,16 @@
    ("C-x g l a" . magit-log-all)))
 
 (use-package forge
+  :straight t
   :after magit
   :config
   (setq auth-sources '("~/.authinfo")))
 
-(use-package git-link)
+(use-package git-link :straight t)
 
 (use-package diff-hl
-  :init
+  :straight t
+  :config
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode)
   (diff-hl-margin-mode)

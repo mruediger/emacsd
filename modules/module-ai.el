@@ -48,6 +48,7 @@
   :after gptel)
 
 (use-package mcp
+  :straight t
   :after gptel
   :config (require 'mcp-hub)
   :custom
@@ -57,14 +58,8 @@
 (use-package gptel-integrations
    :after (gptel mcp))
 
-(use-package aider
-  :straight (:host github :repo "tninja/aider.el" :files ("aider.el"))
-  :defer t
-  :config (setq aider-args '("--model" "anthropic/claude-3-7-sonnet-20250219"))
-  (setenv "ANTHROPIC_API_KEY" (auth-source-pass-get 'secret "provider/anthropic"))
-  (global-set-key (kbd "C-c a") 'aider-transient-menu))
-
 (use-package elysium
+  :straight t
   :defer t
   :custom
   (elysium-window-size 0.33)

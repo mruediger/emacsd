@@ -27,6 +27,7 @@
 (setq make-pointer-invisible nil)
 
 (use-package envrc
+  :straight t
   :hook (after-init . envrc-global-mode))
 
 (use-package flyspell
@@ -36,6 +37,7 @@
 
 
 (use-package ag
+  :straight t
   :config
   (defun mr/ag-project-with-thing-at-point ()
     (interactive)
@@ -46,7 +48,8 @@
 (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
 
-(use-package sudo-edit)
+(use-package sudo-edit
+  :straight t)
 
 (use-package elisp
   :bind (:map emacs-lisp-mode-map
@@ -63,7 +66,8 @@
 		 (tramp-remote-shell-args ("-c"))
 		 (tramp-default-port 22))))
 
-(use-package ledger-mode)
+(use-package ledger-mode
+  :straight t)
 
 (use-package beancount
   :straight (beancount-mode :type git :host github :repo "beancount/beancount-mode"))
@@ -73,9 +77,11 @@
   (markdown-mode . visual-line-mode)
   (markdown-mode . flyspell-mode))
 
-(use-package copy-as-format)
+(use-package copy-as-format
+  :straight t)
 
 (use-package csv-mode
+  :straight t
   :config
   (setq csv-separators '("," ";")))
 
@@ -84,13 +90,12 @@
   (unless (server-running-p)
     (server-start)))
 
-(use-package rego-mode)
+(use-package rego-mode
+  :straight t)
 
 (defun insert-quotes (&optional arg)
   (interactive "P")
   (insert-pair arg ?\" ?\"))
-
-(use-package pdf-tools)
 
 (use-package treesit-fold
   :straight (treesit-fold :type git :host github :repo "emacs-tree-sitter/treesit-fold")
@@ -102,18 +107,22 @@
   ("C-x f a c" . treesit-fold-close-all)
   ("C-x f a o" . treesit-fold-open-all))
 
-(use-package pass)
+(use-package pass
+  :straight t)
 
 ;; XKCD
 (use-package xkcd
+  :straight t
   :config
   (defun xkcd-emacs () (interactive) (xkcd-get 378)))
 
 (use-package pdf-tools
-  :init
+  :straight t
+  :config
   (pdf-tools-install))
 
 (use-package nov
+  :straight t
   :mode ("\\.epub\\'" . nov-mode))
 
 (setq custom-file "~/.emacs.d/custom.el")

@@ -44,6 +44,7 @@
   (rust-ts-mode . (lambda () (setq-local compile-command "cargo test -- --nocapture"))))
 
 (use-package nix-mode
+  :straight t
   :config
   (defvar use-sudo-compile nil)
   (add-to-list 'safe-local-variable-values
@@ -54,9 +55,11 @@
            (call-interactively #'compile)))
   :bind (:map nix-mode-map ("C-c C-c" . nix-compile)))
 
-(use-package typst-ts-mode)
+(use-package typst-ts-mode
+  :straight t)
 
 (use-package jsonnet-mode
+  :straight t
   :hook
   (jsonnet-mode . eglot-ensure))
 

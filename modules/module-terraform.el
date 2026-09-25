@@ -1,4 +1,5 @@
 (use-package terraform-mode
+  :straight t
   :mode ("\\.tf" . terraform-mode)
   :hook
   (terraform-mode . (lambda () (setq-local compile-command "terraform plan -no-color")))
