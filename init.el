@@ -75,15 +75,6 @@
 
 (use-package copy-as-format)
 
-(use-package use-package-chords
-  :init (key-chord-mode 1))
-
-;;(use-package window
-;;  :chords ((" 0" . delete-window)
-;;           (" 1" . delete-other-windows)
-;;           (" 2" . split-window-below)
-;;           (" 3" . split-window-right)))
-
 (use-package csv-mode
   :config
   (setq csv-separators '("," ";")))
