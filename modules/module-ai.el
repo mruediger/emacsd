@@ -32,6 +32,23 @@
   (("C-x a r" . gptel-rewrite))
   (("C-x a b" . gptel)))
 
+;; collection of tools and prompts to use gptel “agentically”
+(use-package gptel-agent
+  :straight t
+  :after gptel
+  :config (gptel-agent-update))
+
+(use-package gptel-preset-collection
+  :vc (:url "https://github.com/karthink/gptel-preset-collection"
+       :rev :newest)
+  :after gptel)
+
+;; view LLM responses as buffer annotations
+(use-package gptel-annotate
+  :vc (:url "https://github.com/karthink/gptel-annotate"
+       :rev :newest)
+  :after gptel)
+
 (use-package mcp
   :after gptel
   :config (require 'mcp-hub)
