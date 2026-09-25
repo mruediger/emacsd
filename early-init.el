@@ -8,11 +8,5 @@
 ;; enabling `gcmh-mode'. Not resetting it will cause stuttering/freezes.
 (setq gc-cons-threshold most-positive-fixnum)
 
-;; Prevent unwanted runtime compilation for gccemacs (native-comp) users;
-;; packages are compiled ahead-of-time when they are installed and site files
-;; are compiled when gccemacs is installed.
-(setq native-comp-deferred-compilation nil)
-
-
 ;; Prevent straight and package.el mixups
 (setq package-enable-at-startup nil)
