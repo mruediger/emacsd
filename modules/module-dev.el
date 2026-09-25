@@ -3,8 +3,7 @@
 
 (use-package compile
   :config
-  (setq compilation-read-command nil)
-  (put 'compile-command 'safe-local-variable #'always)
+  (setq compilation-read-command t)
   :custom
   (compilation-always-kill t)
   (compilation-scroll-output t)
