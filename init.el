@@ -35,15 +35,6 @@
   :hook ((text-mode . turn-on-flyspell)
          (prog-mode . flyspell-prog-mode)))
 
-
-(use-package ag
-  :straight t
-  :config
-  (defun mr/ag-project-with-thing-at-point ()
-    (interactive)
-    (let ((thing (thing-at-point 'symbol)))
-      (ag-project thing))))
-
 ;; Stuff
 (add-hook 'after-save-hook
             'executable-make-buffer-file-executable-if-script-p)
