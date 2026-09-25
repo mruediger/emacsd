@@ -1,6 +1,5 @@
 (use-package org-tree-slide :straight t)
 (use-package ob-go :straight t)
-(use-package ob-redis :straight t)
 (use-package ob-http :straight t)
 (use-package ob-mermaid :straight t)
 
@@ -18,7 +17,6 @@
                                  (http       . t)
                                  (mermaid    . t)
                                  (go         . t)
-                                 (redis      . t)
                                  (sql        . t)))
 
   (add-to-list 'org-src-lang-modes '("go" . go-ts))
