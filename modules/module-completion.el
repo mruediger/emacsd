@@ -1,7 +1,8 @@
 (use-package orderless
   :straight t
   :init
-  (setq completion-styles '(substring orderless basic)))
+  (setq completion-styles '(orderless basic)))
+
 
 ;; minimalistic vertical completion UI
 (use-package vertico
