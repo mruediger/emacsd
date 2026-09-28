@@ -20,6 +20,14 @@
                                :key (auth-source-pass-get 'secret "provider/anthropic")
                                :stream t))
 
+  (setq gptel-backend-ollama
+        (gptel-make-ollama "Ollama"
+          :host "localhost:11434"
+          :stream t
+          :models '((qwen3:14b :capabilities (tool-use))
+    		    (deepseek-r1:14b))
+          :request-params '(:options (:num_ctx 32768))))
+
   (setq gptel-backend gptel-backend-gemini-rennsport
         gptel-model 'gemini-pro-latest)
 
