@@ -34,7 +34,7 @@
   (gptel-make-preset 'tool-session
     :description "Chat session wtih tools and MCPs"
     :pre (lambda () (gptel-mcp-connect nil 'sync))
-    :tools '(:append ("mcp-nixos")))
+    :tools '(:append ("mcp-nixos" "mcp-terraform")))
 
   (gptel-make-preset 'websearch
     :description  "Web search capability."
@@ -70,7 +70,8 @@
   :config (require 'mcp-hub)
   :custom
   (mcp-hub-servers
-   `(("nixos" . (:command "nix" :args ("run" "github:utensils/mcp-nixos" "--"))))))
+   `(("nixos" . (:command "nix" :args ("run" "github:utensils/mcp-nixos" "--")))
+     ("terraform" . (:command "docker" :args ("run" "-i" "--rm" "hashicorp/terraform-mcp-server"))))))
 
 (use-package gptel-integrations
    :after (gptel mcp))
