@@ -8,17 +8,15 @@
   :config
   (setq gptel-default-mode 'org-mode)
 
-  (setq gptel-backend-gemini-rennsport (gptel-make-gemini "Rennsport-Gemini"
-                               :key (auth-source-pass-get 'secret "rennsport/gemini-api-key")
-                               :stream t))
+  (setq gptel-backend-gemini
+        (gptel-make-gemini "Gemini"
+          :key gptel-api-key
+          :stream t))
 
-  (setq gptel-backend-gemini (gptel-make-gemini "Gemini"
-                               :key (auth-source-pass-get 'secret "cloud/gemini-n96")
-                               :stream t))
-
-  (setq gptel-backend-claude (gptel-make-anthropic "Claude"
-                               :key (auth-source-pass-get 'secret "provider/anthropic")
-                               :stream t))
+  (setq gptel-backend-claude
+        (gptel-make-anthropic "Claude"
+          :key gptel-api-key
+          :stream t))
 
   (setq gptel-backend-ollama
         (gptel-make-ollama "Ollama"
@@ -28,7 +26,7 @@
     		    (deepseek-r1:14b))
           :request-params '(:options (:num_ctx 32768))))
 
-  (setq gptel-backend gptel-backend-gemini-rennsport
+  (setq gptel-backend gptel-backend-gemini
         gptel-model 'gemini-flash-latest)
 
   (gptel-make-preset 'tool-session
