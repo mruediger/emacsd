@@ -31,6 +31,15 @@
   (setq gptel-backend gptel-backend-gemini-rennsport
         gptel-model 'gemini-flash-latest)
 
+  (gptel-make-preset 'tool-session
+    :description "Chat session wtih tools and MCPs"
+    :pre (lambda () (gptel-mcp-connect nil 'sync))
+    :tools '(:append ("mcp-nixos")))
+
+  (gptel-make-preset 'websearch
+    :description  "Web search capability."
+    :tools        '("WebSearch" "WebFetch"))
+
   (setq gptel-use-tools t
         gptel-log-level 'info
         gptel--set-buffer-locally t)
