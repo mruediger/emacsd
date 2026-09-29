@@ -29,7 +29,7 @@
           :request-params '(:options (:num_ctx 32768))))
 
   (setq gptel-backend gptel-backend-gemini-rennsport
-        gptel-model 'gemini-pro-latest)
+        gptel-model 'gemini-flash-latest)
 
   (setq gptel-use-tools t
         gptel-log-level 'info
