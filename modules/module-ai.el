@@ -42,6 +42,7 @@
 
   (setq gptel-use-tools t
         gptel-log-level 'info
+        gptel-org-branching-context t ;; only include the current heading hierarchy (ancestors + current heading)
         gptel--set-buffer-locally t)
 
   :bind
