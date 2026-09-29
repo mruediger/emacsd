@@ -70,7 +70,7 @@
   :config (require 'mcp-hub)
   :custom
   (mcp-hub-servers
-   `(("fetch" . (:command "uvx" :args ("mcp-server-fetch"))))))
+   `(("nixos" . (:command "nix" :args ("run" "github:utensils/mcp-nixos" "--"))))))
 
 (use-package gptel-integrations
    :after (gptel mcp))
