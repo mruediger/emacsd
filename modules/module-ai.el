@@ -75,29 +75,4 @@
 (use-package gptel-integrations
    :after (gptel mcp))
 
-(use-package elysium
-  :straight t
-  :defer t
-  :custom
-  (elysium-window-size 0.33)
-  (elysium-window-style 'vertical))
-
-(use-package monet
-  :straight (monet :type git :host github :repo "stevemolitor/monet")
-  :defer t)
-
-(use-package claude-code
-  :straight (:host github :repo "stevemolitor/claude-code.el")
-  :config
-  ;; optional IDE integration with Monet
-  (add-hook 'claude-code-process-environment-functions #'monet-start-server-function)
-  (monet-mode 1)
-
-  (claude-code-mode)
-  :bind-keymap ("C-c c" . claude-code-command-map)
-
-  ;; Optionally define a repeat map so that "M" will cycle thru Claude auto-accept/plan/confirm modes after invoking claude-code-cycle-mode / C-c M.
-  :bind
-  (:repeat-map my-claude-code-map ("M" . claude-code-cycle-mode)))
-
 (provide 'module-ai)
