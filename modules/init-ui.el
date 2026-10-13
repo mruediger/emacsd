@@ -4,7 +4,6 @@
 ;; cleanup user interface - remove unneded fluff
 (scroll-bar-mode -1)   ; Disable visible scrollbar
 (tool-bar-mode -1)     ; Disable toolbar
-(tooltip-mode -1)      ; Disable tooltips
 (menu-bar-mode -1)     ; Disable menu bar
 (blink-cursor-mode -1)
 
