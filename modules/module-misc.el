@@ -2,7 +2,7 @@
 
 (defun terminal-here ()
   (interactive)
-  (start-process "foot" nil "swaymsg" "exec" (concat "foot -D " default-directory)))
+  (start-process "foot" nil "swaymsg" "exec" (concat "foot -D " (shell-quote-argument (expand-file-name default-directory)))))
 
 (keymap-global-set "C-x t" 'terminal-here)
 

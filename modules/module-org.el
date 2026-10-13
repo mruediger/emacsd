@@ -31,9 +31,10 @@
       (with-temp-buffer
         ;; Insert the JSON into the temp buffer
         (insert body)
-        ;; Run jq command on the whole buffer, and replace the buffer
-        ;; contents with the result returned from jq
-        (shell-command-on-region (point-min) (point-max) (format "jq -r \"%s\"" jq) nil 't)
+        ;; Run jq on the whole buffer, and replace the buffer contents
+        ;; with the result. jq is called directly (no shell), so the
+        ;; filter is passed verbatim and needs no quoting.
+        (call-process-region (point-min) (point-max) "jq" t t nil "-r" (format "%s" jq))
         ;; Return the contents of the temp buffer as the result
         (buffer-string)))
      (node

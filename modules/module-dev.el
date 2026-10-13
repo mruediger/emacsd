@@ -35,7 +35,8 @@
   (setq python-indent-offset 4)
   :hook
   (python-mode . (lambda ()
-                   (setq-local compile-command (concat "python " buffer-file-name))))
+                   (setq-local compile-command
+                               (concat "python " (shell-quote-argument (file-local-name buffer-file-name))))))
   (python-mode . eglot-ensure)
   :bind (:map python-mode-map
               ("C-c C-c" . compile)))
