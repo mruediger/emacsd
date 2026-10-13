@@ -11,15 +11,4 @@
 (use-package helm-ts-mode
   :straight (:type git :host github :repo "mosjek/helm-ts-mode"))
 
-(define-hostmode poly-yaml-ts-hostmode :mode 'yaml-ts-mode)
-(define-innermode poly-go-ts-template-innermode :mode 'go-ts-mode
-  :head-matcher "{{"
-  :tail-matcher "}}"
-  :head-mode 'body
-  :tail-mode 'body)
-
-(define-polymode helm-template-mode
-  :hostmode 'poly-yaml-ts-hostmode
-  :innermodes '(poly-go-ts-template-innermode))
-
 (provide 'module-yaml)
