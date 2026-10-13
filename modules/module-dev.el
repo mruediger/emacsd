@@ -45,7 +45,16 @@
 
 (use-package nix-mode
   :straight t
+  :hook
+  (nix-mode . (lambda () (add-hook 'after-save-hook #'nix-fmt-on-save nil t)))
   :config
+  (defun nix-fmt-on-save ()
+    "Run `nix fmt' on the current file and reload the buffer."
+    (when-let ((file (buffer-file-name)))
+      (let ((default-directory (project-root (project-current t))))
+        (if (zerop (call-process "nix" nil "*nix-fmt*" nil "fmt" "--" file))
+            (revert-buffer t t t)
+          (message "nix fmt failed, see *nix-fmt*")))))
   (defvar use-sudo-compile nil)
   (add-to-list 'safe-local-variable-values
              '(compile-command . "nixos-rebuild switch --flake '.#'"))
