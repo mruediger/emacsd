@@ -1,6 +1,7 @@
 ;;; module-git.el -*- lexical-binding: t; -*-
 
 (use-package magit
+  :straight t
   :bind
   (("C-x g"     . nil)
    ("C-x g s"   . magit-status)
