@@ -84,7 +84,6 @@
   ("C-x o i" . org-open-inbox)
   ("C-x o n" . org-open-today)
   ("C-x o N" . org-open-today-folder)
-  ("C-x o p" . org-open-ppp)
   ("C-x o r" . org-open-random)
   :hook
   (org-mode . visual-line-mode)
