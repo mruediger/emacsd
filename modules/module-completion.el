@@ -1,14 +1,12 @@
 ;;; module-completion.el -*- lexical-binding: t; -*-
 
 (use-package orderless
-  :straight t
   :init
   (setq completion-styles '(orderless basic)))
 
 
 ;; minimalistic vertical completion UI
 (use-package vertico
-  :straight t
   :init
   (vertico-mode)
   :bind
@@ -18,13 +16,11 @@
 
 ;; margin annotation for the minibuffer
 (use-package marginalia
-  :straight t
   :init
   (marginalia-mode))
 
 ;; completion during buffer selection, yanking, ...
 (use-package consult
-  :straight t
   :bind
   ("M-g l" . consult-line)
   ("C-b b" . consult-buffer)
@@ -41,19 +37,16 @@
   :hook (completion-list-mode . consult-preview-at-point-mode))
 
 (use-package yasnippet
-  :straight t
   :config
   (yas-global-mode))
 
 (use-package yasnippet-snippets
-  :straight t
   :after yasnippet)
 
 (use-package hippie-exp
   :bind ("M-/" . hippie-expand))
 
 (use-package eglot
-  :straight (:type built-in)
   :config
   (add-to-list 'eglot-server-programs '(terraform-mode . ("terraform-ls" "serve")))
   (add-to-list 'eglot-server-programs '(jsonnet-mode . ("jsonnet-language-server")))
@@ -70,7 +63,6 @@
 
 ;; used by eglot for showing the drop down
 (use-package company
-  :straight t
   :init (global-company-mode))
 
 ;;(use-package completion-preview
@@ -79,7 +71,6 @@
 
 ;; used by eglot for highlighting errors
 (use-package flymake
-  :straight (:type built-in)
   :config
   (setq flymake-show-diagnostics-at-end-of-line nil)
   :bind
@@ -91,7 +82,6 @@
 
 ;; used by eglot for defining a lsp workspace/set of files
 (use-package project
-  :straight (:type built-in)
   :config
   (defun mr/project-try-rust (dir)
     "Find root directory based on Cargo.toml"

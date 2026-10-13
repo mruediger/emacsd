@@ -8,5 +8,5 @@
 ;; enabling `gcmh-mode'. Not resetting it will cause stuttering/freezes.
 (setq gc-cons-threshold most-positive-fixnum)
 
-;; Prevent straight and package.el mixups
-(setq package-enable-at-startup nil)
+;; Packages are provided by nix (home-manager). Keep `package-enable-at-startup'
+;; at its default so package.el activates them (loads their autoloads).

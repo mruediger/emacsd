@@ -48,7 +48,6 @@
   (rust-ts-mode . (lambda () (setq-local compile-command "cargo test -- --nocapture"))))
 
 (use-package nix-mode
-  :straight t
   :hook
   (nix-mode . (lambda () (add-hook 'after-save-hook #'nix-fmt-on-save nil t)))
   :config
@@ -71,11 +70,9 @@ Skips remote files and files outside of a project."
            (call-interactively #'compile)))
   :bind (:map nix-mode-map ("C-c C-c" . nix-compile)))
 
-(use-package typst-ts-mode
-  :straight t)
+(use-package typst-ts-mode)
 
 (use-package jsonnet-mode
-  :straight t
   :hook
   (jsonnet-mode . eglot-ensure))
 

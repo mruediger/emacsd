@@ -23,7 +23,6 @@
 
 
 (use-package dape
-  :straight t
   :config
   (setq dape-buffer-window-arrangement 'gud)
   :hook
@@ -32,7 +31,6 @@
 ;;  (dape-display-source . pulse-momentary-highlight-one-line))
 
 (use-package go-eldoc
-  :straight t
   :hook
   (go-ts-mode . go-eldoc-setup))
 

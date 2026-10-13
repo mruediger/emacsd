@@ -13,7 +13,6 @@
         ("S-<right>" . dired-display-file)))
 
 (use-package nerd-icons-dired
-  :straight t
   :hook
   (dired-mode . nerd-icons-dired-mode))
 

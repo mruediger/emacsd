@@ -1,7 +1,6 @@
 ;;; module-git.el -*- lexical-binding: t; -*-
 
 (use-package magit
-  :straight t
   :bind
   (("C-x g"     . nil)
    ("C-x g s"   . magit-status)
@@ -11,13 +10,11 @@
    ("C-x g l a" . magit-log-all)))
 
 (use-package forge
-  :straight t
   :after magit)
 
-(use-package git-link :straight t)
+(use-package git-link)
 
 (use-package diff-hl
-  :straight t
   :config
   (global-diff-hl-mode)
   (diff-hl-flydiff-mode)
