@@ -1,6 +1,6 @@
 (use-package terraform-mode
   :straight t
-  :mode ("\\.tf" . terraform-mode)
+  :mode ("\\.tf\\(vars\\)?\\'" . terraform-mode)
   :hook
   (terraform-mode . (lambda () (setq-local compile-command "terraform plan -no-color")))
   ;; workarround for https://github.com/hashicorp/terraform-ls/issues/1067
