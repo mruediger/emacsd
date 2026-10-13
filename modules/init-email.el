@@ -1,3 +1,5 @@
+;;; init-email.el -*- lexical-binding: t; -*-
+
 (setq user-full-name "Mathias Rüdiger")
 (setq user-mail-address "ruediger@blueboot.org")
 

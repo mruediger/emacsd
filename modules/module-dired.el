@@ -1,3 +1,5 @@
+;;; module-dired.el -*- lexical-binding: t; -*-
+
 (use-package dired
   :config
   (defun mr/k-apply-gitops (file-list)

@@ -1,3 +1,5 @@
+;;; module-yaml.el -*- lexical-binding: t; -*-
+
 (use-package yaml-ts-mode
   :bind (:map yaml-ts-mode-map ("C-c C-c" . compile))
   :mode "\\.ya?ml\\'")

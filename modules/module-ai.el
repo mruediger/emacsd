@@ -1,3 +1,5 @@
+;;; module-ai.el -*- lexical-binding: t; -*-
+
 (use-package gptel
   :straight (:host github :repo "karthink/gptel")
   :defer t

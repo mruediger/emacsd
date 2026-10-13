@@ -1,3 +1,5 @@
+;;; module-misc.el -*- lexical-binding: t; -*-
+
 (defun terminal-here ()
   (interactive)
   (start-process "foot" nil "swaymsg" "exec" (concat "foot -D " default-directory)))

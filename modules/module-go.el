@@ -1,3 +1,5 @@
+;;; module-go.el -*- lexical-binding: t; -*-
+
 (require 'eglot)
 
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-ts-mode))

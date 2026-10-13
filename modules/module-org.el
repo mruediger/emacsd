@@ -1,3 +1,5 @@
+;;; module-org.el -*- lexical-binding: t; -*-
+
 (use-package org-tree-slide :straight t :after org)
 (use-package ob-go :straight t :after org)
 (use-package ob-http :straight t :after org)

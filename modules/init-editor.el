@@ -1,3 +1,5 @@
+;;; init-editor.el -*- lexical-binding: t; -*-
+
 (setq make-backup-files nil)
 
 (setq-default indent-tabs-mode nil)   ;; don't use tabs to indent

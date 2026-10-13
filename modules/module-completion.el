@@ -1,3 +1,5 @@
+;;; module-completion.el -*- lexical-binding: t; -*-
+
 (use-package orderless
   :straight t
   :init

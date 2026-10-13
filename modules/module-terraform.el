@@ -1,3 +1,5 @@
+;;; module-terraform.el -*- lexical-binding: t; -*-
+
 (use-package terraform-mode
   :straight t
   :mode ("\\.tf\\(vars\\)?\\'" . terraform-mode)

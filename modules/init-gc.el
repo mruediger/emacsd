@@ -1,3 +1,5 @@
+;;; init-gc.el -*- lexical-binding: t; -*-
+
 ;; Garbage Collector Magic Hack
 ;; Enforce a sneaky Garbage Collection strategy to minimize GC interference with user activity.
 ;; During normal use a high GC threshold is set.

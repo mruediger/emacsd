@@ -1,3 +1,5 @@
+;;; init-bootstrap-straight.el -*- lexical-binding: t; -*-
+
 (setq
  straight-base-dir my-local-dir
  straight-build-dir (format "build-%s%s" emacs-version (if emacs-repository-version (format "-%s" (substring emacs-repository-version 0 8)) "")))

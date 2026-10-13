@@ -1,3 +1,5 @@
+;;; init-ui.el -*- lexical-binding: t; -*-
+
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 

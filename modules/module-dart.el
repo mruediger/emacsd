@@ -1,3 +1,5 @@
+;;; module-dart.el -*- lexical-binding: t; -*-
+
 (use-package dart-mode
   :straight t
   :hook

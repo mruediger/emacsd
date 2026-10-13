@@ -1,3 +1,5 @@
+;;; init-keybindings.el -*- lexical-binding: t; -*-
+
 (use-package which-key
   :straight t
   :init (which-key-mode)

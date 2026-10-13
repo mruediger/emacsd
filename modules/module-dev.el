@@ -1,3 +1,5 @@
+;;; module-dev.el -*- lexical-binding: t; -*-
+
 (use-package prog-mode
   :bind (:map prog-mode-map ("C-c C-c" . compile)))
 
