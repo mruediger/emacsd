@@ -1,6 +1,5 @@
 ;;; init.el -*- lexical-binding: t; -*-
 
-(defconst my-local-dir (expand-file-name "local/" user-emacs-directory))
 (add-to-list 'load-path (expand-file-name "modules/" user-emacs-directory))
 
 (require 'init-bootstrap-straight)
