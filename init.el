@@ -64,6 +64,7 @@
   :straight (beancount-mode :type git :host github :repo "beancount/beancount-mode"))
 
 (use-package markdown-mode
+  :straight t
   :hook
   (markdown-mode . visual-line-mode)
   (markdown-mode . flyspell-mode))
