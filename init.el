@@ -20,6 +20,12 @@
 (require 'module-dart)
 (require 'module-misc)
 
+(let ((dir (expand-file-name "private" user-emacs-directory)))
+  (when (file-directory-p dir)
+    (add-to-list 'load-path dir)
+    (dolist (file (directory-files dir nil "\\`[^.].*\\.el\\'"))
+      (require (intern (file-name-sans-extension file))))))
+
 ;; MOUSE
 (setq mouse-autoselect-window nil)
 (setq mouse-yank-at-point t)
